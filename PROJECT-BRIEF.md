@@ -24,42 +24,42 @@ Each week, the team of 4 developers will split into 2 pairs of 2 developers each
 
 Pairings will go as follows:
 
-#### Week 1, {start date - end date}
+#### Week 1, March 8th - 14th
 
 1. Jennifer & Aisling
 2. Diane & Jon
 
-#### Week 2, {start date - end date}
+#### Week 2, March 15th - 21st
 
 1. Aisling & Diane
 2. Jon & Jennifer
 
-#### Week 3, {start date - end date}
+#### Week 3, March 22nd - 28th
 
 1. Jennifer & Diane
 2. Jon & Aisling
 
-#### Week 4, {start date - end date}
+#### Week 4, March 29th - April 4th
 
 1. Jennifer & Aisling
 2. Diane & Jon
 
-#### Week 5, {start date - end date}
+#### Week 5, April 5th - 11th
 
 1. Diane & Aisling
 2. Jon & Jennifer
 
-#### Week 6, {start date - end date}
+#### Week 6, April 12th - 18th
 
 1. Jennifer & Diane
 2. Aisling & Jon
 
-#### Week 7, {start date - end date}
+#### Week 7, April 19th - 25th
 
 1. Jennifer & Aisling
 2. Diane & Jon
 
-#### Week 8, {start date - end date}
+#### Week 8, April 26th - May 2nd
 
 1. Aisling & Diane
 2. Jennifer & Jon
