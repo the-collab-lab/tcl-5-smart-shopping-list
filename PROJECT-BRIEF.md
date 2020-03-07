@@ -1,19 +1,23 @@
 # Project Brief, The Collab Lab
+
 ## Smart Shopping List
 
 ### Overview
+
 The goal of this project is to work together to build a “smart” shopping list that learns your shopping habits over time, putting items you are most likely to need to buy in the near future at the top.
 
 This project is based on [iNeedToBuy.xyz](https://app.ineedtobuy.xyz/), a mobile web app I built for my own use last year. You’re welcome to look at the [GitHub repo for that site](https://github.com/segdeha/ineedtobuy.xyz) if you get stuck and want a hint!
 
 ### Locations for things
-* Site: {link to cohort live site}
-* Repo: {link to cohort repo}
-* Clone URL: {clone URL}
-* Issue list: {link to cohort repo issues}
-* Database: {link to cohort firebase database}
+
+* Site: [tcl-5-smart-shopping-list.netlify.com](https://tcl-5-smart-shopping-list.netlify.com/)
+* Repo: [github.com/the-collab-lab/tcl-5-smart-shopping-list](https://github.com/the-collab-lab/tcl-5-smart-shopping-list)
+* Clone URL: `git@github.com:the-collab-lab/tcl-5-smart-shopping-list.git`
+* Issue list: [github.com/the-collab-lab/tcl-5-smart-shopping-list/projects/1](https://github.com/the-collab-lab/tcl-5-smart-shopping-list/projects/1)
+* Database: [console.firebase.google.com/u/1/project/tcl-5-smart-shopping-list](https://console.firebase.google.com/u/1/project/tcl-5-smart-shopping-list/database/firestore/data~2F)
 
 ### Project cadence & duration
+
 The project is expected to take 40 hours per participant, spread over 8 weeks.
 
 Each week, the team of 4 developers will split into 2 pairs of 2 developers each. Each pair will take on a story or task from the issues list to work on together that week.
@@ -21,36 +25,44 @@ Each week, the team of 4 developers will split into 2 pairs of 2 developers each
 Pairings will go as follows:
 
 #### Week 1, {start date - end date}
-1. {Name} & {Name}
-2. {Name} & {Name}
+
+1. Jennifer & Aisling
+2. Diane & Jon
 
 #### Week 2, {start date - end date}
-1. {Name} & {Name}
-2. {Name} & {Name}
+
+1. Aisling & Diane
+2. Jon & Jennifer
 
 #### Week 3, {start date - end date}
-1. {Name} & {Name}
-2. {Name} & {Name}
+
+1. Jennifer & Diane
+2. Jon & Aisling
 
 #### Week 4, {start date - end date}
-1. {Name} & {Name}
-2. {Name} & {Name}
+
+1. Jennifer & Aisling
+2. Diane & Jon
 
 #### Week 5, {start date - end date}
-1. {Name} & {Name}
-2. {Name} & {Name}
+
+1. Diane & Aisling
+2. Jon & Jennifer
 
 #### Week 6, {start date - end date}
-1. {Name} & {Name}
-2. {Name} & {Name}
+
+1. Jennifer & Diane
+2. Aisling & Jon
 
 #### Week 7, {start date - end date}
-1. {Name} & {Name}
-2. {Name} & {Name}
+
+1. Jennifer & Aisling
+2. Diane & Jon
 
 #### Week 8, {start date - end date}
-1. {Name} & {Name}
-2. {Name} & {Name}
+
+1. Aisling & Diane
+2. Jennifer & Jon
 
 ### Pair Programming
 
@@ -81,7 +93,8 @@ The way we use the rest of the time will vary based on whether it’s an even- o
 In our retros, we will share appreciations of our teammates as well as talk about what went well from a process perspective and what we could do to improve how we’re working together.
 
 ### How to know what to do
-The project is organized in GitHub as a set of [user stories](https://www.mountaingoatsoftware.com/agile/user-stories), each with a description of the desired functionality as well as [acceptance criteria](https://www.leadingagile.com/2014/09/acceptance-criteria/) (AC) that describe how you know whether the task or story is complete. You can find the stories on [the project board]({link to the cohort repo project board}) on GitHub.
+
+The project is organized in GitHub as a set of [user stories](https://www.mountaingoatsoftware.com/agile/user-stories), each with a description of the desired functionality as well as [acceptance criteria](https://www.leadingagile.com/2014/09/acceptance-criteria/) (AC) that describe how you know whether the task or story is complete. You can find the stories on [the project board](https://github.com/the-collab-lab/tcl-5-smart-shopping-list/projects/1) on GitHub.
 
 A task or story is “done” when the following are all true:
 
@@ -95,9 +108,10 @@ The “backlog” (the collection of stories) represents the work needed to comp
 
 ### Coordination & communication
 
-At the start of each week, each pair will create a page on [the project wiki](https://github.com/the-collab-lab/tcl-2-smart-shopping-list/wiki) where you can coordinate your approach to solving your problem for the week, surface blockers and learnings, etc. One of the benefits of this is that the people reviewing your work can better understand your process for how you got to your solution.
+At the start of each week, each pair will create a page on [the project wiki](https://github.com/the-collab-lab/tcl-5-smart-shopping-list/wiki) where you can coordinate your approach to solving your problem for the week, surface blockers and learnings, etc. One of the benefits of this is that the people reviewing your work can better understand your process for how you got to your solution.
 
 ### Development process
+
 Work will be done on feature branches in git. Branches should be named in the following way:
 
 	<initials of person 1>-<initials of person 2>-<short description>
@@ -120,10 +134,11 @@ When you and your pair partner have working code that you believe is ready to be
 3. Incorporate feedback from the other pair team into your work until both you and they are satisfied the code is ready to be merged.
 4. Request that Andrew or one of the mentors review the PR for final approval.
 5. Once approved, merge the PR into `master`. (Your code will be built and deployed to production automatically thanks to [Netlify](https://www.netlify.com/).)
-6. Check your work on the [production site]({link to cohort live site}).
+6. Check your work on the [production site](https://tcl-5-smart-shopping-list.netlify.com/).
 7. Celebrate! 🥳
 
 ### What else?
+
 I’m around 💯% sure I’m forgetting or glossing over something important, so please be noisy on Slack as things come up. The mentors and I will do our best to get you unstuck. Also, lean on each other for help as well! Finally, work in the open so everyone can benefit from your questions.
 
 ![gif of a My Little Pony pulling on goggles, with a determined look on their face, saying, “Let’s do this”.](http://giphygifs.s3.amazonaws.com/media/PuWNMebKGIKNG/giphy.gif)
