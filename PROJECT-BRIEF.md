@@ -26,42 +26,42 @@ Pairings will go as follows:
 
 #### Week 1, March 8th - 14th
 
-1. Jennifer & Aisling
+1. Jennifer & Ashling
 2. Diane & Jon
 
 #### Week 2, March 15th - 21st
 
-1. Aisling & Diane
+1. Ashling & Diane
 2. Jon & Jennifer
 
 #### Week 3, March 22nd - 28th
 
 1. Jennifer & Diane
-2. Jon & Aisling
+2. Jon & Ashling
 
 #### Week 4, March 29th - April 4th
 
-1. Jennifer & Aisling
+1. Jennifer & Ashling
 2. Diane & Jon
 
 #### Week 5, April 5th - 11th
 
-1. Diane & Aisling
+1. Diane & Ashling
 2. Jon & Jennifer
 
 #### Week 6, April 12th - 18th
 
 1. Jennifer & Diane
-2. Aisling & Jon
+2. Ashling & Jon
 
 #### Week 7, April 19th - 25th
 
-1. Jennifer & Aisling
+1. Jennifer & Ashling
 2. Diane & Jon
 
 #### Week 8, April 26th - May 2nd
 
-1. Aisling & Diane
+1. Ashling & Diane
 2. Jennifer & Jon
 
 ### Pair Programming
