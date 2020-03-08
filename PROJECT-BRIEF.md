@@ -99,7 +99,7 @@ The project is organized in GitHub as a set of [user stories](https://www.mounta
 A task or story is “done” when the following are all true:
 
 * The AC have been met
-* Tests have been written to validate the “[happy path](https://en.wikipedia.org/wiki/Happy_path)”
+* Tests have been written to validate the “[happy path](https://en.wikipedia.org/wiki/Happy_path)” (optional)
 * In the case of a UI feature, it has been reviewed for [accessibility](https://accessibilityinsights.io/)
 * The code to complete the task or implement the feature has been reviewed and approved by the other pair of developers
 * The [Product Owner](https://www.agilealliance.org/glossary/product-owner/) (i.e. Andrew or 1 of the mentors) has accepted the work as satisfactorily meeting the requirements
@@ -108,7 +108,7 @@ The “backlog” (the collection of stories) represents the work needed to comp
 
 ### Coordination & communication
 
-At the start of each week, each pair will create a page on [the project wiki](https://github.com/the-collab-lab/tcl-5-smart-shopping-list/wiki) where you can coordinate your approach to solving your problem for the week, surface blockers and learnings, etc. One of the benefits of this is that the people reviewing your work can better understand your process for how you got to your solution.
+At the start of each week, each pair will review their Github issue that details the story, where you can coordinate your approach to solving your problem for the week, surface blockers and learnings, etc. One of the benefits of this is that the people reviewing your work can better understand your process for how you got to your solution.
 
 ### Development process
 
