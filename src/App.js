@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Switch, Route, Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
 import FooterTabs from './components/FooterTabs';
 import ShoppingList from './pages/ShoppingList';
 import AddItem from './pages/AddItem';
