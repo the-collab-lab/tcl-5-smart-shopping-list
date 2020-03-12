@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import ShoppingList from '../pages/ShoppingList';
 import AddItem from '../pages/AddItem';
-import { Button } from 'reactstrap';
+import '../css/FooterTabs.css';
 
 export default function App(props) {
 	return (
@@ -12,16 +12,12 @@ export default function App(props) {
 					<li>
 						{/* Link to be changed once pages are created*/}
 						<Link to='/ShoppingList'>
-							<Button color='primary' size='lg'>
-								Shopping List
-							</Button>
+							<button className='navbutton'>Shopping List</button>
 						</Link>
 					</li>
 					<li>
 						<Link to='/AddItem'>
-							<Button color='primary' size='lg'>
-								Add Item
-							</Button>
+							<button className='navbutton'>Add Item</button>
 						</Link>
 					</li>
 				</ul>
