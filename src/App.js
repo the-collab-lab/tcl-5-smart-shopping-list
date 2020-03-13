@@ -1,25 +1,25 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import FirebaseTesting from './pages/FirebaseTest';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <a href="/FirebaseTesting">FirebaseTesting</a>
+			<BrowserRouter>
+				{/* A <Switch> looks through its children <Route>s and
+                renders the first one that matches the current URL. */}
+				<Switch>
+					<Route path='/FirebaseTesting'>
+						<FirebaseTesting />
+					</Route>
+				</Switch>
+			</BrowserRouter>
     </div>
+
+		
   );
 }
 
