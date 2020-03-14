@@ -1,0 +1,26 @@
+ul {
+	list-style-type: none;
+}
+
+li {
+	display: inline;
+	margin-left: 5px;
+}
+
+nav {
+	position: fixed;
+	bottom: 0;
+	width: 100vw;
+}
+
+.navbutton {
+	width: 45vw;
+	height: 50px;
+	background-color: teal;
+	color: white;
+	font-size: 20px;
+}
+
+.navbutton:focus {
+	background-color: rgba(2, 75, 75, 0.5);
+}
