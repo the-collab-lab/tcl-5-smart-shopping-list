@@ -1,11 +1,10 @@
 ul {
-	list-style-type: none;
+	list-style: none;
 }
 
 li {
 	display: inline;
     margin-left: 5px;
-    cursor: pointer;
 }
 
 nav {
@@ -19,7 +18,8 @@ nav {
 	height: 50px;
 	background-color: teal;
 	color: white;
-	font-size: 20px;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 .navbutton:focus {

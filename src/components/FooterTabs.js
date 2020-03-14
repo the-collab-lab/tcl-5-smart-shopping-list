@@ -10,7 +10,6 @@ export default function App() {
 			<nav>
 				<ul>
 					<li>
-						{/* Link to be changed once pages are created*/}
 						<Link to='/ShoppingList'>
 							<button className='navbutton'>Shopping List</button>
 						</Link>

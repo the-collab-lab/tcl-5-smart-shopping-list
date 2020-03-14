@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import FooterTabs from './components/FooterTabs';
 import ShoppingList from './pages/ShoppingList';
 import AddItem from './pages/AddItem';
