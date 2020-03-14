@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import fb from '../lib/firebase';
 import firebase from 'firebase/app';
 
@@ -18,21 +18,24 @@ export default function FirebaseTesting (props) {
     })
     .then(() => console.log(currentTime + " successfully written!"))
     .catch(error => console.error("Error writing document: ", error));
+  }
 
-    await clicksRef
-      .limit(3)
+  useEffect(() => {
+    clicksRef
+      .orderBy("dateTime", "desc")
+      .limit(5)
       .get()
       .then(function (querySnapshot) {
         let clicksArray = [];
-        querySnapshot.forEach(function(doc){
+        querySnapshot.forEach(function (doc) {
           let documentData = doc.data();
           clicksArray.push(documentData);
         });
         setClickLog(clicksArray);
-    }).catch(function (error) {
-      console.log("Error getting document:", error);
-    });
-  }
+      }).catch(function (error) {
+        console.log("Error getting document:", error);
+      });
+  });
 
   function renderClickLog() {
     if (clickLog) {
