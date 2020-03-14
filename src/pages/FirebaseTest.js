@@ -2,17 +2,18 @@ import React, { useState, useEffect } from 'react';
 import fb from '../lib/firebase';
 import firebase from 'firebase/app';
 
-export default function FirebaseTesting (props) {
+
+const FirebaseTesting = () => {
 
   const [clickLog, setClickLog] = useState([]);
   const db = fb.firestore()
   const clicksRef = db.collection("clicks");
   
-  async function onClick(event){
+  const onClick = (event) => {
     event.preventDefault();
     const currentTime = firebase.firestore.Timestamp.fromDate(new Date());
 
-    await db.collection("clicks").add({
+    db.collection("clicks").add({
       "action": "click",
       "dateTime": currentTime
     })
@@ -25,14 +26,14 @@ export default function FirebaseTesting (props) {
       .orderBy("dateTime", "desc")
       .limit(5)
       .get()
-      .then(function (querySnapshot) {
+      .then((querySnapshot) => {
         let clicksArray = [];
-        querySnapshot.forEach(function (doc) {
+        querySnapshot.forEach((doc) => {
           let documentData = doc.data();
           clicksArray.push(documentData);
         });
         setClickLog(clicksArray);
-      }).catch(function (error) {
+      }).catch((error) => {
         console.log("Error getting document:", error);
       });
   });
@@ -44,3 +45,5 @@ export default function FirebaseTesting (props) {
     </div>
   );
 }
+
+export default FirebaseTesting;
