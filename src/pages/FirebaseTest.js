@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import fb from '../lib/firebase';
+import firebase from 'firebase/app';
 
 export default function FirebaseTesting (props) {
 
@@ -9,7 +10,7 @@ export default function FirebaseTesting (props) {
   
   async function onClick(event){
     event.preventDefault();
-    const currentTime = Date.now();
+    const currentTime = firebase.firestore.Timestamp.fromDate(new Date());
 
     await db.collection("clicks").add({
       "action": "click",
