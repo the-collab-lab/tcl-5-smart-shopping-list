@@ -33,11 +33,20 @@ export default function FirebaseTesting (props) {
     });
   }
 
+  function renderClickLog() {
+    if (clickLog) {
+      return clickLog.map((log, id) => <h2 key = {id} > The button was clicked at {log.dateTime} </h2>);
 
+    }
+      else {
+        return ( <h2> No clicks so far. </h2>);
+      }
+  }
 
   return(
     <div>
       <a onClick={onClick} href='/FirebaseTesting'>Click me!</a>
+      {renderClickLog()}
     </div>
   );
 }
