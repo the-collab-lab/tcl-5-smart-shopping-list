@@ -4,7 +4,8 @@ ul {
 
 li {
 	display: inline;
-	margin-left: 5px;
+    margin-left: 5px;
+    cursor: pointer;
 }
 
 nav {

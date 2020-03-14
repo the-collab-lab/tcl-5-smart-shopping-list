@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ShoppingList = props => {
+const ShoppingList = () => {
 	return <h1>Hello from the Shopping List</h1>;
 };
 

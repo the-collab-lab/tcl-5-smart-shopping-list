@@ -4,7 +4,7 @@ import ShoppingList from '../pages/ShoppingList';
 import AddItem from '../pages/AddItem';
 import '../css/FooterTabs.css';
 
-export default function App(props) {
+export default function App() {
 	return (
 		<div>
 			<nav>
