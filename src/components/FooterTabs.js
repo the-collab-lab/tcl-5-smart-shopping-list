@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../css/FooterTabs.css';
 
-export default function App() {
+const FooterTabs= () => {
 	return (
 		<div>
 			<nav>
@@ -22,3 +22,5 @@ export default function App() {
 		</div>
 	);
 }
+
+export default FooterTabs;
