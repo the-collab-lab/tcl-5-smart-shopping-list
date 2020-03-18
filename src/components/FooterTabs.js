@@ -1,7 +1,5 @@
 import React from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
-import ShoppingList from '../pages/ShoppingList';
-import AddItem from '../pages/AddItem';
+import { Link } from 'react-router-dom';
 import '../css/FooterTabs.css';
 
 export default function App() {
