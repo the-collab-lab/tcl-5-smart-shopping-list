@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import FirebaseTesting from './pages/FirebaseTest';
 import FooterTabs from './components/FooterTabs';
 import ShoppingList from './pages/ShoppingList';
