@@ -1,11 +1,12 @@
 import React from 'react';
 import getToken from '../lib/tokenGenerator';
-
+import ls from "local-storage";
 var NewListButton = (props) => {
 
     const onClick = (event) => {
-        const token = getToken();
-        
+        const newToken = getToken();
+        ls.set("shoppingListToken", newToken);
+        props.setToken(newToken);
     };
     return(
         <div>
