@@ -1,25 +1,27 @@
 import React, {useState} from 'react';
 import './App.css';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
 import FirebaseTesting from './pages/FirebaseTest';
 import FooterTabs from './components/FooterTabs';
 import ShoppingList from './pages/ShoppingList';
 import AddItem from './pages/AddItem';
 import NewListButton from './components/newListButton'
+import * as ls from 'local-storage';
 
 function App() {
-	const [token, setToken] = useState('')
+	const [token, setToken] = useState(ls.get("shoppingListToken"));
 	
 	return (
 		<div className='App'>
-			<div>
+			
       <a href="/FirebaseTesting">FirebaseTesting</a>
+			{token?<Redirect to="/ShoppingList" />:<NewListButton setToken={setToken} token={token} />}
 				{/* A <Switch> looks through its children <Route>s and
                 renders the first one that matches the current URL. */}
-				<NewListButton />
+				<BrowserRouter>
 				<Switch>
 					<Route path='/ShoppingList'>
-						<ShoppingList />
+						<ShoppingList token={token}/>
 					</Route>
 					<Route path='/AddItem'>
 						<AddItem />
@@ -28,7 +30,7 @@ function App() {
 						<FirebaseTesting />
 					</Route>
 				</Switch>
-			</div>
+				</BrowserRouter>
 
 			<footer>
 				<FooterTabs />
