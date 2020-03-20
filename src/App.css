@@ -20,3 +20,42 @@
 .App-link {
   color: #09d3ac;
 }
+
+form {
+  font: 95% Arial, Helvetica, sans-serif;
+	max-width: 400px;
+	margin: 10px auto;
+	padding: 16px;
+  background: rgb(151, 193, 206);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+input {
+  background:teal;
+	padding: 20px 0;
+	font-size: 140%;
+	font-weight: 300;
+	text-align: center;
+	color: #fff;
+  margin: -16px -16px 16px -16px;
+  margin-top: 20%;
+  width:50%;
+  border-style: groove;
+}
+
+select{
+	box-sizing: border-box;
+  width: 70%;
+  background: #fff;
+  margin-top: 20%;
+	margin-bottom: 4%;
+	border: 1px solid #ccc groove;
+	padding: 3%;
+	color: #555;
+  font: 95% Arial, Helvetica, sans-serif;
+  font-size:.9rem;
+}
