@@ -16,7 +16,7 @@ const AddItem = () => {
       <select name="How soon" ref={register}>How soon are you likely to buy it again?
         <option value="7">Soon (in the next 7 days)</option>
         <option value="14">Kind of soon (in the next 14 days)</option>
-		<option value="30">Not soon (in the next 30 days)</option>
+		    <option value="30">Not soon (in the next 30 days)</option>
       </select>
 
       
