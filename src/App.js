@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import FirebaseTesting from './pages/FirebaseTest';
 import FooterTabs from './components/FooterTabs';
 import ShoppingList from './pages/ShoppingList';
@@ -22,7 +22,6 @@ function App() {
 			)}
 			{/* A <Switch> looks through its children <Route>s and
                 renders the first one that matches the current URL. */}
-			<BrowserRouter>
 				<Switch>
 					<Route path='/ShoppingList'>
 						<ShoppingList token={token} />
@@ -34,7 +33,6 @@ function App() {
 						<FirebaseTesting />
 					</Route>
 				</Switch>
-			</BrowserRouter>
 
 			<footer>
 				<FooterTabs />
