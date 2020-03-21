@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import fb from '../lib/firebase';
 import '../css/AddItemForm.css';
 import { v4 as uuidv4 } from 'uuid';
@@ -32,7 +32,7 @@ const Form = () => {
         <input
             name="name"
             type="text"
-            placeholder="Item Name"
+            placeholder="ie: apple"
             value={itemName}
             onChange={e => setName(e.target.value)}/>
 
