@@ -14,7 +14,7 @@ function App() {
 
 	return (
 		<div className='App'>
-			<Link href='/FirebaseTesting'>FirebaseTesting</a>
+			<Link href='/FirebaseTesting'>FirebaseTesting</Link>
 			{token ? (
 				<Redirect to='/ShoppingList' />
 			) : (
