@@ -19,6 +19,7 @@ function App() {
 					</Route>
 					<Route path='/AddItem'>
 						<AddItem />
+            {/* <AddItem token={token} /> */}
 					</Route>
           <Route path='/FirebaseTesting'>
 						<FirebaseTesting />
