@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Link, Switch, Route, Redirect } from 'react-router-dom';
 import FirebaseTesting from './pages/FirebaseTest';
 import FooterTabs from './components/FooterTabs';
 import ShoppingList from './pages/ShoppingList';
@@ -14,7 +14,7 @@ function App() {
 
 	return (
 		<div className='App'>
-			<a href='/FirebaseTesting'>FirebaseTesting</a>
+			<Link href='/FirebaseTesting'>FirebaseTesting</a>
 			{token ? (
 				<Redirect to='/ShoppingList' />
 			) : (
