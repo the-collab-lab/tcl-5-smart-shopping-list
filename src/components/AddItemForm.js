@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import fb from '../lib/firebase';
 import '../css/AddItemForm.css';
+import { v4 as uuidv4 } from 'uuid';
 
 const Form = () => {
 
@@ -13,8 +14,9 @@ const Form = () => {
         e.preventDefault();
         let db = fb.firestore();
         let data = {
+            id: uuidv4(),
             itemName,
-            timeFrame:parseInt(timeFrame),
+            timeFrame: parseInt(timeFrame),
             lastPurchasDate
         };
         console.log(data);
