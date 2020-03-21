@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import getToken from '../lib/tokenGenerator';
 import * as ls from 'local-storage';
 var NewListButton = props => {
@@ -9,9 +10,9 @@ var NewListButton = props => {
 	};
 	return (
 		<div>
-			<a href='/ShoppingList' onClick={onClick}>
+			<Link href='/ShoppingList' onClick={onClick}>
 				Create a New List
-			</a>
+			</Link>
 		</div>
 	);
 };
