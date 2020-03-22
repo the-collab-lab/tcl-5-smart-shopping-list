@@ -4,7 +4,7 @@ ul {
 
 li {
 	display: inline;
-    margin-left: 5px;
+	margin-left: 5px;
 }
 
 nav {
@@ -13,13 +13,14 @@ nav {
 	width: 100vw;
 }
 
-.navbutton {
+.navbutton,
+button {
 	width: 45vw;
 	height: 50px;
 	background-color: teal;
 	color: white;
-    font-size: 20px;
-    cursor: pointer;
+	font-size: 20px;
+	cursor: pointer;
 }
 
 .navbutton:focus {

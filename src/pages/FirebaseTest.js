@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import {Link} from 'react-router-dom';
 import fb from '../lib/firebase';
 import firebase from 'firebase/app';
-
 
 const FirebaseTesting = () => {
 
@@ -40,7 +40,7 @@ const FirebaseTesting = () => {
 
   return(
     <div>
-      <a onClick={onClick} href='/FirebaseTesting'>Click me!</a>
+      <Link onClick={onClick} href='/FirebaseTesting'>Click me!</ Link>
       {clickLog ? (clickLog.map((log, id) => <h2 key={id}> The button was clicked at {log.dateTime.toDate().toString()} </h2>)):(<h2>No Clicks</h2>)}
     </div>
   );
