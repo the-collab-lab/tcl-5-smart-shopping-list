@@ -5,9 +5,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 const Form = ({token}) => {
 
-    const [itemName, setName] = useState("");
+    const [itemName, setItemName] = useState("");
     const [timeFrame, setTimeFrame] = useState(7);
-    const [lastPurchasDate, setDate] = useState(null);
+    const [lastPurchaseDate, setPurchaseDate] = useState(null);
     const userToken = token || "userToken";
 
     const handleSubmit = e => {
@@ -17,7 +17,7 @@ const Form = ({token}) => {
             id: uuidv4(),
             itemName,
             timeFrame: parseInt(timeFrame),
-            lastPurchasDate
+            lastPurchaseDate
         };
         db.collection(userToken).add(data)
         .then(() => alert(" successfully written!"))
@@ -35,7 +35,7 @@ const Form = ({token}) => {
             type="text"
             placeholder="ie: apple"
             value={itemName}
-            onChange={e => setName(e.target.value)}/>
+            onChange={e => setItemName(e.target.value)}/>
 
         <div><h1>How soon are you likely to buy it again?</h1></div>
         <select name="time frame" onChange={e => setTimeFrame(e.target.value)}>
@@ -49,8 +49,8 @@ const Form = ({token}) => {
             type="date"
             name="last purchase date"
             placeholder="Last Purchase Date"
-            value={lastPurchasDate}
-            onChange={e => setDate(e.target.value)}
+            value={lastPurchaseDate}
+            onChange={e => setPurchaseDate(e.target.value)}
         />
 
       <input type="submit"/>
