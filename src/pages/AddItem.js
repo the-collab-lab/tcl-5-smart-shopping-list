@@ -4,8 +4,7 @@ import Form from "../../src/components/AddItemForm";
 const AddItem = (props) => {
   return (
 	<div>
-    <Form />
-    {/* <Form token={props.token}/> */}
+    <Form token={props.token}/>
 	</div>
   )
 };

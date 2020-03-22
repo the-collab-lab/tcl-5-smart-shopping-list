@@ -3,12 +3,12 @@ import fb from '../lib/firebase';
 import '../css/AddItemForm.css';
 import { v4 as uuidv4 } from 'uuid';
 
-const Form = () => {
+const Form = ({token}) => {
 
     const [itemName, setName] = useState("");
-    const [timeFrame, setTimeFrame] = useState(0);
+    const [timeFrame, setTimeFrame] = useState(7);
     const [lastPurchasDate, setDate] = useState(null);
-    // const userToken = token || "testToken"
+    const userToken = token || "userToken";
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -19,8 +19,9 @@ const Form = () => {
             timeFrame: parseInt(timeFrame),
             lastPurchasDate
         };
-        console.log(data);
-        db.collection("testToken").add(data);
+        db.collection(userToken).add(data)
+        .then(() => alert(" successfully written!"))
+        .catch(error => console.error("Error writing document: ", error));
     }
 
   return (
@@ -30,14 +31,14 @@ const Form = () => {
 
         <div><h1>Name of the item</h1></div>
         <input
-            name="name"
+            name="item name"
             type="text"
             placeholder="ie: apple"
             value={itemName}
             onChange={e => setName(e.target.value)}/>
 
         <div><h1>How soon are you likely to buy it again?</h1></div>
-        <select name="{timeFrame}" onChange={e => setTimeFrame(e.target.value)}>
+        <select name="time frame" onChange={e => setTimeFrame(e.target.value)}>
             <option value={7}>Soon (in the next 7 days)</option>
             <option value={14}>Kind of soon (in the next 14 days)</option>
             <option value={30}>Not soon (in the next 30 days)</option>
