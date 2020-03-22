@@ -1,7 +1,8 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import getToken from '../lib/tokenGenerator';
 import * as ls from 'local-storage';
+import '../css/FooterTabs.css';
 var NewListButton = props => {
 	const onClick = event => {
 		const newToken = getToken();
@@ -9,11 +10,9 @@ var NewListButton = props => {
 		props.setToken(newToken);
 	};
 	return (
-		<div>
-			<Link href='/ShoppingList' onClick={onClick}>
-				Create a New List
-			</Link>
-		</div>
+		<Link to='/ShoppingList' onClick={onClick}>
+			<button>Create a New List</button>
+		</Link>
 	);
 };
 
