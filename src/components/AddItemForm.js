@@ -4,7 +4,6 @@ import '../css/AddItemForm.css';
 import { v4 as uuidv4 } from 'uuid';
 
 const Form = ({token}) => {
-
     const [itemName, setItemName] = useState("");
     const [timeFrame, setTimeFrame] = useState(7);
     const [lastPurchaseDate, setPurchaseDate] = useState(null);
