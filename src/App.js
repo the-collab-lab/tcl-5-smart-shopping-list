@@ -10,7 +10,7 @@ import * as ls from 'local-storage';
 
 function App() {
 	const [token, setToken] = useState(ls.get('shoppingListToken'));
-	console.log('token', ls.get('shoppingListToken'), 'state', token);
+	console.log({ token });
 
 	return (
 		<div className='App'>
