@@ -51,7 +51,6 @@ const Form = ({token}) => {
             value={lastPurchaseDate}
             onChange={e => setPurchaseDate(e.target.value)}
         />
-
       <input type="submit"/>
     </form>
 	</div>
