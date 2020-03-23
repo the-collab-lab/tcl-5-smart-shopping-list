@@ -1,7 +1,12 @@
 import React from 'react';
+import Form from "../../src/components/AddItemForm";
 
-const AddItem = () => {
-	return <h1>Hello from Add Item</h1>;
+const AddItem = (props) => {
+  return (
+	<div>
+    <Form token={props.token}/>
+	</div>
+  )
 };
 
 export default AddItem;
