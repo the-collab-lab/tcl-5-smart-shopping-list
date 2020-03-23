@@ -8,6 +8,10 @@ const Form = ({token}) => {
     const [timeFrame, setTimeFrame] = useState(7);
     const [lastPurchaseDate, setPurchaseDate] = useState(null);
     const userToken = token || "userToken";
+    const [shoppingListCollection, setShoppingListCollection] = useState(getCollection());
+
+    const db =  fb.firestore()
+    const clicksRef = db.collection("clicks");
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -22,6 +26,22 @@ const Form = ({token}) => {
         .then(() => alert(" successfully written!"))
         .catch(error => console.error("Error writing document: ", error));
     }
+
+    const getCollection = () => {
+        clicksRef
+            .orderBy("timeFrame", "asc")
+            .get()
+            .then((querySnapshot) => {
+                let fullCollection = [];
+                querySnapshot.forEach((doc) => {
+                    let documentData = doc.data();
+                    fullCollection.push(documentData.itemName);
+                });
+                return fullCollection;
+            }).catch((error) => {
+                console.log("Error getting document:", error);
+            });
+    };
 
   return (
 	<div>
