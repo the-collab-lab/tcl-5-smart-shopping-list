@@ -10,20 +10,6 @@ const Form = ({token}) => {
     const userToken = token || "userToken";
     const [shoppingListCollection, setShoppingListCollection] = useState([]);
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        let db = fb.firestore();
-        let data = {
-            id: uuidv4(),
-            itemName,
-            timeFrame: parseInt(timeFrame),
-            lastPurchaseDate
-        };
-        db.collection(userToken).add(data)
-        .then(() => alert(" successfully written!"))
-        .catch(error => console.error("Error writing document: ", error));
-    }
-
     useEffect(() => {
         const db =  fb.firestore()
         const tokenRef = db.collection(token);
@@ -42,6 +28,31 @@ const Form = ({token}) => {
                 console.log("Error getting document:", error);
             });
     }, []);
+
+    const onChange = e => {
+
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        let db = fb.firestore();
+        if (!shoppingListCollection.includes(itemName)) {
+            console.log("we're good")
+            let data = {
+                id: uuidv4(),
+                itemName,
+                timeFrame: parseInt(timeFrame),
+                lastPurchaseDate
+            };
+            db.collection(userToken).add(data)
+            .then(() => alert(" successfully written!"))
+            .catch(error => console.error("Error writing document: ", error));
+        } else {
+            console.log("there's a duplicate")
+        }
+    }
+
+
 
   return (
 	<div>
