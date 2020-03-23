@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import fb from '../lib/firebase';
 import '../css/AddItemForm.css';
 import { v4 as uuidv4 } from 'uuid';
@@ -8,10 +8,7 @@ const Form = ({token}) => {
     const [timeFrame, setTimeFrame] = useState(7);
     const [lastPurchaseDate, setPurchaseDate] = useState(null);
     const userToken = token || "userToken";
-    const [shoppingListCollection, setShoppingListCollection] = useState(getCollection());
-
-    const db =  fb.firestore()
-    const clicksRef = db.collection("clicks");
+    const [shoppingListCollection, setShoppingListCollection] = useState([]);
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -27,8 +24,11 @@ const Form = ({token}) => {
         .catch(error => console.error("Error writing document: ", error));
     }
 
-    const getCollection = () => {
-        clicksRef
+    useEffect(() => {
+        const db =  fb.firestore()
+        const tokenRef = db.collection(token);
+
+        tokenRef
             .orderBy("timeFrame", "asc")
             .get()
             .then((querySnapshot) => {
@@ -37,11 +37,11 @@ const Form = ({token}) => {
                     let documentData = doc.data();
                     fullCollection.push(documentData.itemName);
                 });
-                return fullCollection;
+                setShoppingListCollection(fullCollection);
             }).catch((error) => {
                 console.log("Error getting document:", error);
             });
-    };
+    }, []);
 
   return (
 	<div>
