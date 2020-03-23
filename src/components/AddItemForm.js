@@ -9,7 +9,7 @@ const Form = ({token}) => {
     const [lastPurchaseDate, setPurchaseDate] = useState(null);
     const userToken = token || "userToken";
     const [shoppingListCollection, setShoppingListCollection] = useState([]);
-    const [errorMessage, setErrorMessage] = useState(false);
+    const [duplicateError, setDuplicateError] = useState(false);
 
     useEffect(() => {
         const db =  fb.firestore()
@@ -34,7 +34,6 @@ const Form = ({token}) => {
         e.preventDefault();
         let db = fb.firestore();
         if (!shoppingListCollection.includes(itemName)) {
-            console.log("we're good")
             let data = {
                 id: uuidv4(),
                 itemName,
@@ -45,7 +44,7 @@ const Form = ({token}) => {
             .then(() => alert(" successfully written!"))
             .catch(error => console.error("Error writing document: ", error));
         } else {
-            console.log("there's a duplicate")
+            setDuplicateError(true)
         }
     }
 
@@ -80,7 +79,7 @@ const Form = ({token}) => {
             onChange={e => setPurchaseDate(e.target.value)}
         />
 
-        <div></div>
+        {duplicateError ? <div className="errorMessage">There is a duplicate item in your shopping list.</div> : null }
       <input type="submit"/>
     </form>
 	</div>
