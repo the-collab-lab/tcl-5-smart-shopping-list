@@ -9,6 +9,7 @@ const Form = ({token}) => {
     const [lastPurchaseDate, setPurchaseDate] = useState(null);
     const userToken = token || "userToken";
     const [shoppingListCollection, setShoppingListCollection] = useState([]);
+    const [errorMessage, setErrorMessage] = useState(false);
 
     useEffect(() => {
         const db =  fb.firestore()
@@ -28,10 +29,6 @@ const Form = ({token}) => {
                 console.log("Error getting document:", error);
             });
     }, []);
-
-    const onChange = e => {
-
-    }
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -82,6 +79,8 @@ const Form = ({token}) => {
             value={lastPurchaseDate}
             onChange={e => setPurchaseDate(e.target.value)}
         />
+
+        <div></div>
       <input type="submit"/>
     </form>
 	</div>
