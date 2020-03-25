@@ -36,14 +36,15 @@ const Form = ({token}) => {
     const handleSubmit = e => {
         e.preventDefault();
         let db = fb.firestore();
+        let tokenRef = db.collection(userToken)
         if (!shoppingListCollection.includes(itemName)) {
             let data = {
                 itemName,
                 timeFrame: parseInt(timeFrame),
                 lastPurchaseDate
             };
-            db.collection(userToken).add(data)
-            .then((docRef) => {alert(" successfully written!"); console.log(docRef) })
+            tokenRef.add(data)
+            .then((docRef) => { tokenRef.doc(docRef.id).update({ id : docRef.id }) })
             .catch(error => console.error("Error writing document: ", error));
         } else {
             setDuplicateError(true)
