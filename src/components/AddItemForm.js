@@ -24,12 +24,7 @@ const Form = ({token}) => {
                 querySnapshot.forEach((doc) => {
                     let documentData = doc.data();
                     let nameData = documentData.itemName
-
-                    nameData = nameData.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")
-                    nameData = nameData.trim().replace(/\s{2,}/g," ");
-
-                    console.log(nameData)
-
+                    nameData = nameData.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").trim().replace(/\s{2,}/g," ");
 
                     fullCollection.push(nameData);
                 });
@@ -43,7 +38,8 @@ const Form = ({token}) => {
         e.preventDefault();
         let db = fb.firestore();
         let tokenRef = db.collection(userToken)
-        if (!shoppingListCollection.includes(itemName)) {
+        let normalizeItemName = itemName.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").trim().replace(/\s{2,}/g," ");
+        if (!shoppingListCollection.includes(normalizeItemName)) {
             let data = {
                 itemName,
                 timeFrame: parseInt(timeFrame),
