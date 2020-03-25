@@ -14,6 +14,13 @@ function App() {
 
 	return (
 		<div className='App'>
+			 <div>
+      			<input
+       			 type="text"
+       			 name="token"
+        		 placeholder="enter token"/>
+				 <input type="submit"/>
+             </div>
 			<Link to='/FirebaseTesting'>FirebaseTesting</Link>
 			{token ? (
 				<Redirect to='/ShoppingList' />
@@ -38,7 +45,8 @@ function App() {
 				<FooterTabs />
 			</footer>
 		</div>
-	);
-}
+
+
+	)}
 
 export default App;
