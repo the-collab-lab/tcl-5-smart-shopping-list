@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import fb from '../lib/firebase';
 import '../css/AddItemForm.css';
-import { v4 as uuidv4 } from 'uuid';
 
 const Form = ({token}) => {
     const [itemName, setItemName] = useState("");
@@ -20,9 +19,13 @@ const Form = ({token}) => {
             .get()
             .then((querySnapshot) => {
                 let fullCollection = [];
+                let fullObject = [];
+
                 querySnapshot.forEach((doc) => {
                     let documentData = doc.data();
                     fullCollection.push(documentData.itemName);
+                    fullObject.push(documentData);
+                    console.log (documentData);
                 });
                 setShoppingListCollection(fullCollection);
             }).catch((error) => {
@@ -35,13 +38,12 @@ const Form = ({token}) => {
         let db = fb.firestore();
         if (!shoppingListCollection.includes(itemName)) {
             let data = {
-                id: uuidv4(),
                 itemName,
                 timeFrame: parseInt(timeFrame),
                 lastPurchaseDate
             };
             db.collection(userToken).add(data)
-            .then(() => alert(" successfully written!"))
+            .then((docRef) => {alert(" successfully written!"); console.log(docRef) })
             .catch(error => console.error("Error writing document: ", error));
         } else {
             setDuplicateError(true)
