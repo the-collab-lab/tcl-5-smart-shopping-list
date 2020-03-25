@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import fb from '../lib/firebase';
 import '../css/AddItemForm.css';
+// import { Redirect } from 'react-router-dom';
 
 const Form = ({token}) => {
     const [itemName, setItemName] = useState("");
@@ -19,13 +20,18 @@ const Form = ({token}) => {
             .get()
             .then((querySnapshot) => {
                 let fullCollection = [];
-                let fullObject = [];
 
                 querySnapshot.forEach((doc) => {
                     let documentData = doc.data();
-                    fullCollection.push(documentData.itemName);
-                    fullObject.push(documentData);
-                    console.log (documentData);
+                    let nameData = documentData.itemName
+
+                    nameData = nameData.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")
+                    nameData = nameData.trim().replace(/\s{2,}/g," ");
+
+                    console.log(nameData)
+
+
+                    fullCollection.push(nameData);
                 });
                 setShoppingListCollection(fullCollection);
             }).catch((error) => {
@@ -44,7 +50,7 @@ const Form = ({token}) => {
                 lastPurchaseDate
             };
             tokenRef.add(data)
-            .then((docRef) => { tokenRef.doc(docRef.id).update({ id : docRef.id }) })
+            .then((docRef) => { tokenRef.doc(docRef.id).update({ id : docRef.id });  })
             .catch(error => console.error("Error writing document: ", error));
         } else {
             setDuplicateError(true)
