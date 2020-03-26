@@ -7,6 +7,7 @@ import ShoppingList from './pages/ShoppingList';
 import AddItem from './pages/AddItem';
 import NewListButton from './components/NewListButton';
 import * as ls from 'local-storage';
+import Home from './pages/Home';
 
 function App() {
 	const [token, setToken] = useState(ls.get('shoppingListToken'));
@@ -14,21 +15,15 @@ function App() {
 
 	return (
 		<div className='App'>
-			 <div>
-      			<input
-       			 type="text"
-       			 name="token"
-        		 placeholder="enter token"/>
-				 <input type="submit"/>
-             </div>
-			<Link to='/FirebaseTesting'>FirebaseTesting</Link>
+			{/*Link </div>'/FirebaseTesting'>FirebaseTesting</Link>
 			{token ? (
 				<Redirect to='/ShoppingList' />
 			) : (
 				<NewListButton setToken={setToken} token={token} />
 			)}
 			{/* A <Switch> looks through its children <Route>s and
-                renders the first one that matches the current URL. */}
+                renders the first one that matches the current URL. 
+            <Home/>
 			<Switch>
 				<Route path='/ShoppingList'>
 					<ShoppingList token={token} />
@@ -36,17 +31,14 @@ function App() {
 				<Route path='/AddItem'>
 					<AddItem token={token} />
 				</Route>
-				<Route path='/FirebaseTesting'>
-					<FirebaseTesting />
-				</Route>
 			</Switch>
 
 			<footer>
 				<FooterTabs />
-			</footer>
+			</footer>*/}
+			   <Home/>
 		</div>
-
-
-	)}
+	);
+}
 
 export default App;
