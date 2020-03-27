@@ -31,7 +31,7 @@ const ShoppingList = ({ token }) => {
 	}, []);
 	return (
 		<ul>
-			{shoppingListItems.map(item => (
+			{shoppingListItems.length > 0 && shoppingListItems.map(item => (
 				<li>{item}</li>
 			))}
 		</ul>
