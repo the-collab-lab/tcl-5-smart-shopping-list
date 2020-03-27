@@ -28,7 +28,7 @@ const ShoppingList = ({ token }) => {
 			.catch(error => {
 				console.log('Error getting document:', error);
 			});
-	});
+	}, []);
 	return (
 		<ul>
 			{shoppingListItems.map(item => (
