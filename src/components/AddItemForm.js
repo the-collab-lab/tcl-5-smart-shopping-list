@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import fb from '../lib/firebase';
 import '../css/AddItemForm.css';
-// import { Redirect } from 'react-router-dom';
 
 const Form = ({token}) => {
     const [itemName, setItemName] = useState("");
@@ -20,15 +19,18 @@ const Form = ({token}) => {
             .get()
             .then((querySnapshot) => {
                 let fullCollection = [];
-
-                querySnapshot.forEach((doc) => {
-                    let documentData = doc.data();
-                    let nameData = documentData.itemName
-                    nameData = nameData.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").trim().replace(/\s{2,}/g," ");
-
-                    fullCollection.push(nameData);
-                });
-                setShoppingListCollection(fullCollection);
+                if(!querySnapshot.empty){
+                    querySnapshot.forEach((doc) => {
+                        let documentData = doc.data();
+                        let nameData = documentData.itemName
+                        if(!nameData){
+                            nameData = nameData.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").trim().replace(/\s{2,}/g," ");
+        
+                            fullCollection.push(nameData);
+                        }
+                    });
+                    setShoppingListCollection(fullCollection);
+                }
             }).catch((error) => {
                 console.log("Error getting document:", error);
             });
