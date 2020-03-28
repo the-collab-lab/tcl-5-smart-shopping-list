@@ -1,18 +1,16 @@
 import React, {useState, useEffect} from 'react';
+import {Redirect} from 'react-router-dom';
 import fb from '../lib/firebase';
 import '../css/AddItemForm.css';
 
 const Form = ({token}) => {
     const [itemName, setItemName] = useState("");
     const [timeFrame, setTimeFrame] = useState(7);
-    const [lastPurchaseDate, setPurchaseDate] = useState(null);
-    const userToken = token || "userToken";
+    const [lastPurchaseDate, setLastPurchaseDate] = useState(null);
+    const userToken = token || "faust lamar uptake";
     const [shoppingListCollection, setShoppingListCollection] = useState([]);
     const [duplicateError, setDuplicateError] = useState(false);
-
-    useEffect(() => {
-       getCurrentShoppingListItems(userToken);
-    }, [token]);
+    const [addStatus, setAddStatus] = useState(false);
 
     const getCurrentShoppingListItems = (currentToken) => {
         const db =  fb.firestore()
@@ -39,6 +37,10 @@ const Form = ({token}) => {
                 console.log("Error getting document:", error);
             });
     }
+    useEffect(() => {
+       getCurrentShoppingListItems(userToken);
+    }, [token, addStatus]);
+
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -53,19 +55,27 @@ const Form = ({token}) => {
                 lastPurchaseDate
             };
             tokenRef.add(data)
-            .then((docRef) => { tokenRef.doc(docRef.id).update({ id : docRef.id }); getCurrentShoppingListItems(userToken); })
+            .then((docRef) => { 
+                tokenRef.doc(docRef.id).update({ id : docRef.id }); 
+                getCurrentShoppingListItems(userToken); 
+                setAddStatus(true);
+            })
             .catch(error => console.error("Error writing document: ", error));
         } else {
             setDuplicateError(true)
         }
     }
 
+    const renderRedirect = () => {
+        setAddStatus(false);
+        return <Redirect to="/AddItem" />;
+    }
 
 
   return (
 	<div>
 
-    <form onSubmit={e => handleSubmit(e)}>
+    {addStatus ? (renderRedirect()):(<form id="addItemForm" onSubmit={e => handleSubmit(e)}>
 
         <div><h1>Name of the item</h1></div>
         <input
@@ -90,13 +100,14 @@ const Form = ({token}) => {
             name="last purchase date"
             placeholder="Last Purchase Date"
             value={lastPurchaseDate}
-            onChange={e => setPurchaseDate(e.target.value)}
+            onChange={e => setLastPurchaseDate(e.target.value)}
             required
         />
 
         {duplicateError ? <div className="errorMessage">There is a duplicate item in your shopping list.</div> : null }
       <input type="submit"/>
-    </form>
+    </form>)
+    }
 	</div>
   )
 };
