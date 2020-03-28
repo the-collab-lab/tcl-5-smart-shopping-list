@@ -23,7 +23,7 @@ const Form = ({token}) => {
                     querySnapshot.forEach((doc) => {
                         let documentData = doc.data();
                         let nameData = documentData.itemName
-                        if(!nameData){
+                        if(nameData){
                             nameData = nameData.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").trim().replace(/\s{2,}/g," ");
         
                             fullCollection.push(nameData);
