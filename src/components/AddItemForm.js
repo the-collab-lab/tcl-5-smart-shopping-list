@@ -70,7 +70,9 @@ const Form = ({token}) => {
             type="text"
             placeholder="ie: apple"
             value={itemName}
-            onChange={e => setItemName(e.target.value)}/>
+            onChange={e => setItemName(e.target.value)}
+            required
+            />
 
         <div><h1>How soon are you likely to buy it again?</h1></div>
         <select name="time frame" onChange={e => setTimeFrame(e.target.value)}>
@@ -86,6 +88,7 @@ const Form = ({token}) => {
             placeholder="Last Purchase Date"
             value={lastPurchaseDate}
             onChange={e => setPurchaseDate(e.target.value)}
+            required
         />
 
         {duplicateError ? <div className="errorMessage">There is a duplicate item in your shopping list.</div> : null }
