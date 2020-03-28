@@ -36,6 +36,7 @@ const Form = ({token}) => {
 
     const handleSubmit = e => {
         e.preventDefault();
+        setDuplicateError(false);
         let db = fb.firestore();
         let tokenRef = db.collection(userToken)
         let normalizeItemName = itemName.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").trim().replace(/\s{2,}/g," ");
@@ -48,6 +49,7 @@ const Form = ({token}) => {
             tokenRef.add(data)
             .then((docRef) => { tokenRef.doc(docRef.id).update({ id : docRef.id });  })
             .catch(error => console.error("Error writing document: ", error));
+            setShoppingListCollection(shoppingListCollection.concat(data));
         } else {
             setDuplicateError(true)
         }
