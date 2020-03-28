@@ -11,15 +11,19 @@ const Form = ({token}) => {
     const [duplicateError, setDuplicateError] = useState(false);
 
     useEffect(() => {
+       getCurrentShoppingListItems(userToken);
+    }, [token]);
+
+    const getCurrentShoppingListItems = (currentToken) => {
         const db =  fb.firestore()
-        const tokenRef = db.collection(token);
+        const tokenRef = db.collection(currentToken);
 
         tokenRef
             .orderBy("timeFrame", "asc")
             .get()
             .then((querySnapshot) => {
-                let fullCollection = [];
                 if(!querySnapshot.empty){
+                    let fullCollection = [];
                     querySnapshot.forEach((doc) => {
                         let documentData = doc.data();
                         let nameData = documentData.itemName
@@ -34,7 +38,7 @@ const Form = ({token}) => {
             }).catch((error) => {
                 console.log("Error getting document:", error);
             });
-    }, [token, shoppingListCollection]);
+    }
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -49,9 +53,8 @@ const Form = ({token}) => {
                 lastPurchaseDate
             };
             tokenRef.add(data)
-            .then((docRef) => { tokenRef.doc(docRef.id).update({ id : docRef.id });  })
+            .then((docRef) => { tokenRef.doc(docRef.id).update({ id : docRef.id }); getCurrentShoppingListItems(userToken); })
             .catch(error => console.error("Error writing document: ", error));
-            setShoppingListCollection(shoppingListCollection.concat(data));
         } else {
             setDuplicateError(true)
         }
