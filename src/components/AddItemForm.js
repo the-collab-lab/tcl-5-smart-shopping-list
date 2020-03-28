@@ -32,7 +32,7 @@ const Form = ({token}) => {
             }).catch((error) => {
                 console.log("Error getting document:", error);
             });
-    }, []);
+    }, [token, shoppingListCollection]);
 
     const handleSubmit = e => {
         e.preventDefault();
