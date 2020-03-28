@@ -1,32 +1,81 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {Redirect} from 'react-router-dom';
 import fb from '../lib/firebase';
 import '../css/AddItemForm.css';
-import { v4 as uuidv4 } from 'uuid';
 
 const Form = ({token}) => {
     const [itemName, setItemName] = useState("");
     const [timeFrame, setTimeFrame] = useState(7);
-    const [lastPurchaseDate, setPurchaseDate] = useState(null);
-    const userToken = token || "userToken";
+    const [lastPurchaseDate, setLastPurchaseDate] = useState(null);
+    const userToken = token || "faust lamar uptake";
+    const [shoppingListCollection, setShoppingListCollection] = useState([]);
+    const [duplicateError, setDuplicateError] = useState(false);
+    const [addStatus, setAddStatus] = useState(false);
+
+    const getCurrentShoppingListItems = (currentToken) => {
+        const db =  fb.firestore()
+        const tokenRef = db.collection(currentToken);
+
+        tokenRef
+            .orderBy("timeFrame", "asc")
+            .get()
+            .then((querySnapshot) => {
+                if(!querySnapshot.empty){
+                    let fullCollection = [];
+                    querySnapshot.forEach((doc) => {
+                        let documentData = doc.data();
+                        let nameData = documentData.itemName
+                        if(nameData){
+                            nameData = nameData.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").trim().replace(/\s{2,}/g," ");
+        
+                            fullCollection.push(nameData);
+                        }
+                    });
+                    setShoppingListCollection(fullCollection);
+                }
+            }).catch((error) => {
+                console.log("Error getting document:", error);
+            });
+    }
+    useEffect(() => {
+       getCurrentShoppingListItems(userToken);
+    }, [token, addStatus]);
+
 
     const handleSubmit = e => {
         e.preventDefault();
+        setDuplicateError(false);
         let db = fb.firestore();
-        let data = {
-            id: uuidv4(),
-            itemName,
-            timeFrame: parseInt(timeFrame),
-            lastPurchaseDate
-        };
-        db.collection(userToken).add(data)
-        .then(() => alert(" successfully written!"))
-        .catch(error => console.error("Error writing document: ", error));
+        let tokenRef = db.collection(userToken)
+        let normalizeItemName = itemName.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").trim().replace(/\s{2,}/g," ");
+        if (!shoppingListCollection.includes(normalizeItemName)) {
+            let data = {
+                itemName,
+                timeFrame: parseInt(timeFrame),
+                lastPurchaseDate
+            };
+            tokenRef.add(data)
+            .then((docRef) => { 
+                tokenRef.doc(docRef.id).update({ id : docRef.id }); 
+                getCurrentShoppingListItems(userToken); 
+                setAddStatus(true);
+            })
+            .catch(error => console.error("Error writing document: ", error));
+        } else {
+            setDuplicateError(true)
+        }
     }
+
+    const renderRedirect = () => {
+        setAddStatus(false);
+        return <Redirect to="/AddItem" />;
+    }
+
 
   return (
 	<div>
 
-    <form onSubmit={e => handleSubmit(e)}>
+    {addStatus ? (renderRedirect()):(<form id="addItemForm" onSubmit={e => handleSubmit(e)}>
 
         <div><h1>Name of the item</h1></div>
         <input
@@ -34,7 +83,9 @@ const Form = ({token}) => {
             type="text"
             placeholder="ie: apple"
             value={itemName}
-            onChange={e => setItemName(e.target.value)}/>
+            onChange={e => setItemName(e.target.value)}
+            required
+            />
 
         <div><h1>How soon are you likely to buy it again?</h1></div>
         <select name="time frame" onChange={e => setTimeFrame(e.target.value)}>
@@ -49,10 +100,14 @@ const Form = ({token}) => {
             name="last purchase date"
             placeholder="Last Purchase Date"
             value={lastPurchaseDate}
-            onChange={e => setPurchaseDate(e.target.value)}
+            onChange={e => setLastPurchaseDate(e.target.value)}
+            required
         />
+
+        {duplicateError ? <div className="errorMessage">There is a duplicate item in your shopping list.</div> : null }
       <input type="submit"/>
-    </form>
+    </form>)
+    }
 	</div>
   )
 };
