@@ -38,7 +38,7 @@ function App() {
 					<Home token={token} />
 				</Route>*/}
 			</Switch>
-                 <Home token={token}/>
+                 <Home token={token} setToken={setToken}/>
 			<footer>
 				<FooterTabs />
 			</footer>
