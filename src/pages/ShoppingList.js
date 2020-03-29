@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import fb from '../lib/firebase';
 
-
 const ShoppingList = ({ token }) => {
 	const [shoppingListItems, setShoppingListItems] = useState([]);
 
 	//Thanks for sharing your code!!
-	useEffect((token) => {
+	useEffect(() => {
 		const db = fb.firestore();
 		const tokenRef = db.collection(token);
 
@@ -33,9 +32,8 @@ const ShoppingList = ({ token }) => {
 	}, []);
 	return (
 		<ul>
-			{shoppingListItems.length > 0 && shoppingListItems.map(item => (
-				<li>{item}</li>
-			))}
+			{shoppingListItems.length > 0 &&
+				shoppingListItems.map(item => <li>{item}</li>)}
 		</ul>
 	);
 };
