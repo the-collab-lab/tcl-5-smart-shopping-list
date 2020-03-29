@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^3.8.1"
+    "cypress": "^3.8.1",
+    "typescript": "^3.2.4"
   }
 }
