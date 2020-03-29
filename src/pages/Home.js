@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import '../App.css';
 import NewListButton from '../components/NewListButton';
 import * as ls from 'local-storage';
-import FirebaseTesting from './FirebaseTest';
+/*import FirebaseTesting from './FirebaseTest';*/
 import fb from '../lib/firebase';
-import { Link, Switch, Route, Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import FooterTabs from '../components/FooterTabs';
-import ShoppingList from './ShoppingList';
-import AddItem from './AddItem';
+/*import ShoppingList from './ShoppingList';
+import AddItem from './AddItem';*/
 
 function Home() {
 	const [token, setToken] = useState(ls.get('shoppingListToken'));
 	const [inputToken, setInputToken] = useState('');
-	const [items, setItems] = useState([]);
+	/*const [items, setItems] = useState([]);*/
 	// Adds Value of token entered into inputToken
 	const handleChange = e => {
 		setInputToken(e.target.value);
@@ -57,7 +57,7 @@ function Home() {
 				</div>
 			)}
 			{/* A <Switch> looks through its children <Route>s and
-                renders the first one that matches the current URL. */}
+                renders the first one that matches the current URL. 
 			<Switch>
 				<Route path='/ShoppingList'>
 					<ShoppingList token={token} collectionData={items} />
@@ -68,7 +68,7 @@ function Home() {
 				<Route path='/FirebaseTesting'>
 					<FirebaseTesting />
 				</Route>
-			</Switch>
+			</Switch>*/}
 			<footer>
 				<FooterTabs />
 			</footer>

@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import fb from '../lib/firebase';
 
+
 const ShoppingList = ({ token }) => {
 	const [shoppingListItems, setShoppingListItems] = useState([]);
 
 	//Thanks for sharing your code!!
-	useEffect(() => {
+	useEffect((token) => {
 		const db = fb.firestore();
 		const tokenRef = db.collection(token);
+
 		tokenRef
 			.orderBy('timeFrame', 'asc')
 			.get()
