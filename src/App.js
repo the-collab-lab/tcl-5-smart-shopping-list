@@ -11,7 +11,7 @@ import * as ls from 'local-storage';
 import Home from './pages/Home';
 
 function App() {
-	const [token] = useState(ls.get('shoppingListToken'));
+	const [token, setToken] = useState(ls.get('shoppingListToken'));
 	console.log({ token });
 
 	return (
