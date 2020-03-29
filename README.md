@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5a89f402-2b1f-44ed-a723-07b7cbacd75f/deploy-status)](https://app.netlify.com/sites/tcl-5-smart-shopping-list/deploys)
+
 # Overview
 
 The goal of this project is to create a “smart” shopping list app that learns your buying habits and helps you remember what you’re likely to need to buy on your next trip to the store.
