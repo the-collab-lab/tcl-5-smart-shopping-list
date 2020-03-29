@@ -10,7 +10,6 @@ import FooterTabs from '../components/FooterTabs';
 import AddItem from './AddItem';*/
 
 function Home() {
-	const [token, setToken] = useState(ls.get('shoppingListToken'));
 	const [inputToken, setInputToken] = useState('');
 	/*const [items, setItems] = useState([]);*/
 	// Adds Value of token entered into inputToken
