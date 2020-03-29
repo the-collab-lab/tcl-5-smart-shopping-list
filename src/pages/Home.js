@@ -9,7 +9,7 @@ import FooterTabs from '../components/FooterTabs';
 /*import ShoppingList from './ShoppingList';
 import AddItem from './AddItem';*/
 
-function Home() {
+function Home({token, setToken}) {
 	const [inputToken, setInputToken] = useState('');
 	/*const [items, setItems] = useState([]);*/
 	// Adds Value of token entered into inputToken
