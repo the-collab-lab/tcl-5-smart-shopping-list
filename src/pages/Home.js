@@ -16,18 +16,22 @@ function Home({ token, setToken }) {
 	const checkToken = e => {
 		e.preventDefault();
 		let db = fb.firestore();
-		db.collection(`${inputToken}`)
-			.get()
-			.then(data => {
-				if (data.empty === true) {
-					alert('Bad token, Try again or Create a New List');
-				} else {
-					ls.set('ShoppingListToken', inputToken);
-					setToken(inputToken);
-				}
-			});
+		if (inputToken.length === 0) {
+			alert('You must enter a token value.  Try again! ');
+		} else {
+			db.collection(`${inputToken}`)
+				.get()
+				.then(data => {
+					if (data.empty === true) {
+						alert('Bad token, Try again or Create a New List');
+					} else {
+						ls.set('ShoppingListToken', inputToken);
+						setToken(inputToken);
+					}
+				});
+		}
 	};
-
+	console.log('inputToken from Home: ', inputToken);
 	return (
 		<div className='App'>
 			<Link to='/FirebaseTesting'>FirebaseTesting</Link>
@@ -40,6 +44,7 @@ function Home({ token, setToken }) {
 						name='inputToken'
 						placeholder='enter token'
 						onChange={handleChange}
+						required
 					/>
 					<br />
 					<button onClick={checkToken}>Join List</button>
