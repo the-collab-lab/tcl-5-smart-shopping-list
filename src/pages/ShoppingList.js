@@ -34,6 +34,7 @@ const ShoppingList = ({ token }) => {
 		<ul>
 			{shoppingListItems.length > 0 &&
 				shoppingListItems.map(item => <li>{item}</li>)}
+				
 		</ul>
 	);
 };
