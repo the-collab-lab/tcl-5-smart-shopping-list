@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../App.css';
+/*import '../App.css';*/
 import NewListButton from '../components/NewListButton';
 import * as ls from 'local-storage';
 import fb from '../lib/firebase';
@@ -38,6 +38,7 @@ function Home({ token, setToken }) {
 			{token ? (
 				<Redirect to='/ShoppingList' />
 			) : (
+				<div>
 				<div className='Home-token'>
 					<input
 						type='text'
@@ -55,7 +56,31 @@ function Home({ token, setToken }) {
 						token={token}
 					/>
 				</div>
-			)}
+				<input
+					type="checkbox"
+					className="button-link"
+					id="homeWelcomeClick"
+				/>
+				<label htmlFor="homeWelcomeClick" id="homeWelcome">
+				Welcome, find out how it works?
+				</label>
+				<div id="hideWelcome">
+					<ol>
+						<li>
+							You can start a new list, or join a friend's list with the shopping list code they share
+						</li>
+						<li>Add items to your shopping list</li>
+						<li>
+							Your list will be sorted with most needed items
+						</li>
+					</ol>
+				</div>	
+				</div>
+					
+			)
+			   }
+
+
 			<footer>
 				<FooterTabs />
 			</footer>
