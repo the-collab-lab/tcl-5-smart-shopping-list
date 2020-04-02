@@ -6,7 +6,6 @@ const ShoppingList = ({ token }) => {
 	const [isChecked, setIsChecked] = useState(false);
 	const [itemsChecked, setItemsChecked] = useState([]);
 
-	//Thanks for sharing your code!!
 	useEffect(() => {
 		const db = fb.firestore();
 		const data = db.collection(token).get();
@@ -17,9 +16,13 @@ const ShoppingList = ({ token }) => {
 				let documentData = doc.data();
 				let itemId = documentData.id;
 				let itemName = documentData.itemName;
+				let lastPurchaseDate = documentData.lastPurchaseDate;
+				let timeFrame = documentData.timeFrame;
 				let full = {
 					id: itemId,
-					itemName: itemName
+					itemName: itemName,
+					lastPurchaseDate: lastPurchaseDate,
+					timeFrame: timeFrame
 				};
 				allData.push(full);
 			});
