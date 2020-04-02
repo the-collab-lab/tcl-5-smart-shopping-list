@@ -35,8 +35,8 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: var(--black);
-  border: 3px solid var(--blue);
+  color: black;
+  border: 3px solid blue;
   margin: 1vh auto;
   padding: 1vh;
   font-size: 1rem;
@@ -45,7 +45,7 @@ input {
 
 .button-link:hover {
   transform: scale(1.1);
-  box-shadow: 1px 1px 2px var(--black);
+  box-shadow: 1px 1px 2px black;
   transition: 0.1s;
   transition-timing-function: ease-in;
   cursor: pointer;
@@ -61,7 +61,6 @@ input {
   flex-direction: column;
   justify-content: center;*/
   margin:0 auto;
-  margin-top:20px;
   border: 3px solid darkblue;
   background-color: #09d3ac;
   border-radius: 2px;
@@ -70,7 +69,7 @@ input {
 
 #Welcome:hover {
   transform: scale(1.1);
-  box-shadow: 1px 1px 2px var(--black);
+  box-shadow: 1px 1px 2px black;
   transition: 0.1s;
   transition-timing-function: ease-in;
   cursor: pointer;
@@ -81,25 +80,23 @@ input {
 }
 
 #WelcomeClick:checked ~ #hideWelcome {
-  display: flex;
+  display:inline-block;
 }
 
 #hideWelcome {
   display: none;
-
-  flex-direction: column;
-  justify-content: center;
   border-radius: 2px;
-
-  box-shadow: 2px 2px 4px var(--black);
-  width: 50%;
   margin-top: 3vh;
   padding: 1vw;
+  align-items: flex-start;
 }
 
 #hideWelcome li {
   font-size: 0.8rem;
   margin: 0 2vw 0 5vw;
-  list-style: circle;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  list-style: decimal;
 }
  
