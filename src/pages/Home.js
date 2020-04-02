@@ -59,33 +59,34 @@ function Home({ token, setToken }) {
 				<input
 					type="checkbox"
 					className="button-link"
-					id="homeWelcomeClick"
+					id="WelcomeClick"
 				/>
-				<label htmlFor="homeWelcomeClick" id="homeWelcome">
+				<label htmlFor="WelcomeClick" id="Welcome">
 				Welcome, find out how it works?
 				</label>
 				<div id="hideWelcome">
 					<ol>
 						<li>
-							You can start a new list, or join a friend's list with the shopping list code they share
+			               You can start a new list, or join a friend's list with the shopping list code they share
 						</li>
-						<li>Add items to your shopping list</li>
 						<li>
-							Your list will be sorted with most needed items
+							Add items to your shopping list
+						</li>
+						<li>
+							Your list will be sorted with most needed items first 
 						</li>
 					</ol>
 				</div>	
-				</div>
+			</div>
 					
-			)
-			   }
+			)}
+		
 
 
 			<footer>
 				<FooterTabs />
 			</footer>
 		</div>
-	);
-}
-
+	)
+			}
 export default Home;
