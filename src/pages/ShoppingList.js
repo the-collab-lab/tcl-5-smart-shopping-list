@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import fb from '../lib/firebase';
 
+// - if purchase date is null, create DateNow in firebase
+// moment
+
 const ShoppingList = ({ token }) => {
 	const [shoppingListItems, setShoppingListItems] = useState([]);
 	const [isChecked, setIsChecked] = useState(false);
@@ -13,7 +16,7 @@ const ShoppingList = ({ token }) => {
 		data.then(querySnapshot => {
 			let allData = [];
 			querySnapshot.forEach(doc => {
-				let documentData = doc.data();
+				let documentData = doc.data(); // what is this?
 				let itemId = documentData.id;
 				let itemName = documentData.itemName;
 				let lastPurchaseDate = documentData.lastPurchaseDate;
@@ -22,16 +25,24 @@ const ShoppingList = ({ token }) => {
 					id: itemId,
 					itemName: itemName,
 					lastPurchaseDate: lastPurchaseDate,
-					timeFrame: timeFrame
+					timeFrame: timeFrame,
+					//isChecked: lastPurchaseDate ? isChecked(lastPurchaseDate) : false
 				};
 				allData.push(full);
 			});
 			setShoppingListItems(allData);
 		});
+		// call function isChecked();
 	}, []);
 
+ function isChecked()
+ //take lastPurchastDate and check if it's 24 hours
+//const isChecked = (date)=> {if date was in last 24 hours, then return true, otherwise return false} no database
+
 	const handleCheck = e => {
-		alert(e.target.value);
+		console.log(e.target.value)
+		// - check needs to save to firestore (true/false) to permeate sessions
+		// - when checking, update lastPurchaseDate for that item and id, creates new if null
 	};
 
 	return (
@@ -41,7 +52,9 @@ const ShoppingList = ({ token }) => {
 					<div>
 						<input
 							type='checkbox'
-							value={item.itemName}
+							name={item.itemName}
+							//value={item.isChecked}
+							//checked={item.isChecked}
 							onChange={handleCheck}
 						/>{' '}
 						{item.itemName}
