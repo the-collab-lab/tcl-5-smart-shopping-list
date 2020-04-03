@@ -65,17 +65,17 @@ function Home({ token, setToken }) {
 				Welcome, find out how it works?
 				</label>
 				<div id="hideWelcome">
-					<ol>
+					<ul>
 						<li>
-			               You can start a new list, or join a friend's list with the shopping list code they share
+			               You can start a new list, or join a friend's list with the shopping list code.
 						</li>
 						<li>
-							Add items to your shopping list
+							Add items to your shopping list.
 						</li>
 						<li>
-							Your list will be sorted with most needed items first 
+							Your list will be sorted with most needed items first.
 						</li>
-					</ol>
+					</ul>
 				</div>	
 			</div>
 					
