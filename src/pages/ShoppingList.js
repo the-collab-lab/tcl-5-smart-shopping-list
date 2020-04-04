@@ -24,13 +24,8 @@ const ShoppingList = ({ token }) => {
                             ...data,
                         };
                         allData.push(data);
-                        console.log(
-                            'Last Purchase Date: ',
-                            data.lastPurchaseDate
-                        );
                     });
                     setShoppingListItems(allData);
-                    console.log('allData: ', allData);
                 });
         } else {
             history.push('/Home');
