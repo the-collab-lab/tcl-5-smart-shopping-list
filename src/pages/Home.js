@@ -38,7 +38,6 @@ function Home({ token, setToken }) {
 			{token ? (
 				<Redirect to='/ShoppingList' />
 			) : (
-				<div>
 				<div className='Home-token'>
 					<input
 						type='text'
@@ -55,30 +54,7 @@ function Home({ token, setToken }) {
 						setToken={setToken}
 						token={token}
 					/>
-				</div>
-				<input
-					type="checkbox"
-					className="button-link"
-					id="WelcomeClick"
-				/>
-				<label htmlFor="WelcomeClick" id="Welcome">
-				Welcome, find out how it works?
-				</label>
-				<div id="hideWelcome">
-					<ul>
-						<li>
-			               You can start a new list, or join a friend's list with the shopping list code.
-						</li>
-						<li>
-							Add items to your shopping list.
-						</li>
-						<li>
-							Your list will be sorted with most needed items first.
-						</li>
-					</ul>
-				</div>	
-			</div>
-					
+				</div>		
 			)}
 		
 
