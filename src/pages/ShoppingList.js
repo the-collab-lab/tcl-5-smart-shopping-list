@@ -4,10 +4,40 @@ import fb from '../lib/firebase';
 const ShoppingList = ({ token }) => {
 	const [shoppingListItems, setShoppingListItems] = useState([]);
 
+	const welcomeInstructions = () => {
+		return (
+			<div>
+				<input
+						type="checkbox"
+						className="button-link"
+						id="WelcomeClick"
+					/>
+					<label htmlFor="WelcomeClick" id="Welcome">
+					You're list looks empty. Need help?
+					</label>
+					<div id="hideWelcome">
+						<ul>
+							<li>
+							Add items by clicking the "Add Item" button in the bottom of the screen.
+							</li>
+							<li>
+							Your list will be sorted with most needed items first.
+							</li>
+							<li>
+							To share this list with you friend, give them the code "{token}"
+							</li>
+						</ul>
+					</div>	
+				</div>
+			
+		);
+	};
+
 	//Thanks for sharing your code!!
 	useEffect(() => {
 		const db = fb.firestore();
-		const tokenRef = db.collection(token);
+		if(token){
+			const tokenRef = db.collection(token);
 
 		tokenRef
 			.orderBy('timeFrame', 'asc')
@@ -29,12 +59,19 @@ const ShoppingList = ({ token }) => {
 			.catch(error => {
 				console.log('Error getting document:', error);
 			});
+		}
 	}, []);
 	return (
-		<ul>
-			{shoppingListItems.length > 0 &&
-				shoppingListItems.map(item => <li>{item}</li>)}
-		</ul>
+		<div>
+		{shoppingListItems.length > 0 ? 
+			(
+				<ul>
+				{shoppingListItems.map(item => <li>{item}</li>)}
+				</ul> 
+			) : ( 
+				welcomeInstructions()
+		)}
+		</div>
 	);
 };
 
