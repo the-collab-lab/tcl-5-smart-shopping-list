@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import fb from '../lib/firebase';
+import moment from 'moment';
+
+const today = moment().toString()
+var currentDate = moment().format();
+const now = moment(Date.now());
+
+console.log("moment().toString", today)
+console.log("moment().format", currentDate)
+console.log("moment(Date.now()))", now)
+
 
 // - if purchase date is null, create DateNow in firebase
 // moment
@@ -8,6 +18,8 @@ const ShoppingList = ({ token }) => {
 	const [shoppingListItems, setShoppingListItems] = useState([]);
 	const [isChecked, setIsChecked] = useState(false);
 	const [itemsChecked, setItemsChecked] = useState([]);
+	const [purchaseDate, setPurchaseDate] = useState([]);
+	const userToken = token || "userToken";
 
 	useEffect(() => {
 		const db = fb.firestore();
@@ -20,11 +32,12 @@ const ShoppingList = ({ token }) => {
 				let itemId = documentData.id;
 				let itemName = documentData.itemName;
 				let lastPurchaseDate = documentData.lastPurchaseDate;
+				// console.log("LAST PURCHASE DATA DOC=============", lastPurchaseDate ? true : false )
 				let timeFrame = documentData.timeFrame;
 				let full = {
 					id: itemId,
 					itemName: itemName,
-					lastPurchaseDate: lastPurchaseDate,
+					lastPurchaseDate: lastPurchaseDate ? lastPurchaseDate : null,
 					timeFrame: timeFrame,
 					//isChecked: lastPurchaseDate ? isChecked(lastPurchaseDate) : false
 				};
@@ -32,17 +45,51 @@ const ShoppingList = ({ token }) => {
 			});
 			setShoppingListItems(allData);
 		});
-		// call function isChecked();
-	}, []);
+		getChecked();
+	}, [token]);
 
- function isChecked()
+
+
+ const getChecked = () => {
+	console.log("FUUUUULL SHOPPING LIST ITEMS DATA +++",shoppingListItems)
+	//  console.log("TTTTTTTTTTTT=========", )
+	// console.log("LAST PURCHASE DATE", lastPurchaseDate)
+ }
+
  //take lastPurchastDate and check if it's 24 hours
 //const isChecked = (date)=> {if date was in last 24 hours, then return true, otherwise return false} no database
 
 	const handleCheck = e => {
-		console.log(e.target.value)
+		setIsChecked(e.target.checked)
+		console.log(isChecked)
+		let db = fb.firestore();
+		let tokenRef = db.collection(userToken).doc(e.target.name)
+		let dataCheck = {
+			isChecked: e.target.checked
+		};
+		tokenRef.update(dataCheck)
+		.then(function() {
+			console.log("Document successfully updated!");
+			
+
+		});
 		// - check needs to save to firestore (true/false) to permeate sessions
 		// - when checking, update lastPurchaseDate for that item and id, creates new if null
+		
+// Create an initial document to update.
+// var frankDocRef = db.collection(tokenRef).doc("frank");
+// frankDocRef.set({
+//     name: "Frank",
+//     favorites: { food: "Pizza", color: "Blue", subject: "recess" },
+//     age: 12
+// });
+
+// // To update age and favorite color:
+// db.collection("users").doc("frank").update({
+//     "age": 13,
+//     "favorites.color": "Red"
+// })
+
 	};
 
 	return (
@@ -52,9 +99,9 @@ const ShoppingList = ({ token }) => {
 					<div>
 						<input
 							type='checkbox'
-							name={item.itemName}
-							//value={item.isChecked}
-							//checked={item.isChecked}
+							name={item.id}
+							value={isChecked}
+							checked={item.isChecked} //state isChecked??
 							onChange={handleCheck}
 						/>{' '}
 						{item.itemName}
