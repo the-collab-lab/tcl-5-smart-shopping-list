@@ -13,7 +13,7 @@ const ShoppingList = ({ token }) => {
 						id="WelcomeClick"
 					/>
 					<label htmlFor="WelcomeClick" id="Welcome">
-					You're list looks empty. Need help?
+					Your list looks empty. Need help?
 					</label>
 					<div id="hideWelcome">
 						<ul>
