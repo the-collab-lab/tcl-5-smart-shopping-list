@@ -5,6 +5,7 @@ import moment from 'moment';
 
 const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
+    const [filterString, setFilterString] = useState('');
     const userToken = token;
     let history = useHistory();
 
@@ -99,13 +100,24 @@ const ShoppingList = ({ token }) => {
         tokenRef.update(dataCheck).then(function() {
             getShoppingList();
         });
-
-        const listFilterChange = e => {};
+    };
+    const listFilterChange = e => {
+        let normalizeString = e.target.value
+            .toLowerCase()
+            .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '')
+            .trim()
+            .replace(/\s{2,}/g, ' ');
+        setFilterString(normalizeString);
     };
     return (
         <div>
             <label>Search for an item</label>
-            <input type="text" name="listFilter" onChange={null} />
+            <input
+                type="text"
+                name="listFilter"
+                value={filterString}
+                onChange={listFilterChange}
+            />
             <button>X</button>
             <ul>
                 {shoppingListItems.length > 0
