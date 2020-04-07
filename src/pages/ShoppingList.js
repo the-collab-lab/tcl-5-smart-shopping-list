@@ -99,9 +99,14 @@ const ShoppingList = ({ token }) => {
         tokenRef.update(dataCheck).then(function() {
             getShoppingList();
         });
+
+        const listFilterChange = e => {};
     };
     return (
         <div>
+            <label>Search for an item</label>
+            <input type="text" name="listFilter" onChange={null} />
+            <button>X</button>
             <ul>
                 {shoppingListItems.length > 0
                     ? shoppingListItems.map(item => shoppingListItemInput(item))
