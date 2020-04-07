@@ -120,7 +120,11 @@ const ShoppingList = ({ token }) => {
             />
             <button>X</button>
             <ul>
-                {shoppingListItems.length > 0
+                {filterString
+                    ? shoppingListItems.filter(item =>
+                          item.itemName.includes(filterString)
+                      )
+                    : shoppingListItems.length > 0
                     ? shoppingListItems.map(item => shoppingListItemInput(item))
                     : welcomeInstructions()}
             </ul>
