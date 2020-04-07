@@ -10,7 +10,7 @@ import Home from './pages/Home';
 
 function App() {
 	const [token, setToken] = useState(ls.get('shoppingListToken'));
-	console.log({ token });
+
 
 	return (
 		<div className='App'>

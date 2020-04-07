@@ -8,11 +8,11 @@ import FooterTabs from '../components/FooterTabs';
 
 function Home({ token, setToken }) {
 	const [inputToken, setInputToken] = useState('');
-	// Adds Value of token entered into inputToken
+
 	const handleChange = e => {
 		setInputToken(e.target.value);
 	};
-	// Checks the firestore db to see if inputToken exists
+
 	const checkToken = e => {
 		e.preventDefault();
 		let db = fb.firestore();
@@ -31,7 +31,7 @@ function Home({ token, setToken }) {
 				});
 		}
 	};
-	console.log('inputToken from Home: ', inputToken);
+
 	return (
 		<div className='App'>
 			<Link to='/FirebaseTesting'>FirebaseTesting</Link>
