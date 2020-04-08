@@ -105,7 +105,7 @@ const ShoppingList = ({ token }) => {
 								id={item.id}
 								type="checkbox"
 								name={item.lastPurchaseDate} //changed to pull lastPurcharseDate data
-                                value={item.timeFrame} //changed to pull timeFrame data
+                                value={item.timeFrame} //changed to pull timeFrame data 
 								checked={item.isChecked}
 								onChange={handleCheck}
 							/>{' '}
