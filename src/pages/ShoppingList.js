@@ -86,7 +86,7 @@ const ShoppingList = ({ token }) => {
         let dataCheck = {
             isChecked: e.target.checked,
             lastPurchaseDate: moment(Date.now()).format(),
-            // latestInterval: 
+            // latestInterval: moment().startOf(e.target.name).fromNow();
             // numberOfPurchase: numberOfPurchases + 1
         };
         tokenRef.update(dataCheck).then(function() {
