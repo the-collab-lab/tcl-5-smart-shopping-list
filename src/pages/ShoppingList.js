@@ -53,6 +53,7 @@ const ShoppingList = ({ token }) => {
                                 ? lessThan24Hours(data.lastPurchaseDate)
                                 : false,
                             ...data,
+                            //numberOfPurchases: pull the total number of purchases
                         };
                         allData.push(data);
                     });
@@ -66,6 +67,10 @@ const ShoppingList = ({ token }) => {
     useEffect(() => {
         getShoppingList();
     }, []);
+
+
+    console.log("SHOPPING LIST ITEMS", shoppingListItems)
+
     const lessThan24Hours = date => {
         const formattedDate = parseInt(moment(date).format());
         const newDate = moment(Date.now());
@@ -74,11 +79,15 @@ const ShoppingList = ({ token }) => {
     };
 
     const handleCheck = e => {
+        console.log("DIANE HEREEEEEEE  TIMEFRAME =============", e.target.value)
+        console.log("DIANE HEREEEEEEE PURCHASE DATE =============", e.target.name)
         let db = fb.firestore();
-        let tokenRef = db.collection(userToken).doc(e.target.name);
+        let tokenRef = db.collection(userToken).doc(e.target.id);
         let dataCheck = {
             isChecked: e.target.checked,
             lastPurchaseDate: moment(Date.now()).format(),
+            // latestInterval: 
+            // numberOfPurchase: numberOfPurchases + 1
         };
         tokenRef.update(dataCheck).then(function() {
             getShoppingList();
@@ -89,13 +98,14 @@ const ShoppingList = ({ token }) => {
             <ul>
 				{shoppingListItems.length>0?
 					(shoppingListItems.map(item => (
+
 						<div>
 							<input
 								key={item.id}
 								id={item.id}
 								type="checkbox"
-								name={item.id}
-								value={item.isChecked}
+								name={item.lastPurchaseDate}
+                                value={item.timeFrame}
 								checked={item.isChecked}
 								onChange={handleCheck}
 							/>{' '}
