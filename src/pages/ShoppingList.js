@@ -101,6 +101,7 @@ const ShoppingList = ({ token }) => {
             getShoppingList();
         });
     };
+
     const listFilterChange = e => {
         let normalizeString = e.target.value
             .toLowerCase()
@@ -109,21 +110,38 @@ const ShoppingList = ({ token }) => {
             .replace(/\s{2,}/g, ' ');
         setFilterString(normalizeString);
     };
+
+    const filteredList = shoppingListItems.filter(item => {
+        return item.itemName.toLowerCase().includes(filterString.toLowerCase());
+    });
+
     return (
         <div>
             <label>Search for an item</label>
             <input
                 type="text"
-                name="listFilter"
-                value={filterString}
-                onChange={listFilterChange}
+                placeholder="Search..."
+                onChange={e => setFilterString(e.target.value)}
             />
             <button>X</button>
             <ul>
                 {filterString
-                    ? shoppingListItems.filter(item =>
-                          item.itemName.includes(filterString)
-                      )
+                    ? filteredList.map(item => {
+                          return (
+                              <div>
+                                  <input
+                                      key={item.id}
+                                      id={item.id}
+                                      type="checkbox"
+                                      name={item.id}
+                                      value={item.isChecked}
+                                      checked={item.isChecked}
+                                      onChange={handleCheck}
+                                  />
+                                  {item.itemName}
+                              </div>
+                          );
+                      })
                     : shoppingListItems.length > 0
                     ? shoppingListItems.map(item => shoppingListItemInput(item))
                     : welcomeInstructions()}
