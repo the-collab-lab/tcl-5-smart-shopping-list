@@ -102,15 +102,6 @@ const ShoppingList = ({ token }) => {
         });
     };
 
-    const listFilterChange = e => {
-        let normalizeString = e.target.value
-            .toLowerCase()
-            .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '')
-            .trim()
-            .replace(/\s{2,}/g, ' ');
-        setFilterString(normalizeString);
-    };
-
     const filteredList = shoppingListItems.filter(item => {
         return item.itemName.toLowerCase().includes(filterString.toLowerCase());
     });
@@ -121,26 +112,14 @@ const ShoppingList = ({ token }) => {
             <input
                 type="text"
                 placeholder="Search..."
+                value={filterString}
                 onChange={e => setFilterString(e.target.value)}
             />
-            <button>X</button>
+            <button onClick={() => setFilterString('')}>X</button>
             <ul>
                 {filterString
                     ? filteredList.map(item => {
-                          return (
-                              <div>
-                                  <input
-                                      key={item.id}
-                                      id={item.id}
-                                      type="checkbox"
-                                      name={item.id}
-                                      value={item.isChecked}
-                                      checked={item.isChecked}
-                                      onChange={handleCheck}
-                                  />
-                                  {item.itemName}
-                              </div>
-                          );
+                          return shoppingListItemInput(item);
                       })
                     : shoppingListItems.length > 0
                     ? shoppingListItems.map(item => shoppingListItemInput(item))
