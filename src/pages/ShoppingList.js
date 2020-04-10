@@ -4,8 +4,6 @@ import fb from '../lib/firebase';
 import moment from 'moment';
 import calculateEstimate from '../lib/estimates';
 
-const HOURS24 = 86400; //24 hours in seconds
-
 const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
     const userToken = token;
@@ -34,7 +32,7 @@ const ShoppingList = ({ token }) => {
               To share this list with you friend, give them the code "{token}"
               </li>
             </ul>
-          </div>  
+          </div>
         </div>
     );
   };
@@ -67,7 +65,6 @@ const ShoppingList = ({ token }) => {
         getShoppingList();
     }, []);
 
-    console.log("SHOPPING LIST ITEMS", shoppingListItems);
     const lessThan24Hours = date => {
         const formattedDate = parseInt(moment(date).format());
         const newDate = moment(Date.now());
@@ -75,20 +72,24 @@ const ShoppingList = ({ token }) => {
         return lastPurchase.diff(newDate, 'hours') < 24;
     };
 
+    const HOURS24 = 86400; //24 hours in seconds
+
     const handleCheck = (e,item) => {
-        console.log("ITEMMMMMM", item)
         if (!(item.lastPurchaseDate == null)) {
             let lastEstimate;
             item.nextPurchaseDate
               ? (lastEstimate = item.nextPurchaseDate)
               : (lastEstimate = item.timeFrame);
             let lastPurchaseDate = item.lastPurchaseDate;
-            //lastPurchaseDate: moment(Date.now()).format(),
-            let datePurchased = new Date();
-            let datePurchasedInSeconds = Math.floor(datePurchased.getTime() / 1000);
-            let latestInterval = Math.floor(
-              (datePurchasedInSeconds - lastPurchaseDate.seconds) / HOURS24 //lessThan24Hours 
-            );
+
+            let today = moment(Date.now());
+            let lastPurchase = parseInt(lastPurchaseDate);
+            let latestInterval = today.diff(lastPurchase, 'days');
+            // let datePurchasedInSeconds = Math.floor(datePurchased.getTime() / 1000);
+            // let latestInterval = Math.floor(
+            //   (datePurchasedInSeconds - lastPurchaseDate.seconds) / HOURS24 //lessThan24Hours 
+            // );
+
             let db = fb.firestore();
             let nextPurchaseDate = calculateEstimate(
               item.lastEstimate,
@@ -109,7 +110,6 @@ const ShoppingList = ({ token }) => {
                 getShoppingList();
             });
           } else {
-            console.log('NULLLLLLL')
             let lastPurchaseDate = moment(Date.now()).format();
             let db = fb.firestore();
             db.collection(userToken)
