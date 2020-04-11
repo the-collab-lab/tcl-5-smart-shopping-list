@@ -82,13 +82,9 @@ const ShoppingList = ({ token }) => {
               : (lastEstimate = item.timeFrame);
             let lastPurchaseDate = item.lastPurchaseDate;
 
-            let today = moment(Date.now());
-            let lastPurchase = parseInt(lastPurchaseDate);
+            let today = moment(Date.now())
+            let lastPurchase = moment(lastPurchaseDate);
             let latestInterval = today.diff(lastPurchase, 'days');
-            // let datePurchasedInSeconds = Math.floor(datePurchased.getTime() / 1000);
-            // let latestInterval = Math.floor(
-            //   (datePurchasedInSeconds - lastPurchaseDate.seconds) / HOURS24 //lessThan24Hours 
-            // );
 
             let db = fb.firestore();
             let nextPurchaseDate = calculateEstimate(
@@ -116,7 +112,7 @@ const ShoppingList = ({ token }) => {
               .doc(e.target.name)
               .update({
                   isChecked: e.target.checked,
-                  lastPurchaseDate, 
+                  lastPurchaseDate,
                   numOfPurchases: item.isChecked == false ? (item.numOfPurchases || 0) + 1 : item.numOfPurchases
                 })
               .then(function() {
