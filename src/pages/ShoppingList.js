@@ -91,9 +91,9 @@ const ShoppingList = ({ token }) => {
         const lastPurchase = moment(formattedDate);
         return lastPurchase.diff(newDate, 'hours') < 24;
     };
-
+ 
     const handleCheck = (e,item) => {
-        const numOfPurchases: item.isChecked === false ? (item.numOfPurchases || 0) + 1 : item.numOfPurchases
+        const numberOfPurchases = item.isChecked === false ? (item.numOfPurchases || 0) + 1 : item.numOfPurchases
 
         if (!(item.lastPurchaseDate == null)) {
             let lastEstimate;
@@ -101,7 +101,6 @@ const ShoppingList = ({ token }) => {
               ? (lastEstimate = item.nextPurchaseDate)
               : (lastEstimate = item.timeFrame);
             let lastPurchaseDate = item.lastPurchaseDate;
-
             let today = moment(Date.now())
             let lastPurchase = moment(lastPurchaseDate);
             let latestInterval = today.diff(lastPurchase, 'days');
@@ -116,7 +115,7 @@ const ShoppingList = ({ token }) => {
               .doc(e.target.name)
               .update({
                 lastPurchaseDate,
-                numOfPurchases: numOfPurchases,
+                numOfPurchases: numberOfPurchases,
                 latestInterval,
                 lastEstimate,
                 nextPurchaseDate,
@@ -133,7 +132,7 @@ const ShoppingList = ({ token }) => {
               .update({
                   isChecked: e.target.checked,
                   lastPurchaseDate,
-                  numOfPurchases: numOfPurchases
+                  numOfPurchases: numberOfPurchases
                 })
               .then(function() {
                     getShoppingList();
