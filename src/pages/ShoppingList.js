@@ -50,7 +50,6 @@ const ShoppingList = ({ token }) => {
                                 ? lessThan24Hours(data.lastPurchaseDate)
                                 : false,
                             ...data,
-                            //numberofPurchases:pull the total no.of Purchases
                         };
                         allData.push(data);
                     });
@@ -72,15 +71,17 @@ const ShoppingList = ({ token }) => {
         return lastPurchase.diff(newDate, 'hours') < 24;
     };
 
-    const HOURS24 = 86400; //24 hours in seconds
+
 
     const handleCheck = (e,item) => {
-        if (!(item.lastPurchaseDate == null)) {
+        if (item.lastPurchaseDate) {
             let lastEstimate;
             item.nextPurchaseDate
               ? (lastEstimate = item.nextPurchaseDate)
               : (lastEstimate = item.timeFrame);
             let lastPurchaseDate = item.lastPurchaseDate;
+           // let numOfPurchases = (((item.numOfPurchases || 0 ) + 1) : item.numOfPurchases);
+        
 
             let today = moment(Date.now())
             let lastPurchase = moment(lastPurchaseDate);
@@ -96,7 +97,7 @@ const ShoppingList = ({ token }) => {
               .doc(e.target.name)
               .update({
                 lastPurchaseDate,
-                numOfPurchases: item.isChecked == false ? (item.numOfPurchases || 0) + 1 : item.numOfPurchases,
+                numOfPurchases: item.isChecked === false ? (item.numOfPurchases || 0) + 1 : item.numOfPurchases,
                 latestInterval,
                 lastEstimate,
                 nextPurchaseDate,
@@ -113,7 +114,7 @@ const ShoppingList = ({ token }) => {
               .update({
                   isChecked: e.target.checked,
                   lastPurchaseDate,
-                  numOfPurchases: item.isChecked == false ? (item.numOfPurchases || 0) + 1 : item.numOfPurchases
+                  numOfPurchases: item.isChecked === false ? (item.numOfPurchases || 0) + 1 : item.numOfPurchases
                 })
               .then(function() {
                     getShoppingList();
