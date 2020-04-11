@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import fb from '../lib/firebase';
 import moment from 'moment';
+import calculateEstimate from '../lib/estimates';
 
 const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
@@ -19,7 +20,7 @@ const ShoppingList = ({ token }) => {
                     name={item.id}
                     value={item.isChecked}
                     checked={item.isChecked}
-                    onChange={handleCheck}
+                    onChange={e => handleCheck(e, item)}
                 />
                 {item.itemName}
             </div>
@@ -83,23 +84,60 @@ const ShoppingList = ({ token }) => {
     useEffect(() => {
         getShoppingList();
     }, []);
+
     const lessThan24Hours = date => {
         const formattedDate = parseInt(moment(date).format());
         const newDate = moment(Date.now());
         const lastPurchase = moment(formattedDate);
         return lastPurchase.diff(newDate, 'hours') < 24;
     };
+ 
+    const handleCheck = (e,item) => {
+        const numberOfPurchases = item.isChecked === false ? (item.numOfPurchases || 0) + 1 : item.numOfPurchases
 
-    const handleCheck = e => {
-        let db = fb.firestore();
-        let tokenRef = db.collection(userToken).doc(e.target.name);
-        let dataCheck = {
-            isChecked: e.target.checked,
-            lastPurchaseDate: moment(Date.now()).format(),
-        };
-        tokenRef.update(dataCheck).then(function() {
-            getShoppingList();
-        });
+        if (!(item.lastPurchaseDate == null)) {
+            let lastEstimate;
+            item.nextPurchaseDate
+              ? (lastEstimate = item.nextPurchaseDate)
+              : (lastEstimate = item.timeFrame);
+            let lastPurchaseDate = item.lastPurchaseDate;
+            let today = moment(Date.now())
+            let lastPurchase = moment(lastPurchaseDate);
+            let latestInterval = today.diff(lastPurchase, 'days');
+
+            let db = fb.firestore();
+            let nextPurchaseDate = calculateEstimate(
+              item.lastEstimate,
+              latestInterval,
+              item.numOfPurchases
+            );
+            db.collection(userToken)
+              .doc(e.target.name)
+              .update({
+                lastPurchaseDate,
+                numOfPurchases: numberOfPurchases,
+                latestInterval,
+                lastEstimate,
+                nextPurchaseDate,
+                isChecked: e.target.checked
+              })
+              .then(function() {
+                getShoppingList();
+            });
+          } else {
+            let lastPurchaseDate = moment(Date.now()).format();
+            let db = fb.firestore();
+            db.collection(userToken)
+              .doc(e.target.name)
+              .update({
+                  isChecked: e.target.checked,
+                  lastPurchaseDate,
+                  numOfPurchases: numberOfPurchases
+                })
+              .then(function() {
+                    getShoppingList();
+              });
+        }
     };
 
     const filteredList = shoppingListItems.filter(item => {
