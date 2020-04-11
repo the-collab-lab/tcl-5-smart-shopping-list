@@ -5,39 +5,56 @@ import moment from 'moment';
 
 const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
+    const [filterString, setFilterString] = useState('');
     const userToken = token;
     let history = useHistory();
 
-
-	const welcomeInstructions = () => {
-		return (
-			<div>
-				<input
-						type="checkbox"
-						className="button-link"
-						id="WelcomeClick"
-					/>
-					<label htmlFor="WelcomeClick" id="Welcome">
-					Your list looks empty. Need help?
-					</label>
-					<div id="hideWelcome">
-						<ul>
-							<li>
-							Add items by clicking the "Add Item" button in the bottom of the screen.
-							</li>
-							<li>
-							Your list will be sorted with most needed items first.
-							</li>
-							<li>
-							To share this list with you friend, give them the code "{token}"
-							</li>
-						</ul>
-					</div>	
-				</div>
-			
-		);
-	};
-
+    const shoppingListItemInput = item => {
+        return (
+            <div>
+                <input
+                    key={item.id}
+                    id={item.id}
+                    type="checkbox"
+                    name={item.id}
+                    value={item.isChecked}
+                    checked={item.isChecked}
+                    onChange={handleCheck}
+                />
+                {item.itemName}
+            </div>
+        );
+    };
+    const welcomeInstructions = () => {
+        return (
+            <div>
+                <input
+                    type="checkbox"
+                    className="button-link"
+                    id="WelcomeClick"
+                />
+                <label htmlFor="WelcomeClick" id="Welcome">
+                    Your list looks empty. Need help?
+                </label>
+                <div id="hideWelcome">
+                    <ul>
+                        <li>
+                            Add items by clicking the "Add Item" button in the
+                            bottom of the screen.
+                        </li>
+                        <li>
+                            Your list will be sorted with most needed items
+                            first.
+                        </li>
+                        <li>
+                            To share this list with you friend, give them the
+                            code "{token}"
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        );
+    };
 
     const getShoppingList = () => {
         const db = fb.firestore();
@@ -84,26 +101,29 @@ const ShoppingList = ({ token }) => {
             getShoppingList();
         });
     };
+
+    const filteredList = shoppingListItems.filter(item => {
+        return item.itemName.toLowerCase().includes(filterString.toLowerCase());
+    });
+
     return (
         <div>
+            <label>Search for an item</label>
+            <input
+                type="text"
+                placeholder="Search..."
+                value={filterString}
+                onChange={e => setFilterString(e.target.value)}
+            />
+            <button onClick={() => setFilterString('')}>X</button>
             <ul>
-				{shoppingListItems.length>0?
-					(shoppingListItems.map(item => (
-						<div>
-							<input
-								key={item.id}
-								id={item.id}
-								type="checkbox"
-								name={item.id}
-								value={item.isChecked}
-								checked={item.isChecked}
-								onChange={handleCheck}
-							/>{' '}
-							{item.itemName}
-						</div>
-                ))):(
-					welcomeInstructions()
-				)}
+                {filterString
+                    ? filteredList.map(item => {
+                          return shoppingListItemInput(item);
+                      })
+                    : shoppingListItems.length > 0
+                    ? shoppingListItems.map(item => shoppingListItemInput(item))
+                    : welcomeInstructions()}
             </ul>
         </div>
     );
