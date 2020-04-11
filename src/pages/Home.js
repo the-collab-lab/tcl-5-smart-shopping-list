@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../App.css';
+/*import '../App.css';*/
 import NewListButton from '../components/NewListButton';
 import * as ls from 'local-storage';
 import fb from '../lib/firebase';
@@ -54,13 +54,15 @@ function Home({ token, setToken }) {
 						setToken={setToken}
 						token={token}
 					/>
-				</div>
+				</div>		
 			)}
+		
+
+
 			<footer>
 				<FooterTabs />
 			</footer>
 		</div>
-	);
-}
-
+	)
+			}
 export default Home;

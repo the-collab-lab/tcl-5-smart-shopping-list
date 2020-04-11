@@ -6,36 +6,57 @@ import calculateEstimate from '../lib/estimates';
 
 const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
+    const [filterString, setFilterString] = useState('');
     const userToken = token;
     let history = useHistory();
 
-  const welcomeInstructions = () => {
-    return (
-      <div>
-        <input
-            type="checkbox"
-            className="button-link"
-            id="WelcomeClick"
-          />
-          <label htmlFor="WelcomeClick" id="Welcome">
-          Your list looks empty. Need help?
-          </label>
-          <div id="hideWelcome">
-            <ul>
-              <li>
-              Add items by clicking the "Add Item" button in the bottom of the screen.
-              </li>
-              <li>
-              Your list will be sorted with most needed items first.
-              </li>
-              <li>
-              To share this list with you friend, give them the code "{token}"
-              </li>
-            </ul>
-          </div>
-        </div>
-    );
-  };
+    const shoppingListItemInput = item => {
+        return (
+            <div>
+                <input
+                    key={item.id}
+                    id={item.id}
+                    type="checkbox"
+                    name={item.id}
+                    value={item.isChecked}
+                    checked={item.isChecked}
+                    onChange={e => handleCheck(e, item)}
+                />
+                {item.itemName}
+            </div>
+        );
+    };
+    const welcomeInstructions = () => {
+        return (
+            <div>
+                <input
+                    type="checkbox"
+                    className="button-link"
+                    id="WelcomeClick"
+                />
+                <label htmlFor="WelcomeClick" id="Welcome">
+                    Your list looks empty. Need help?
+                </label>
+                <div id="hideWelcome">
+                    <ul>
+                        <li>
+                            Add items by clicking the "Add Item" button in the
+                            bottom of the screen.
+                        </li>
+                        <li>
+                            Your list will be sorted with most needed items
+                            first.
+                        </li>
+                        <li>
+                            To share this list with you friend, give them the
+                            code "{token}"
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        );
+    };
+
     const getShoppingList = () => {
         const db = fb.firestore();
         if (userToken) {
@@ -50,7 +71,6 @@ const ShoppingList = ({ token }) => {
                                 ? lessThan24Hours(data.lastPurchaseDate)
                                 : false,
                             ...data,
-                            //numberofPurchases:pull the total no.of Purchases
                         };
                         allData.push(data);
                     });
@@ -72,9 +92,9 @@ const ShoppingList = ({ token }) => {
         return lastPurchase.diff(newDate, 'hours') < 24;
     };
 
-    const HOURS24 = 86400; //24 hours in seconds
-
     const handleCheck = (e,item) => {
+        const numOfPurchases: item.isChecked === false ? (item.numOfPurchases || 0) + 1 : item.numOfPurchases
+
         if (!(item.lastPurchaseDate == null)) {
             let lastEstimate;
             item.nextPurchaseDate
@@ -96,7 +116,7 @@ const ShoppingList = ({ token }) => {
               .doc(e.target.name)
               .update({
                 lastPurchaseDate,
-                numOfPurchases: item.isChecked == false ? (item.numOfPurchases || 0) + 1 : item.numOfPurchases,
+                numOfPurchases: numOfPurchases,
                 latestInterval,
                 lastEstimate,
                 nextPurchaseDate,
@@ -113,7 +133,7 @@ const ShoppingList = ({ token }) => {
               .update({
                   isChecked: e.target.checked,
                   lastPurchaseDate,
-                  numOfPurchases: item.isChecked == false ? (item.numOfPurchases || 0) + 1 : item.numOfPurchases
+                  numOfPurchases: numOfPurchases
                 })
               .then(function() {
                     getShoppingList();
@@ -121,26 +141,28 @@ const ShoppingList = ({ token }) => {
         }
     };
 
+    const filteredList = shoppingListItems.filter(item => {
+        return item.itemName.toLowerCase().includes(filterString.toLowerCase());
+    });
+
     return (
         <div>
+            <label>Search for an item</label>
+            <input
+                type="text"
+                placeholder="Search..."
+                value={filterString}
+                onChange={e => setFilterString(e.target.value)}
+            />
+            <button onClick={() => setFilterString('')}>X</button>
             <ul>
-        {shoppingListItems.length>0?
-          (shoppingListItems.map(item => (
-            <div>
-              <input
-                key={item.id}
-                id={item.id}
-                type="checkbox"
-                name={item.id}
-                value={item.isChecked}
-                checked={item.isChecked}
-                onChange={e => handleCheck(e, item)}
-              />{' '}
-              {item.itemName}
-            </div>
-                ))):(
-          welcomeInstructions()
-        )}
+                {filterString
+                    ? filteredList.map(item => {
+                          return shoppingListItemInput(item);
+                      })
+                    : shoppingListItems.length > 0
+                    ? shoppingListItems.map(item => shoppingListItemInput(item))
+                    : welcomeInstructions()}
             </ul>
         </div>
     );
