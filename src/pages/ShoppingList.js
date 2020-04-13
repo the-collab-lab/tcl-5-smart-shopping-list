@@ -10,6 +10,12 @@ const ShoppingList = ({ token }) => {
     const userToken = token;
     let history = useHistory();
 
+    const deleteItemButton = {
+        width: '50px',
+        height: '25px',
+        marginLeft: '5px',
+    };
+
     const shoppingListItemInput = item => {
         return (
             <div>
@@ -23,6 +29,12 @@ const ShoppingList = ({ token }) => {
                     onChange={e => handleCheck(e, item)}
                 />
                 {item.itemName}
+                <button
+                    style={deleteItemButton}
+                    onClick={() => deleteItem(item)}
+                >
+                    X
+                </button>
             </div>
         );
     };
@@ -92,9 +104,6 @@ const ShoppingList = ({ token }) => {
         return lastPurchase.diff(newDate, 'hours') < 24;
     };
 
-    // Function to delete an item
-    const deleteItem = (e, item) => {};
-
     const handleCheck = (e, item) => {
         const numberOfPurchases =
             item.isChecked === false
@@ -150,6 +159,14 @@ const ShoppingList = ({ token }) => {
         return item.itemName.toLowerCase().includes(filterString.toLowerCase());
     });
 
+    // Function to delete an item
+    const deleteItem = item => {
+        let db = fb.firestore();
+        db.collection(userToken)
+            .doc(item.id)
+            .delete()
+            .then(() => getShoppingList());
+    };
     return (
         <div>
             <label>Search for an item</label>
