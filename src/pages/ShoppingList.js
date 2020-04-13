@@ -11,9 +11,11 @@ const ShoppingList = ({ token }) => {
     let history = useHistory();
 
     const deleteItemButton = {
-        width: '50px',
-        height: '25px',
+        width: '45px',
+        height: '45px',
         marginLeft: '5px',
+        backgroundColor: '#f3f3f3',
+        color: 'white',
     };
 
     const shoppingListItemInput = item => {
@@ -33,7 +35,7 @@ const ShoppingList = ({ token }) => {
                     style={deleteItemButton}
                     onClick={() => deleteItem(item)}
                 >
-                    X
+                    &#128465;
                 </button>
             </div>
         );
