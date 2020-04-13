@@ -91,52 +91,58 @@ const ShoppingList = ({ token }) => {
         const lastPurchase = moment(formattedDate);
         return lastPurchase.diff(newDate, 'hours') < 24;
     };
- 
-    const handleCheck = (e,item) => {
-        const numberOfPurchases = item.isChecked === false ? (item.numOfPurchases || 0) + 1 : item.numOfPurchases
+
+    // Function to delete an item
+    const deleteItem = (e, item) => {};
+
+    const handleCheck = (e, item) => {
+        const numberOfPurchases =
+            item.isChecked === false
+                ? (item.numOfPurchases || 0) + 1
+                : item.numOfPurchases;
 
         if (!(item.lastPurchaseDate == null)) {
             let lastEstimate;
             item.nextPurchaseDate
-              ? (lastEstimate = item.nextPurchaseDate)
-              : (lastEstimate = item.timeFrame);
+                ? (lastEstimate = item.nextPurchaseDate)
+                : (lastEstimate = item.timeFrame);
             let lastPurchaseDate = item.lastPurchaseDate;
-            let today = moment(Date.now())
+            let today = moment(Date.now());
             let lastPurchase = moment(lastPurchaseDate);
             let latestInterval = today.diff(lastPurchase, 'days');
 
             let db = fb.firestore();
             let nextPurchaseDate = calculateEstimate(
-              item.lastEstimate,
-              latestInterval,
-              item.numOfPurchases
+                item.lastEstimate,
+                latestInterval,
+                item.numOfPurchases
             );
             db.collection(userToken)
-              .doc(e.target.name)
-              .update({
-                lastPurchaseDate,
-                numOfPurchases: numberOfPurchases,
-                latestInterval,
-                lastEstimate,
-                nextPurchaseDate,
-                isChecked: e.target.checked
-              })
-              .then(function() {
-                getShoppingList();
-            });
-          } else {
+                .doc(e.target.name)
+                .update({
+                    lastPurchaseDate,
+                    numOfPurchases: numberOfPurchases,
+                    latestInterval,
+                    lastEstimate,
+                    nextPurchaseDate,
+                    isChecked: e.target.checked,
+                })
+                .then(function() {
+                    getShoppingList();
+                });
+        } else {
             let lastPurchaseDate = moment(Date.now()).format();
             let db = fb.firestore();
             db.collection(userToken)
-              .doc(e.target.name)
-              .update({
-                  isChecked: e.target.checked,
-                  lastPurchaseDate,
-                  numOfPurchases: numberOfPurchases
+                .doc(e.target.name)
+                .update({
+                    isChecked: e.target.checked,
+                    lastPurchaseDate,
+                    numOfPurchases: numberOfPurchases,
                 })
-              .then(function() {
+                .then(function() {
                     getShoppingList();
-              });
+                });
         }
     };
 
