@@ -1,5 +1,20 @@
 import React from 'react';
 
+const timeFrameString = number =>
+{
+    switch(number){
+        case 7:
+            return "Fewer than 7 days";
+        case 14:
+            return "7 to 30 days";
+        case 30:
+            return "More than 30 days";
+        default:
+            return "None";
+    }
+        
+}
+
 const ShoppingListItem = ({item,handleCheck}) => {
     return (
         <tr>
@@ -15,7 +30,7 @@ const ShoppingListItem = ({item,handleCheck}) => {
                 />
             </td>
             <td>{item.itemName}</td>
-            <td>{item.timeFrame}</td>
+            <td>{timeFrameString(item.timeFrame)}</td>
         </tr>
     );
     }
