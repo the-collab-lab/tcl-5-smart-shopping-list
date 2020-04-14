@@ -3,20 +3,16 @@ import { useHistory } from 'react-router-dom';
 import fb from '../lib/firebase';
 import moment from 'moment';
 import calculateEstimate from '../lib/estimates';
+import Modal from '../components/Modal';
 
 const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
     const [filterString, setFilterString] = useState('');
+    const [Modal, setModal] = useState(false);
     const userToken = token;
     let history = useHistory();
 
-    const deleteItemButton = {
-        width: '45px',
-        height: '45px',
-        marginLeft: '5px',
-        backgroundColor: '#f3f3f3',
-        color: 'white',
-    };
+
 
     const shoppingListItemInput = item => {
         return (
@@ -32,8 +28,8 @@ const ShoppingList = ({ token }) => {
                 />
                 {item.itemName}
                 <button
-                    style={deleteItemButton}
-                    onClick={() => deleteItem(item)}
+                    className = "deleteItemButton" 
+                    onClick={() => setModal(true)}
                 >
                     &#128465;
                 </button>
@@ -161,14 +157,8 @@ const ShoppingList = ({ token }) => {
         return item.itemName.toLowerCase().includes(filterString.toLowerCase());
     });
 
-    // Function to delete an item
-    const deleteItem = item => {
-        let db = fb.firestore();
-        db.collection(userToken)
-            .doc(item.id)
-            .delete()
-            .then(() => getShoppingList());
-    };
+   
+        
     return (
         <div>
             <label>Search for an item</label>
