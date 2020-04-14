@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import fb from '../lib/firebase';
 import moment from 'moment';
 import calculateEstimate from '../lib/estimates';
+import ShoppingListItem from '../components/ShoppingListItem';
 
 const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
@@ -10,22 +11,6 @@ const ShoppingList = ({ token }) => {
     const userToken = token;
     let history = useHistory();
 
-    const shoppingListItemInput = item => {
-        return (
-            <div>
-                <input
-                    key={item.id}
-                    id={item.id}
-                    type="checkbox"
-                    name={item.id}
-                    value={item.isChecked}
-                    checked={item.isChecked}
-                    onChange={e => handleCheck(e, item)}
-                />
-                {item.itemName}
-            </div>
-        );
-    };
     const welcomeInstructions = () => {
         return (
             <div>
@@ -157,10 +142,10 @@ const ShoppingList = ({ token }) => {
             <ul>
                 {filterString
                     ? filteredList.map(item => {
-                          return shoppingListItemInput(item);
+                          return <ShoppingListItem item={item} handleCheck={handleCheck} />;
                       })
                     : shoppingListItems.length > 0
-                    ? shoppingListItems.map(item => shoppingListItemInput(item))
+                        ? shoppingListItems.map(item => <ShoppingListItem item={item} handleCheck={handleCheck}/>)
                     : welcomeInstructions()}
             </ul>
         </div>
