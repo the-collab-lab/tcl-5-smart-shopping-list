@@ -139,7 +139,7 @@ const ShoppingList = ({ token }) => {
                 onChange={e => setFilterString(e.target.value)}
             />
             <button onClick={() => setFilterString('')}>X</button>
-            <ul>
+            <table>
                 {filterString
                     ? filteredList.map(item => {
                           return <ShoppingListItem item={item} handleCheck={handleCheck} />;
@@ -147,7 +147,7 @@ const ShoppingList = ({ token }) => {
                     : shoppingListItems.length > 0
                         ? shoppingListItems.map(item => <ShoppingListItem item={item} handleCheck={handleCheck}/>)
                     : welcomeInstructions()}
-            </ul>
+            </table>
         </div>
     );
 };

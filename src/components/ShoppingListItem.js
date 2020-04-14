@@ -2,8 +2,9 @@ import React from 'react';
 
 const ShoppingListItem = ({item,handleCheck}) => {
     return (
-        <React.Fragment>
-            <input
+        <tr>
+            <td>
+                <input
                 key={item.id}
                 id={item.id}
                 type="checkbox"
@@ -11,9 +12,11 @@ const ShoppingListItem = ({item,handleCheck}) => {
                 value={item.isChecked}
                 checked={item.isChecked}
                 onChange={e => handleCheck(e, item)}
-            />
-            {item.itemName}
-        </React.Fragment>
+                />
+            </td>
+            <td>{item.itemName}</td>
+            <td>{item.timeFrame}</td>
+        </tr>
     );
     }
 
