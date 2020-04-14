@@ -42,6 +42,16 @@ const ShoppingList = ({ token }) => {
         );
     };
 
+    const filterShoppingListByTimeframe = (shoppingListArray) => {
+        const seven = shoppingListArray.filter(item => item.timeFrame == 7).sort();
+        const fourteen = shoppingListArray.filter(item => item.timeFrame == 14).sort();
+        const thirty = shoppingListArray.filter(item => item.timeFrame == 30).sort();
+        
+        //think about the case where timeFrame is none of these
+
+        return seven.concat(fourteen).concat(thirty);
+    };
+
     const getShoppingList = () => {
         const db = fb.firestore();
         if (userToken) {
@@ -59,7 +69,7 @@ const ShoppingList = ({ token }) => {
                         };
                         allData.push(data);
                     });
-                    setShoppingListItems(allData);
+                    setShoppingListItems(filterShoppingListByTimeframe(allData));
                 });
         } else {
             history.push('/Home');
