@@ -16,10 +16,12 @@ const timeFrameString = number =>
 }
 
 const ShoppingListItem = ({item,handleCheck}) => {
+    const ariaString = `${item.itemName} to be bought in ${timeFrameString(item.timeFrame)}`;
     return (
         <tr>
             <td>
                 <input
+                aria-label= {ariaString}
                 key={item.id}
                 id={item.id}
                 type="checkbox"
