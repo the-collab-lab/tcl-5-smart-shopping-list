@@ -4,6 +4,7 @@ import fb from '../lib/firebase';
 import moment from 'moment';
 import calculateEstimate from '../lib/estimates';
 import ShoppingListItem from '../components/ShoppingListItem';
+import normalizeString from '../lib/normalizeString';
 
 const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
@@ -44,15 +45,17 @@ const ShoppingList = ({ token }) => {
 
     const filterShoppingListByTimeframe = (shoppingListArray) => {
         const alphabeticalSort = (a,b) => {
-            if (a.itemName < b.itemName) {return -1;}
-            if (a.itemName > b.itemName) {return 1;}
+            const aName = normalizeString(a.itemName);
+            const bName = normalizeString(b.itemName);
+            if (aName < bName) {return -1;}
+            if (aName > bName) {return 1;}
             return 0;
         }
         const seven = shoppingListArray.filter(item => item.timeFrame == 7).sort(alphabeticalSort);
         const fourteen = shoppingListArray.filter(item => item.timeFrame == 14).sort(alphabeticalSort);
         const thirty = shoppingListArray.filter(item => item.timeFrame == 30).sort(alphabeticalSort);
         
-        //think about the case where timeFrame is none of these
+        //does not consider a case where timeFrame is none of these
 
         return seven.concat(fourteen).concat(thirty);
     };
