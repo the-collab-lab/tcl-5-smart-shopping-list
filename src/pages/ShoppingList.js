@@ -43,9 +43,14 @@ const ShoppingList = ({ token }) => {
     };
 
     const filterShoppingListByTimeframe = (shoppingListArray) => {
-        const seven = shoppingListArray.filter(item => item.timeFrame == 7).sort();
-        const fourteen = shoppingListArray.filter(item => item.timeFrame == 14).sort();
-        const thirty = shoppingListArray.filter(item => item.timeFrame == 30).sort();
+        const alphabeticalSort = (a,b) => {
+            if (a.itemName < b.itemName) {return -1;}
+            if (a.itemName > b.itemName) {return 1;}
+            return 0;
+        }
+        const seven = shoppingListArray.filter(item => item.timeFrame == 7).sort(alphabeticalSort);
+        const fourteen = shoppingListArray.filter(item => item.timeFrame == 14).sort(alphabeticalSort);
+        const thirty = shoppingListArray.filter(item => item.timeFrame == 30).sort(alphabeticalSort);
         
         //think about the case where timeFrame is none of these
 
