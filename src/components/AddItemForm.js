@@ -59,6 +59,7 @@ const Form = ({ token }) => {
             .replace(/\s{2,}/g, ' ');
         if (!shoppingListCollection.includes(normalizeItemName)) {
             let data = {
+                numOfPurchases: 0,
                 itemName,
                 timeFrame: parseInt(timeFrame),
                 lastPurchaseDate: lastPurchaseDate
