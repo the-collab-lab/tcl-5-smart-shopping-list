@@ -8,11 +8,9 @@ import Modal from '../components/Modal';
 const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
     const [filterString, setFilterString] = useState('');
-    const [Modal, setModal] = useState(false);
+    const [modal, setModal] = useState(false);
     const userToken = token;
     let history = useHistory();
-
-
 
     const shoppingListItemInput = item => {
         return (
@@ -28,7 +26,7 @@ const ShoppingList = ({ token }) => {
                 />
                 {item.itemName}
                 <button
-                    className = "deleteItemButton" 
+                    className="deleteItemButton"
                     onClick={() => setModal(true)}
                 >
                     &#128465;
@@ -104,7 +102,8 @@ const ShoppingList = ({ token }) => {
 
     const handleCheck = (e, item) => {
         const numberOfPurchases =
-            item.isChecked === false
+            // item.isChecked === false
+            !item.isChecked
                 ? (item.numOfPurchases || 0) + 1
                 : item.numOfPurchases;
 
@@ -153,14 +152,21 @@ const ShoppingList = ({ token }) => {
         }
     };
 
+    const deleteItem = item => {
+        let db = fb.firestore();
+        db.collection(userToken)
+            .doc(item.id)
+            .delete()
+            .then(() => (getShoppingList(), setModal(false)));
+    };
+
     const filteredList = shoppingListItems.filter(item => {
         return item.itemName.toLowerCase().includes(filterString.toLowerCase());
     });
-
-   
-        
+    console.log('Modal status: ', modal);
     return (
         <div>
+            <div>{modal ? <Modal delete={deleteItem(item)} /> : null}</div>
             <label>Search for an item</label>
             <input
                 type="text"
