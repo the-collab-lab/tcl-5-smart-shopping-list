@@ -1,35 +1,20 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import { Link } from 'react-router-dom';
 import '../App.css';
-import fb from "../lib/firebase";
+import fb from '../lib/firebase';
 
 //const [setModal] = useState(false);
 //const [deleteItem, deleteItemMessage] = useState();
 
-const Modal = ({token},item) => {
-const userToken = token
-const deleteItem = item => { 
-    //setModal(true);      
-    let db = fb.firestore();
-    db.collection(userToken)
-           .doc(item.id)
-           .delete()
-          // .then(() => getShoppingList());
-}/*setModal(false)*/
-
-
-const deleteItemMessage =(
-    <Modal>
-            <p> Are you sure you want to delete this item {deleteItem}?</p>
-            <button onClick={() => deleteItem()}>YES</button>
-            <Link to='/ShoppingList'>NO</Link>
-            {/*we want ot return to the shopping list we were on, however so need to fix this*/}
-    </Modal>
-);
-
+const Modal = (item, props) => {
     return (
-        {deleteItemMessage} 
-    )
-}
+        <div className="Modal">
+            <p> Are you sure you want to delete this item?</p>
+            <button onClick={() => props.deleteItem(props.item.id)}>YES</button>
+            <button>No</button>
+            {/*we want ot return to the shopping list we were on, however so need to fix this*/}
+        </div>
+    );
+};
 
 export default Modal;
