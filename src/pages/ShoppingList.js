@@ -9,6 +9,7 @@ const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
     const [filterString, setFilterString] = useState('');
     const [modal, setModal] = useState(false);
+    const [currentItem, setCurrentItem] = useState(null);
     const userToken = token;
     let history = useHistory();
 
@@ -27,7 +28,10 @@ const ShoppingList = ({ token }) => {
                 {item.itemName}
                 <button
                     className="deleteItemButton"
-                    onClick={() => setModal(true)}
+                    onClick={() => {
+                        setCurrentItem(item);
+                        setModal(true);
+                    }}
                 >
                     &#128465;
                 </button>
@@ -101,11 +105,9 @@ const ShoppingList = ({ token }) => {
     };
 
     const handleCheck = (e, item) => {
-        const numberOfPurchases =
-            // item.isChecked === false
-            !item.isChecked
-                ? (item.numOfPurchases || 0) + 1
-                : item.numOfPurchases;
+        const numberOfPurchases = !item.isChecked
+            ? (item.numOfPurchases || 0) + 1
+            : item.numOfPurchases;
 
         if (!(item.lastPurchaseDate == null)) {
             let lastEstimate;
@@ -166,7 +168,17 @@ const ShoppingList = ({ token }) => {
     console.log('Modal status: ', modal);
     return (
         <div>
-            <div>{modal ? <Modal delete={deleteItem(item)} /> : null}</div>
+            <div>
+                {modal ? (
+                    <Modal
+                        item={currentItem}
+                        delete={deleteItem}
+                        cancel={() => {
+                            setModal(false);
+                        }}
+                    />
+                ) : null}
+            </div>
             <label>Search for an item</label>
             <input
                 type="text"
