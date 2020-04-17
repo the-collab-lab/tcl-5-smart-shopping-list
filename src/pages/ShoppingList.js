@@ -165,7 +165,6 @@ const ShoppingList = ({ token }) => {
     const filteredList = shoppingListItems.filter(item => {
         return item.itemName.toLowerCase().includes(filterString.toLowerCase());
     });
-    console.log('Modal status: ', modal);
     return (
         <div>
             <div>
