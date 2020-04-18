@@ -5,6 +5,7 @@ import moment from 'moment';
 import calculateEstimate from '../lib/estimates';
 import ShoppingListItem from '../components/ShoppingListItem';
 import normalizeString from '../lib/normalizeString';
+import '../css/ShoppingList.css';
 
 const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
@@ -51,14 +52,23 @@ const ShoppingList = ({ token }) => {
             if (aName > bName) {return 1;}
             return 0;
         }
-        const seven = shoppingListArray.filter(item => item.timeFrame == 7).sort(alphabeticalSort);
-        const fourteen = shoppingListArray.filter(item => item.timeFrame == 14).sort(alphabeticalSort);
-        const thirty = shoppingListArray.filter(item => item.timeFrame == 30).sort(alphabeticalSort);
-        
-        //does not consider a case where timeFrame is none of these
+        const seven = shoppingListArray.filter(item => item.timeFrame === 7).sort(alphabeticalSort);
+        const fourteen = shoppingListArray.filter(item => item.timeFrame === 14).sort(alphabeticalSort);
+        const thirty = shoppingListArray.filter(item => item.timeFrame === 30).sort(alphabeticalSort);
+        const inactive = shoppingListArray.filter(item => item.timeFrame === 0).sort(alphabeticalSort);
 
-        return seven.concat(fourteen).concat(thirty);
+        return seven.concat(fourteen).concat(thirty).concat(inactive);
     };
+    const flagInactive = (shoppingListArray) => {
+        const now = moment(Date.now());
+        return shoppingListArray.map(item => {
+            const initialDate = moment(item.lastPurchaseDate)
+            if (now.diff(initialDate, "d") > (2*item.timeFrame)) {
+                item.timeFrame = 0
+            }
+            return item;
+        })
+    }
 
     const getShoppingList = () => {
         const db = fb.firestore();
@@ -77,7 +87,8 @@ const ShoppingList = ({ token }) => {
                         };
                         allData.push(data);
                     });
-                    setShoppingListItems(filterShoppingListByTimeframe(allData));
+                    const flaggedData = flagInactive(allData);
+                    setShoppingListItems(filterShoppingListByTimeframe(flaggedData));
                 });
         } else {
             history.push('/Home');
