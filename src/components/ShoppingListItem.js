@@ -41,9 +41,7 @@ const generateClass = number =>
 //     return "error"
 // }
 
-
-
-const ShoppingListItem = ({item,handleCheck}) => {
+const ShoppingListItem = ({item, handleCheck, setCurrentItem, setModal}) => {
     const ariaString = `${item.itemName} to be bought in ${timeFrameString(item.timeFrame)}`;
     return (
         <tr className={generateClass(item.timeFrame)}>
@@ -61,6 +59,15 @@ const ShoppingListItem = ({item,handleCheck}) => {
             </td>
             <td>{item.itemName}</td>
             <td>{timeFrameString(item.timeFrame)}</td>
+            <td><button
+                    className="deleteItemButton"
+                    onClick={() => {
+                        setCurrentItem(item);
+                        setModal(true);
+                    }}
+                >
+                &#128465;
+                </button></td>
         </tr>
     );
     }

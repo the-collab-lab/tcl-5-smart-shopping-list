@@ -51,6 +51,7 @@ const Form = ({ token }) => {
         let normalizeItemName = normalizeString(itemName);
         if (!shoppingListCollection.includes(normalizeItemName)) {
             let data = {
+                numOfPurchases: 0,
                 itemName,
                 timeFrame: parseInt(timeFrame),
                 lastPurchaseDate: lastPurchaseDate
