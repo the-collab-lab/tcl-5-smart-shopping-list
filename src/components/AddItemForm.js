@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import fb from '../lib/firebase';
 import '../css/AddItemForm.css';
 import moment from 'moment';
+import normalizeString from '../lib/normalizeString';
 
 const Form = ({ token }) => {
     const [itemName, setItemName] = useState('');
@@ -27,12 +28,7 @@ const Form = ({ token }) => {
                         let documentData = doc.data();
                         let nameData = documentData.itemName;
                         if (nameData) {
-                            nameData = nameData
-                                .toLowerCase()
-                                .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '')
-                                .trim()
-                                .replace(/\s{2,}/g, ' ');
-
+                            nameData = normalizeString(nameData)
                             fullCollection.push(nameData);
                         }
                     });
@@ -52,13 +48,10 @@ const Form = ({ token }) => {
         setDuplicateError(false);
         let db = fb.firestore();
         let tokenRef = db.collection(userToken);
-        let normalizeItemName = itemName
-            .toLowerCase()
-            .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '')
-            .trim()
-            .replace(/\s{2,}/g, ' ');
+        let normalizeItemName = normalizeString(itemName);
         if (!shoppingListCollection.includes(normalizeItemName)) {
             let data = {
+                numOfPurchases: 0,
                 itemName,
                 timeFrame: parseInt(timeFrame),
                 lastPurchaseDate: lastPurchaseDate
