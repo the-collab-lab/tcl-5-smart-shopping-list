@@ -7,7 +7,7 @@
  */
 
 const calculateEstimate = (lastEstimate, latestInterval, numberOfPurchases) => {
-    if (numberOfPurchases > 1) {
+    if (numberOfPurchases >= 2) {
         if (isNaN(lastEstimate)) {
                 lastEstimate = 14;
         }
