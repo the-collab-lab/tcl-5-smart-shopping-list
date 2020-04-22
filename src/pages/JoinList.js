@@ -1,18 +1,18 @@
 import React from 'react';
 
-const JoinList = props => {
+const JoinList = ({handleChange, checkToken, inputToken}) => {
     return (
         <div>
             <input
                 type="text"
                 name="inputToken"
                 placeholder="Enter Token"
-                onChange={props.handleChange}
+                onChange={handleChange}
                 required
             />
             <button
                 className="Join-List-Button"
-                onClick={() => props.checkToken(props.inputToken)}
+                onClick={() => checkToken(inputToken)}
             >
                 Join List{' '}
             </button>
