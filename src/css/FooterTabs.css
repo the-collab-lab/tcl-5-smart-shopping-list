@@ -1,28 +1,36 @@
 ul {
-	list-style: none;
+    list-style: none;
 }
 
 li {
-	display: inline;
-	margin-left: 5px;
+    display: inline;
+    margin-left: 5px;
 }
 
 nav {
-	position: fixed;
-	bottom: 0;
-	width: 100vw;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
 }
 
-.navbutton,
-button {
-	width: 45vw;
-	height: 50px;
-	background-color: teal;
-	color: white;
-	font-size: 20px;
-	cursor: pointer;
+.navbutton {
+    width: 150px;
+    height: 50px;
+    background-color: teal;
+    color: #f3f3f3;
+    font-size: 20px;
+}
+
+.New-List-Button {
+    width: 150px;
+    height: 50px;
+    background-color: teal;
+    color: #f3f3f3;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 10px;
 }
 
 .navbutton:focus {
-	background-color: rgba(2, 75, 75, 0.5);
+    background-color: rgba(2, 75, 75, 0.5);
 }
