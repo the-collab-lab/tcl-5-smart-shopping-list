@@ -89,7 +89,8 @@ const ShoppingList = ({ token }) => {
                     setShoppingListItems(allData);
                 });
         } else {
-            history.push('/Home');
+            // history.push('/Home');
+            history.push('/');
         }
     };
 
