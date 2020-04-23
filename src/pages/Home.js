@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../css/Home.css';
 import NewListButton from '../components/NewListButton';
-import * as ls from 'local-storage';
-import fb from '../lib/firebase';
 import { Link, Redirect } from 'react-router-dom';
 
 function Home({ token, setToken }) {
     return (
-        <div className="App">
+        <div className="Home">
             <h1>Welcome to your smart shopping list!</h1>
             <h2>Tap "Create shopping list" to get started</h2>
             <NewListButton
