@@ -4,16 +4,16 @@ import getToken from '../lib/tokenGenerator';
 import * as ls from 'local-storage';
 import '../css/FooterTabs.css';
 const NewListButton = props => {
-	const onClick = event => {
-		const newToken = getToken();
-		ls.set('shoppingListToken', newToken);
-		props.setToken(newToken);
-	};
-	return (
-		<Link to='/ShoppingList' onClick={onClick}>
-			<button>Create a New List</button>
-		</Link>
-	);
+    const onClick = event => {
+        const newToken = getToken();
+        ls.set('shoppingListToken', newToken);
+        props.setToken(newToken);
+    };
+    return (
+        <Link to="/ShoppingList" onClick={onClick}>
+            <button className="New-List-Button">Create a New List</button>
+        </Link>
+    );
 };
 
 export default NewListButton;
