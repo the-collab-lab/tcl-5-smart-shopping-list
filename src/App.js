@@ -38,6 +38,7 @@ function App() {
                 });
         }
     };
+
     return (
         <div className="App">
             <Switch>
@@ -62,7 +63,7 @@ function App() {
                 </Route>
             </Switch>
             <footer>
-                <FooterTabs />
+                {token ? <FooterTabs /> : ' '}
             </footer>
         </div>
     );
