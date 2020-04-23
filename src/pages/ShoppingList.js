@@ -8,14 +8,23 @@ import Modal from '../components/Modal';
 const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
     const [filterString, setFilterString] = useState('');
-    const [modal, setModal] = useState(false);
     const [currentItem, setCurrentItem] = useState(null);
+    const [modal, setModal] = useState(false);
+
     const userToken = token;
     let history = useHistory();
 
+    //const ItemDetails =({ token, setToken , Purchased, firestore})
+    const onclickItemDetailHandler = (e) => {
+        e.preventDefault();
+        const itemtarget = e.target;
+        console.log(itemtarget);
+    }
+
+
     const shoppingListItemInput = item => {
         return (
-            <div>
+            <div onClick = {onclickItemDetailHandler}>
                 <input
                     key={item.id}
                     id={item.id}
@@ -162,9 +171,65 @@ const ShoppingList = ({ token }) => {
             .then(() => (getShoppingList(), setModal(false)));
     };
 
+  Const ItemsContainer = {
+        <div>
+            <div className ="detailsContainer"> 
+                <h1>Purchase Details</h1>
+                <h2 className={category + 'details'}>
+                    {props.item.name}</h2>
+                <ul>
+                    <li>
+                        Last purchase:{' '}
+                        <p> {isNewItem ? 'None' : lastPurchaseDate}</p>
+                    </li>
+                    <li>
+                        Next purchase:{' '}
+                        <p>{isNewItem ? 'None' : nextPurchaseDate}</p>
+                    </li>
+                    <li>
+                        Number of purchases:
+                        <p id="liItemDetails">{props.item.numberOfPurchases}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+  }
+
+
     const filteredList = shoppingListItems.filter(item => {
         return item.itemName.toLowerCase().includes(filterString.toLowerCase());
     });
+
+    /*const showDetails = (e, item) => {
+        setItemView(item);
+        setViewDetailOpen(true);
+      };
+    
+      const hideDetails = () => {
+        setViewDetailOpen(false);
+      };
+
+      const handleDetails = (
+        <Modal>
+          <p>Name: {itemView.name}</p>
+          {itemView.datePurchased && (
+            <p>
+              Date Purchased:{" "}
+              {secondsToDate(itemView.datePurchased.seconds).toLocaleDateString()}
+            </p>
+          )}
+          {itemView.nextPurchaseDate && (
+            <p>
+              Days Until Next Purchase: {Math.round(itemView.nextPurchaseDate)}
+            </p>
+          )}
+          <p>Number of Purchases: {itemView.numOfPurchases}</p>
+          <button onClick={hideDetails}>Close</button>
+        </Modal>
+      );
+*/
+
     return (
         <div>
             <div>
@@ -177,6 +242,7 @@ const ShoppingList = ({ token }) => {
                         }}
                     />
                 ) : null}
+    
             </div>
             <label>Search for an item</label>
             <input
