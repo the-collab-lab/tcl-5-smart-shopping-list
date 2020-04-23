@@ -21,7 +21,7 @@ nav {
     font-size: 20px;
 }
 
-.New-List-Button {
+/* .New-List-Button {
     width: 150px;
     height: 50px;
     background-color: teal;
@@ -29,7 +29,7 @@ nav {
     font-size: 18px;
     cursor: pointer;
     border-radius: 10px;
-}
+} */
 
 .navbutton:focus {
     background-color: rgba(2, 75, 75, 0.5);
