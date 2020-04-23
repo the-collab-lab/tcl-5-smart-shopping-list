@@ -6,3 +6,11 @@
     color: #f3f3f3;
     border-radius: 20px;
 }
+
+.Home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
