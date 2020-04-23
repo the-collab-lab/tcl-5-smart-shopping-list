@@ -9,6 +9,7 @@ import fb from './lib/firebase';
 import * as ls from 'local-storage';
 import Home from './pages/Home';
 import JoinList from './pages/JoinList';
+import Header from './components/HeaderLogo';
 
 function App() {
     const [token, setToken] = useState(ls.get('shoppingListToken'));
@@ -41,6 +42,7 @@ function App() {
 
     return (
         <div className="App">
+        <Header />
             <Switch>
                 <Route exact path="/">
                     <Home token={token} setToken={setToken} />

@@ -7,3 +7,20 @@
     background-color: #b9dfed;
     position:relative;
 }
+
+.Header {
+    position: fixed;
+    width: 100vw;
+    padding:0;
+    background-color: white;
+    max-height: 100px;
+    top: 0;
+    display: block;
+    text-align: center;
+    color: blue;
+    font-size: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.Header h1 {
+    margin: 20px;
+}
