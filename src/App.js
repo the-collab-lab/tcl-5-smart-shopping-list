@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useHistory } from 'react-router-dom';
 import FirebaseTesting from './pages/FirebaseTest';
 import FooterTabs from './components/FooterTabs';
 import ShoppingList from './pages/ShoppingList';
@@ -14,12 +14,13 @@ function App() {
     const [token, setToken] = useState(ls.get('shoppingListToken'));
     const [inputToken, setInputToken] = useState('');
 
+    const history = useHistory();
+
     const handleChange = e => {
         setInputToken(e.target.value);
     };
 
     const checkToken = e => {
-        e.preventDefault();
         let db = fb.firestore();
         if (inputToken.length === 0) {
             alert('You must enter a token value.  Try again! ');
@@ -32,6 +33,7 @@ function App() {
                     } else {
                         ls.set('ShoppingListToken', inputToken);
                         setToken(inputToken);
+                        history.push('/ShoppingList');
                     }
                 });
         }
