@@ -23,17 +23,18 @@ const Modal = props => {
      <ul>
        <li>
         Last purchase:{' '}
-        <p> {isNewItem ? 'None' : props.item.lastPurchaseDate}</p>
+        {/* <p> {isNewItem ? 'None' : props.item.lastPurchaseDate}</p> */}
       </li>
       <li>
         Next purchase:{' '}
-        <p>{isNewItem ? 'None' : props.item.nextPurchaseDate}</p>
+      {/* {<p>{isNewItem ? 'None' : props.item.nextPurchaseDate}</p>} */}
       </li>
       <li>
         Number of purchases:
         <p id="itemDetails">{props.item.numberOfPurchases}</p>
       </li>
     </ul>
+    {/* <button onClick={}>Close</button> */}
     </div>
     );
    }

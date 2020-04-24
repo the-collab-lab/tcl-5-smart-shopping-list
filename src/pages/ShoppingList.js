@@ -11,45 +11,12 @@ import '../css/ShoppingList.css';
 const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
     const [filterString, setFilterString] = useState('');
+    const [deleteModal, setDeleteModal] = useState(false);
     const [currentItem, setCurrentItem] = useState(null);
-    const [modal, setModal] = useState(false);
-
     const userToken = token;
     let history = useHistory();
 
-    //const ItemDetails =({ token, setToken , Purchased, firestore})
-    const onclickItemDetailHandler = (e) => {
-        e.preventDefault();
-        const itemtarget = e.target;
-        console.log(itemtarget);
-    }
-
-
-    const shoppingListItemInput = item => {
-        return (
-            <div onClick = {onclickItemDetailHandler}>
-                <input
-                    key={item.id}
-                    id={item.id}
-                    type="checkbox"
-                    name={item.id}
-                    value={item.isChecked}
-                    checked={item.isChecked}
-                    onChange={e => handleCheck(e, item)}
-                />
-                {item.itemName}
-                <button
-                    className="deleteItemButton"
-                    onClick={() => {
-                        setCurrentItem(item);
-                        setModal(true);
-                    }}
-                >
-                    &#128465;
-                </button>
-            </div>
-        );
-    };
+  
     const welcomeInstructions = () => {
         return (
             <div>
@@ -198,54 +165,26 @@ const ShoppingList = ({ token }) => {
         db.collection(userToken)
             .doc(item.id)
             .delete()
-            .then(() => (getShoppingList(), setModal(false)));
+            .then(() => (getShoppingList(), setDeleteModal(false)));
     };
-
-  Const ItemsContainer = {
-        <div>
-            <div className ="detailsContainer"> 
-                <h1>Purchase Details</h1>
-                <h2 className={category + 'details'}>
-                    {props.item.name}</h2>
-                <ul>
-                    <li>
-                        Last purchase:{' '}
-                        <p> {isNewItem ? 'None' : lastPurchaseDate}</p>
-                    </li>
-                    <li>
-                        Next purchase:{' '}
-                        <p>{isNewItem ? 'None' : nextPurchaseDate}</p>
-                    </li>
-                    <li>
-                        Number of purchases:
-                        <p id="liItemDetails">{props.item.numberOfPurchases}</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        
-  }
-
 
     const filteredList = shoppingListItems.filter(item => {
         return item.itemName.toLowerCase().includes(filterString.toLowerCase());
     });
-
-
     return (
         <div>
-            <div>
-                {modal ? (
+
+                {deleteModal ? (
                     <Modal
                         item={currentItem}
                         delete={deleteItem}
                         cancel={() => {
-                            setModal(false);
+                            setDeleteModal(false);
                         }}
+                        type="deleteItem"
                     />
                 ) : null}
-    
-            </div>
+
             <label>Search for an item</label>
             <input
                 type="text"
@@ -254,16 +193,17 @@ const ShoppingList = ({ token }) => {
                 onChange={e => setFilterString(e.target.value)}
             />
             <button onClick={() => setFilterString('')}>X</button>
-            <table>
+            <tbody>
                 {filterString
                     ? filteredList.map(item => {
-                          return <ShoppingListItem item={item} handleCheck={handleCheck}  setCurrentItem={setCurrentItem} setModal={setModal} />;
+                          return <ShoppingListItem item={item} handleCheck={handleCheck}  setCurrentItem={setCurrentItem} setDeleteModal={setDeleteModal} />;
                       })
                     : shoppingListItems.length > 0
-                        ? shoppingListItems.map(item => <ShoppingListItem item={item} handleCheck={handleCheck} setCurrentItem={setCurrentItem} setModal={setModal} />)
+                        ? shoppingListItems.map(item => <ShoppingListItem item={item} handleCheck={handleCheck} setCurrentItem={setCurrentItem} setDeleteModal={setDeleteModal} />)
                     : welcomeInstructions()}
-            </table>
+            </tbody>
         </div>
     );
 };
 export default ShoppingList;
+
