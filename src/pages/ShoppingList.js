@@ -12,6 +12,7 @@ const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
     const [filterString, setFilterString] = useState('');
     const [deleteModal, setDeleteModal] = useState(false);
+    const [detailModal, setDetailModal] = useState(false);
     const [currentItem, setCurrentItem] = useState(null);
     const userToken = token;
     let history = useHistory();
@@ -184,6 +185,15 @@ const ShoppingList = ({ token }) => {
                         type="deleteItem"
                     />
                 ) : null}
+                {detailModal ? (
+                    <Modal
+                        item={currentItem}
+                        cancel={() => {
+                            setDetailModal(false);
+                        }}
+                        type="detail"
+                    />
+                ) : null}
 
             <label>Search for an item</label>
             <input
@@ -196,10 +206,10 @@ const ShoppingList = ({ token }) => {
             <tbody>
                 {filterString
                     ? filteredList.map(item => {
-                          return <ShoppingListItem item={item} handleCheck={handleCheck}  setCurrentItem={setCurrentItem} setDeleteModal={setDeleteModal} />;
+                          return <ShoppingListItem item={item} handleCheck={handleCheck}  setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />;
                       })
                     : shoppingListItems.length > 0
-                        ? shoppingListItems.map(item => <ShoppingListItem item={item} handleCheck={handleCheck} setCurrentItem={setCurrentItem} setDeleteModal={setDeleteModal} />)
+                        ? shoppingListItems.map(item => <ShoppingListItem item={item} handleCheck={handleCheck} setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />)
                     : welcomeInstructions()}
             </tbody>
         </div>

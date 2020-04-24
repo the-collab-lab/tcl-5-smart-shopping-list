@@ -43,7 +43,7 @@ const generateClass = number =>
 
 
 
-const ShoppingListItem = ({item, handleCheck, setCurrentItem, setDeleteModal}) => {
+const ShoppingListItem = ({item, handleCheck, setCurrentItem, setDeleteModal, setDetailModal}) => {
     const ariaString = `${item.itemName} to be bought in ${timeFrameString(item.timeFrame)}`;
     return (
         <tr className={generateClass(item.timeFrame)}>
@@ -59,7 +59,7 @@ const ShoppingListItem = ({item, handleCheck, setCurrentItem, setDeleteModal}) =
                 onChange={e => handleCheck(e, item)}
                 />
             </td>
-            <td onClick= {()=> console.log("clicked",item.itemName)} style={{cursor: "pointer"}}>{item.itemName}</td>
+            <td onClick= {()=> {setCurrentItem(item); setDetailModal(true);}} style={{cursor: "pointer"}}>{item.itemName}</td>
             <td>{timeFrameString(item.timeFrame)}</td>
             <td><button
                     className="deleteItemButton"

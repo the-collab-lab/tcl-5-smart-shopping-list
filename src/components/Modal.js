@@ -14,7 +14,7 @@ const Modal = props => {
     );
 
    }
-   else if ( props.type === "details"){
+   else if ( props.type === "detail"){
 
     output = (
      <div className ="detailsModal"> 
