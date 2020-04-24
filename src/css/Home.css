@@ -1,54 +1,73 @@
-.Join-List-Button {
-    width: 100px;
-    height: 50px;
-    background-color: teal;
-    font-size: 20px;
-    color: #f3f3f3;
-    border-radius: 20px;
-}
-
-.Home {
+.Home,
+.joinList-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: white;
-    padding:50px;
+    padding: 50px;
     position: absolute;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.joinList-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.JoinList-text {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.Join-List-Button {
+    flex: 1;
+}
+
+.joinList-input {
+    display: inline-block;
+    min-width: 300px;
+    margin: 0 20px 0 0;
+    height: 40px;
+    flex: 1;
+}
+
 .Home a {
     text-decoration: none;
-  }
+}
 
 h1.Home-h1 {
-    margin-top:0;
-    font-weight:600;
+    margin-top: 0;
+    font-weight: 600;
 }
 h2.Home-h2 {
-    color:darkgrey;
+    color: darkgrey;
 }
 h2.Home-h2 a {
-    color:black;
+    color: black;
 }
 h2.Home-h2 a:hover {
-    color:green;
+    color: green;
 }
 
-.New-List-Button {
-    background-color:   rgba(80, 148, 46);
+.New-List-Button,
+.Join-List-Button {
+    background-color: rgba(80, 148, 46);
     color: #fff;
     cursor: pointer;
-    font-size:32px;
+    font-size: 32px;
     padding: 20px;
-    margin:20px 0;
-    border:1px solid rgba(80, 148, 46);
+    margin: 20px 0;
+    border: 1px solid rgba(80, 148, 46);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
+}
 
-
-  .New-List-Button:hover {
-    box-shadow: 0 0.5em 0.5em -0.4em rgba(80, 148, 46,0.8);
+.New-List-Button:hover,
+.Join-List-Button:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em rgba(80, 148, 46, 0.8);
     transform: translateY(-0.25em);
-  }
+}
