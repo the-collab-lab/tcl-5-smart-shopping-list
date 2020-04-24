@@ -178,8 +178,8 @@ const ShoppingList = ({ token }) => {
                 {deleteModal ? (
                     <Modal
                         item={currentItem}
-                        delete={deleteItem}
-                        cancel={() => {
+                        deleteItem={deleteItem}
+                        cancelItem={() => {
                             setDeleteModal(false);
                         }}
                         type="deleteItem"
@@ -188,7 +188,8 @@ const ShoppingList = ({ token }) => {
                 {detailModal ? (
                     <Modal
                         item={currentItem}
-                        cancel={() => {
+                        setDetailModal={setDetailModal}
+                        cancelItem={() => {
                             setDetailModal(false);
                         }}
                         type="detail"
