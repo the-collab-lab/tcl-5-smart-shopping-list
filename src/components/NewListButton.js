@@ -11,7 +11,7 @@ const NewListButton = props => {
     };
     return (
         <Link to="/ShoppingList" onClick={onClick}>
-            <button className="New-List-Button">Create a New List</button>
+            <button className="NewList-button">Create a New List</button>
         </Link>
     );
 };

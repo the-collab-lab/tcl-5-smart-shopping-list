@@ -1,5 +1,5 @@
 .Home,
-.joinList-container {
+.JoinList-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +10,7 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.joinList-container {
+.JoinList-container {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -22,18 +22,20 @@
     width: 100%;
     font-weight: bold;
     font-size: 32px;
+    margin-bottom:40px;
 }
 
-.Join-List-Button {
+.JoinList-button {
     flex: 1;
 }
 
-.joinList-input {
+.JoinList-input {
     display: inline-block;
     min-width: 300px;
     margin: 0 20px 0 0;
     height: 40px;
     flex: 1;
+    border: 1px solid green;
 }
 
 .Home a {
@@ -54,8 +56,8 @@ h2.Home-h2 a:hover {
     color: green;
 }
 
-.New-List-Button,
-.Join-List-Button {
+.NewList-button,
+.JoinList-button {
     background-color: rgba(80, 148, 46);
     color: #fff;
     cursor: pointer;
@@ -66,8 +68,8 @@ h2.Home-h2 a:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.New-List-Button:hover,
-.Join-List-Button:hover {
+.NewList-button:hover,
+.JoinList-button:hover {
     box-shadow: 0 0.5em 0.5em -0.4em rgba(80, 148, 46, 0.8);
     transform: translateY(-0.25em);
 }
