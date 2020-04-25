@@ -16,7 +16,7 @@ const Modal = ({ type, item, deleteItem, cancelItem, setDetailModal }) => {
         output = (
             <div className="detailsModal">
                 <h1>Purchase Details</h1>
-                <h2>{item.name}</h2>
+                <h2>{item.itemName}</h2>
                 <ul>
                     <li>
                         Last purchase:{' '}
