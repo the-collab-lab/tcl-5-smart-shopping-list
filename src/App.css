@@ -1,107 +1,25 @@
 .App {
-  text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    background-color: #b9dfed;
+    position:relative;
 }
 
-.App-logo {
-  height: 40vmin;
+.Header {
+    position: sticky;
+    width: 100vw;
+    padding:0;
+    background-color: white;
+    top: 0;
+    display: block;
+    text-align: center;
+    color: blue;
+    font-size: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.Header h1 {
+    margin: 20px;
 }
-
-.App-link {
-  color: #09d3ac;
-}
-
-.Home-token button{
-  width:75% 
-}
-
-input {
-  margin: 3vh;
-  width: 80%;
-}
-
-
-.button-link {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: black;
-  margin: auto;
-  padding: 3vh;
-  font-size: 1rem;
-  border-radius: 2px;
-}
-
-.button-link:hover {
-  transform: scale(1.1);
-  box-shadow: 1px 1px 2px black;
-  transition: 0.1s;
-  transition-timing-function: ease-in;
-  cursor: pointer;
-}
-
-#Welcome {
-  width:25%;
-  height:40px;
-	background-color: teal;
-	color: white;
-	font-size: 20px;
-  cursor: pointer;
-  padding:5px;
-  margin:auto;
-  background-color:teal;
-  display: inline-block;
-  align-items: center;
-  margin-top: 30px;
-}
-
-#Welcome:hover {
-  transform: scale(1.1);
-  box-shadow: 1px 1px 2px black;
-  transition: 0.1s;
-  transition-timing-function: ease-in;
-  cursor: pointer;
-}
-
-#WelcomeClick {
-  display: none;
-}
-
-#WelcomeClick:checked ~ #hideWelcome {
-  display: block;
-}
-
-#hideWelcome {
-  display: none;
-  margin-top: 3vh;
-  margin:auto;
-  width:50%;
-  border: black, 5px;
-}
-
-
-#hideWelcome li {
-  display:list-item;
-  font-size: 1rem;
-  /* margin: 0 2vw 0 5vw; */
-  list-style-type: circle;
-  width: fit-content;
-}
-
-.deleteItemButton{
-  width: 45px;
-  height: 45px;
-  margin-left: 5px;
-  background:black;
-};
-

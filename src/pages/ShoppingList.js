@@ -94,7 +94,8 @@ const ShoppingList = ({ token }) => {
                     setShoppingListItems(filterShoppingListByTimeframe(flaggedData));
                 });
         } else {
-            history.push('/Home');
+            // history.push('/Home');
+            history.push('/');
         }
     };
 
