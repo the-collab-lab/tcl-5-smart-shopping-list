@@ -15,8 +15,8 @@ For additional details, please check out the [project brief](PROJECT-BRIEF.md).
 # Quick Links
 - [Team Members](#team-members)
 - [Setup](#setup)
-  -[Online Access](#requirements-for-online-access)
-  -[Deploy Locally](#requirements-for-running-locally)
+  - [Online Access](#requirements-for-online-access)
+  - [Deploy Locally](#requirements-for-running-locally)
 - [Project Tools](#project-tools)
 - [Getting Started with the App](#getting-started-with-the-app)
 - [Design](#design)
