@@ -14,7 +14,11 @@ For additional details, please check out the [project brief](PROJECT-BRIEF.md).
 
 # Quick Links
 - [Team Members](#team-members)
+- [Setup](#setup)
+  -[Online Access](#requirements-for-online-access)
+  -[Deploy Locally](#requirements-for-running-locally)
 - [Project Tools](#project-tools)
+- [Getting Started with the App](#getting-started-with-the-app)
 - [Design](#design)
   - [Code](#code)
   - [User Interface](#user-interface)
@@ -31,6 +35,49 @@ For additional details, please check out the [project brief](PROJECT-BRIEF.md).
 - [Lauren](https://github.com/laurenmbeatty)
 - [Stacie](https://github.com/stacietaylorcima)
 
+# Steup
+## Requirements for Online Access
+- Internet Connection
+- Internet Browser
+- Site: https://tcl-5-smart-shopping-list.netlify.com/
+
+Please visit the [netlify hosted site](tcl-5-smart-shopping-list.netlify.com) to view the app online. If you need help navigating the app please see the [Getting Started With the App](#getting-started-with-the-app) section.
+
+## Requirements for Running Locally
+- Internet Connection
+- Internet Browser
+- Bash Terminal
+- Node.js
+- Node Package Manager (npm)
+- Github Respository: https://github.com/the-collab-lab/tcl-5-smart-shopping-list
+
+If you do not have the Node.js installed on your computer, please install it by following the directions for your operating system here. The Node.js version used for this project is v8.10.0. NPM is installed with Node.js. The current version of NPM used for this project is v3.5.2. If you need Node support, visit [Node.js's website](https://nodejs.org/).
+
+To view locally please copy the [link to this repo](https://github.com/the-collab-lab/tcl-5-smart-shopping-list.git) and type the following command into your Bash terminal:
+```
+$git clone https://github.com/the-collab-lab/tcl-5-smart-shopping-list.git
+```
+ To open the console app, navigate to the local directory which the online repository was cloned to using the command
+
+```
+$cd tcl-5-smart-shopping-list
+```
+
+Once in the correct repository, and confirming that you have Node.js installed, install the required dependencies using the following command
+
+```
+$npm i
+```
+
+Once npm has restored the required dependencies, run the app with the command
+
+$npm start
+
+If a browser does not automatically open the locally hosted instance, navigate to the [local host link](http://localhost:3000/) and enjoy!
+
+# Getting Started With The App
+
+*helpful screenshots and stuff will go here*
 
 # Project Tools
 ### Code formatting
