@@ -14,6 +14,7 @@ For additional details, please check out the [project brief](PROJECT-BRIEF.md).
 
 # Quick Links
 - [Team Members](#team-members)
+- [Project Tools](#project-tools)
 
 # Team Members
 ## [The Collab Lab, Cohort 5](https://the-collab-lab.codes/about-us#cohort-5)
@@ -28,7 +29,7 @@ For additional details, please check out the [project brief](PROJECT-BRIEF.md).
 - [Stacie](https://github.com/stacietaylorcima)
 
 
-
+# Project Tools
 ### Code formatting
 
 We’re using [Prettier](https://prettier.io/) to format our code before every commit, this is done automatically and will not affect the way you work!
