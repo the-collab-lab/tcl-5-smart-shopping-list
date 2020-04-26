@@ -44,6 +44,7 @@ If you’re curious, here’s the PR that adds this feature https://github.com/t
 These are functions that live in /src/lib/ that were abstracted out for ease of use throughout the whole app.
 
 #### estimates.js
+<em>Provided by [Andrew Hedges](https://github.com/segdeha), Updated by [Members of Cohort 5](https://the-collab-lab.codes/about-us#cohort-5)</em>
 
  Calculates a weighted estimate for the interval until the next purchase.
  * Current purchase a tiny bit less weight than all previous purchases
@@ -52,7 +53,7 @@ These are functions that live in /src/lib/ that were abstracted out for ease of 
  * <b>numberOfPurchases</b> (Number): Total number of purchases for the item
 
 
-Provided by [Andrew Hedges](https://github.com/segdeha)
+
 
 ```
 const calculateEstimate = (lastEstimate, latestInterval, numberOfPurchases) => {
@@ -67,9 +68,9 @@ const calculateEstimate = (lastEstimate, latestInterval, numberOfPurchases) => {
 
 ```
 
-And update was added by the members of Cohort 5, after noticing that the calculateEstimate function returned incorect, negative estimates, when the item had only been purchased once. A conditional was added to check for how many times an item was purchased, opting to return the latest interval if it was purchased only once, and returning the original calculation for 2 or more historical purchases.
+An update was added by the members of Cohort 5, after noticing that the calculateEstimate displayed odd behavior, returning negative estimates, when the item had only been purchased once. A conditional was added to check for how many times an item was purchased, opting to return the latest interval if it was purchased only once, and returning the original calculation for 2 or more historical purchases.
 
-Updated by [Members of Cohort 5](https://the-collab-lab.codes/about-us#cohort-5)
+
 
 ```
 const calculateEstimate = (lastEstimate, latestInterval, numberOfPurchases) => {
@@ -87,18 +88,39 @@ const calculateEstimate = (lastEstimate, latestInterval, numberOfPurchases) => {
 };
 ```
 
-
 #### firebase.js
+
+<em>Provided by [Andrew Hedges](https://github.com/segdeha) and [Stacie Taylor-Cima](https://github.com/stacietaylorcima)</em>
 
 The configuration for the TCL 5 Firebase instance.
 
-Provided by [Andrew Hedges](https://github.com/segdeha) and [Stacie Taylor-Cima](https://github.com/stacietaylorcima)
 
 #### normalizeString.js
+
+<em>Written by [Diane](https://github.com/dkimlim) and [Jennifer](https://github.com/jendevelops)</em>
+
+In response to creating an alert for duplicate normalized items described in [this issue](https://github.com/the-collab-lab/tcl-5-smart-shopping-list/issues/7), a helper function was created to be utilized throughout the app when a [shopping list filter issue](https://github.com/the-collab-lab/tcl-5-smart-shopping-list/issues/10) needed to utilize the same normalization logic.
+
+The simple function utilizes Javascript built in string manipulations to:
+- remove any casing
+- replace any non alphanumeric symbols
+- trim any extra space at the beginning or the end of the string
+- any double spaces with single spaces
+
+```
+const normalizeString = (inputString) => {
+    const output = inputString
+    .toLowerCase()
+    .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '')
+    .trim()
+    .replace(/\s{2,}/g, ' ');
+    return output
+}
+```
 
 #### timeframeConstants.js
 
 #### tokenGenerator.js
-Provided by [Andrew Hedges](https://github.com/segdeha)
+<em>Provided by [Andrew Hedges](https://github.com/segdeha)</em>
 
 ## User Interface
