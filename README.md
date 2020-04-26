@@ -15,6 +15,9 @@ For additional details, please check out the [project brief](PROJECT-BRIEF.md).
 # Quick Links
 - [Team Members](#team-members)
 - [Project Tools](#project-tools)
+- [Design](#design)
+  - [Code](#code)
+  - [User Interface](#user-interface)
 
 # Team Members
 ## [The Collab Lab, Cohort 5](https://the-collab-lab.codes/about-us#cohort-5)
@@ -35,3 +38,6 @@ For additional details, please check out the [project brief](PROJECT-BRIEF.md).
 We’re using [Prettier](https://prettier.io/) to format our code before every commit, this is done automatically and will not affect the way you work!
 If you’re curious, here’s the PR that adds this feature https://github.com/the-collab-lab/smart-shopping-list/pull/30
 
+# Design
+## Code
+## User Interface
