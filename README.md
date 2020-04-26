@@ -72,8 +72,6 @@ And update was added by the members of Cohort 5, after noticing that the calcula
 Updated by [Members of Cohort 5](https://the-collab-lab.codes/about-us#cohort-5)
 
 ```
-
-
 const calculateEstimate = (lastEstimate, latestInterval, numberOfPurchases) => {
     if (numberOfPurchases > 1) {
         if (isNaN(lastEstimate)) {
@@ -91,6 +89,10 @@ const calculateEstimate = (lastEstimate, latestInterval, numberOfPurchases) => {
 
 
 #### firebase.js
+
+The configuration for the TCL 5 Firebase instance.
+
+Provided by [Andrew Hedges](https://github.com/segdeha) and [Stacie Taylor-Cima](https://github.com/stacietaylorcima)
 
 #### normalizeString.js
 
