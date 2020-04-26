@@ -40,4 +40,63 @@ If you’re curious, here’s the PR that adds this feature https://github.com/t
 
 # Design
 ## Code
+### App Wide Functions
+These are functions that live in /src/lib/ that were abstracted out for ease of use throughout the whole app.
+
+#### estimates.js
+
+ Calculates a weighted estimate for the interval until the next purchase.
+ * Current purchase a tiny bit less weight than all previous purchases
+ * <b>lastEstimate</b> (Number): The last stored purchase interval estimate // TimeFrame
+ * <b>latestInterval</b> (Number): The interval between the most recent and previous purchases
+ * <b>numberOfPurchases</b> (Number): Total number of purchases for the item
+
+
+Provided by [Andrew Hedges](https://github.com/segdeha)
+
+```
+const calculateEstimate = (lastEstimate, latestInterval, numberOfPurchases) => {
+    if (isNaN(lastEstimate)) {
+            lastEstimate = 14;
+    }
+    let previousFactor = lastEstimate * numberOfPurchases;
+    let latestFactor = latestInterval * (numberOfPurchases - 1);
+    let totalDivisor = numberOfPurchases * 2 - 1;
+    return Math.round((previousFactor + latestFactor) / totalDivisor);
+};
+
+```
+
+And update was added by the members of Cohort 5, after noticing that the calculateEstimate function returned incorect, negative estimates, when the item had only been purchased once. A conditional was added to check for how many times an item was purchased, opting to return the latest interval if it was purchased only once, and returning the original calculation for 2 or more historical purchases.
+
+Updated by [Members of Cohort 5](https://the-collab-lab.codes/about-us#cohort-5)
+
+```
+
+
+const calculateEstimate = (lastEstimate, latestInterval, numberOfPurchases) => {
+    if (numberOfPurchases > 1) {
+        if (isNaN(lastEstimate)) {
+                lastEstimate = 14;
+        }
+        let previousFactor = lastEstimate * numberOfPurchases;
+        let latestFactor = latestInterval * (numberOfPurchases - 1);
+        let totalDivisor = numberOfPurchases * 2 - 1;
+        return Math.round((previousFactor + latestFactor) / totalDivisor);
+    } else {
+        return latestInterval;
+    }
+};
+```
+
+
+#### firebase.js
+
+#### normalizeString.js
+
+#### timeframeConstants.js
+
+#### tokenGenerator.js
+Provided by [Andrew Hedges](https://github.com/segdeha)
+
 ## User Interface
