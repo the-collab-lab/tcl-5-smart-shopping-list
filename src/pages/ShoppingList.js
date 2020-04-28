@@ -11,11 +11,13 @@ import '../css/ShoppingList.css';
 const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
     const [filterString, setFilterString] = useState('');
-    const [modal, setModal] = useState(false);
+    const [deleteModal, setDeleteModal] = useState(false);
+    const [detailModal, setDetailModal] = useState(false);
     const [currentItem, setCurrentItem] = useState(null);
     const userToken = token;
     let history = useHistory();
 
+  
     const welcomeInstructions = () => {
         return (
             <div>
@@ -165,7 +167,7 @@ const ShoppingList = ({ token }) => {
         db.collection(userToken)
             .doc(item.id)
             .delete()
-            .then(() => (getShoppingList(), setModal(false)));
+            .then(() => (getShoppingList(), setDeleteModal(false)));
     };
 
     const filteredList = shoppingListItems.filter(item => {
@@ -173,17 +175,28 @@ const ShoppingList = ({ token }) => {
     });
     return (
         <div>
-            <div>
-                {modal ? (
+
+                {deleteModal ? (
                     <Modal
                         item={currentItem}
-                        delete={deleteItem}
-                        cancel={() => {
-                            setModal(false);
+                        deleteItem={deleteItem}
+                        cancelItem={() => {
+                            setDeleteModal(false);
                         }}
+                        type="deleteItem"
                     />
                 ) : null}
-            </div>
+                {detailModal ? (
+                    <Modal
+                        item={currentItem}
+                        setDetailModal={setDetailModal}
+                        cancelItem={() => {
+                            setDetailModal(false);
+                        }}
+                        type="detail"
+                    />
+                ) : null}
+
             <label>Search for an item</label>
             <input
                 type="text"
@@ -192,16 +205,17 @@ const ShoppingList = ({ token }) => {
                 onChange={e => setFilterString(e.target.value)}
             />
             <button onClick={() => setFilterString('')}>X</button>
-            <table>
+            <tbody>
                 {filterString
                     ? filteredList.map(item => {
-                          return <ShoppingListItem item={item} handleCheck={handleCheck}  setCurrentItem={setCurrentItem} setModal={setModal} />;
+                          return <ShoppingListItem item={item} handleCheck={handleCheck}  setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />;
                       })
                     : shoppingListItems.length > 0
-                        ? shoppingListItems.map(item => <ShoppingListItem item={item} handleCheck={handleCheck} setCurrentItem={setCurrentItem} setModal={setModal} />)
+                        ? shoppingListItems.map(item => <ShoppingListItem item={item} handleCheck={handleCheck} setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />)
                     : welcomeInstructions()}
-            </table>
+            </tbody>
         </div>
     );
 };
 export default ShoppingList;
+
