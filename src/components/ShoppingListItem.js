@@ -17,13 +17,14 @@ const ShoppingListItem = ({item, handleCheck, setCurrentItem, setDeleteModal, se
                 onChange={e => handleCheck(e, item)}
                 />
             </td>
-            <td onClick= {()=> {setCurrentItem(item); setDetailModal(true);}} style={{cursor: "pointer"}}>{item.itemName}</td>
+            <td onClick= {()=> {setCurrentItem(item); setDetailModal(true);setDeleteModal(false)}} style={{cursor: "pointer"}}>{item.itemName}</td>
             <td>{returnString("value",item.timeFrame)}</td>
             <td><button
                     className="deleteItemButton"
                     onClick={() => {
                         setCurrentItem(item);
                         setDeleteModal(true);
+                        setDetailModal(false)
                     }}
                 >
                 &#128465;
