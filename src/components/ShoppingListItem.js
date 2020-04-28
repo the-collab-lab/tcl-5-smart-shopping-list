@@ -1,50 +1,10 @@
 import React from 'react';
-import * as timeframeConstants from '../lib/timeframeConstants';
+import {returnString} from '../lib/timeframeConstants';
 
-const timeFrameString = number =>
-{
-    switch(number){
-        case 7:
-            return "Fewer than 7 days";
-        case 14:
-            return "7 to 30 days";
-        case 30:
-            return "More than 30 days";
-        case 0:
-            return "Inactive item";
-        default:
-            return "None";
-    }
-}
-const generateClass = number =>
-{
-    switch(number){
-        case 7:
-            return "soon";
-        case 14:
-            return "kindasoon";
-        case 30:
-            return "notsoon";
-        case 0:
-            return "inactive";
-        default:
-            return "None";
-    }
-}
-// const getStringValue = (numberValue) => {
-//     const dictionary = {};
-//     dictionary[timeframeConstants.SOON.numberValue] = SOON.stringValue;
-
-//     if (dictionary.keys.includes(numberValue)){
-//         return dictionary[numberValue];
-//     }
-//     return "error"
-// }
-
-const ShoppingListItem = ({item, handleCheck, setCurrentItem, setModal}) => {
-    const ariaString = `${item.itemName} to be bought in ${timeFrameString(item.timeFrame)}`;
+const ShoppingListItem = ({item, handleCheck, setCurrentItem, setDeleteModal, setDetailModal}) => {
+    const ariaString = `${item.itemName} to be bought in ${returnString("value",item.timeFrame)}`;
     return (
-        <tr className={generateClass(item.timeFrame)}>
+        <tr className={returnString("class",item.timeFrame)}>
             <td>
                 <input
                 aria-label= {ariaString}
@@ -57,13 +17,14 @@ const ShoppingListItem = ({item, handleCheck, setCurrentItem, setModal}) => {
                 onChange={e => handleCheck(e, item)}
                 />
             </td>
-            <td>{item.itemName}</td>
-            <td>{timeFrameString(item.timeFrame)}</td>
+            <td onClick= {()=> {setCurrentItem(item); setDetailModal(true);setDeleteModal(false)}} style={{cursor: "pointer"}}>{item.itemName}</td>
+            <td>{returnString("value",item.timeFrame)}</td>
             <td><button
                     className="deleteItemButton"
                     onClick={() => {
                         setCurrentItem(item);
-                        setModal(true);
+                        setDeleteModal(true);
+                        setDetailModal(false)
                     }}
                 >
                 &#128465;
