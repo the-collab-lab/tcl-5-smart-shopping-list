@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import fb from '../lib/firebase';
-import '../css/AddItemForm.css';
+import '../App.css';
 import moment from 'moment';
 import normalizeString from '../lib/normalizeString';
 
@@ -98,7 +98,7 @@ const Form = ({ token }) => {
                     />
 
                     <div>
-                        <h1>How soon are you likely to buy it again?</h1>
+                        <h1>How soon will you need it again?</h1>
                     </div>
                     <select
                         name="time frame"

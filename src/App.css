@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-items: center;
     height: 100vh;
-    background-color: #b9dfed;
+    /*background-color: #b9dfed;*/
     position:relative;
 }
 
@@ -104,15 +104,16 @@ h2.Home-h2 a:hover {
 
 /* Add Item Form */
 
-h1 {
+form h1 {
     margin-top:40px;
+    font-size: 25px;
 }
 form {
     font: 95% Arial, Helvetica, sans-serif;
     max-width: 400px;
     margin: 10px auto;
     padding: 16px;
-    background: rgb(151, 193, 206);
+    background:#c4d8e2;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -120,23 +121,26 @@ form {
     flex-wrap: wrap;
     padding-bottom:80px;
     margin-bottom:100px;
+    background-position-y: inherit;
+    scroll-behavior: auto;
 }
 input {
     padding: 20px 0;
     font-size: 140%;
     font-weight: 300;
     text-align: center;
-    color: #000;
+    color: #aec6cf;
+    margin-top: 10px;
     margin-bottom: 40px;
     width:50%;
     border-style: none;
 }
 input[type=date] {
     font: 95% Arial, Helvetica, sans-serif;
-    color: #555;
+    color:#c4d8e2;
 }
 input[type=submit] {
-    background:teal;
+    background:#aec6cf;
     margin-top: 40px;
     cursor:pointer;
     color: #fff;
@@ -148,12 +152,15 @@ input[type=submit]:hover {
 select {
     margin: 20px 0 40px 0 ;
     height: 50px;
-    color: #555;
+    color: #c4d8e2;
     font-size:1rem;
 }
 .errorMessage {
     color:red;
 }
+
+/* Footer Tabs */
+
 
 /* Footer Tabs */
 

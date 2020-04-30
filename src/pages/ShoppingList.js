@@ -6,7 +6,7 @@ import calculateEstimate from '../lib/estimates';
 import Modal from '../components/Modal';
 import ShoppingListItem from '../components/ShoppingListItem';
 import normalizeString from '../lib/normalizeString';
-import '../css/ShoppingList.css';
+import '../App.css';
 
 const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
