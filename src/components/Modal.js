@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 
-const Modal = ({ type, item, deleteItem, cancelItem, setDetailModal }) => {
+const Modal = ({ type, item, deleteItem, cancelItem, setDetailModal, setCurrentItem , setDeleteModal }) => {
     let output;
 
     if (type === 'deleteItem') {
@@ -43,6 +43,15 @@ const Modal = ({ type, item, deleteItem, cancelItem, setDetailModal }) => {
                     </li>
                 </ul>
                 <button onClick={() => setDetailModal(false)}>Back</button>
+                <button
+                    className="deleteItemButton"
+                    onClick={() => {
+                        setCurrentItem(item);
+                        setDeleteModal(true);
+                    }}
+                >
+                &#128465;
+                </button>
             </div>
         );
     }

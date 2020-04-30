@@ -19,16 +19,6 @@ const ShoppingListItem = ({item, handleCheck, setCurrentItem, setDeleteModal, se
             </td>
             <td onClick= {()=> {setCurrentItem(item); setDetailModal(true);setDeleteModal(false)}} style={{cursor: "pointer"}}>{item.itemName}</td>
             <td>{returnString("value",item.timeFrame)}</td>
-            <td><button
-                    className="deleteItemButton"
-                    onClick={() => {
-                        setCurrentItem(item);
-                        setDeleteModal(true);
-                        setDetailModal(false)
-                    }}
-                >
-                &#128465;
-                </button></td>
         </tr>
     );
     }
