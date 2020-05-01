@@ -193,6 +193,32 @@ nav {
 
 /* Shopping List */
 
+.searchContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+.searchInputField {
+    border-radius: 20px;
+    min-width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.searchFieldEraseButton {
+    height: 50px;
+    width: 150px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
 .soon {
     background-color: red;
 }
