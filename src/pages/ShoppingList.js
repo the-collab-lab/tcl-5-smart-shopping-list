@@ -196,15 +196,17 @@ const ShoppingList = ({ token }) => {
                         type="detail"
                     />
                 ) : null}
-
-            <label>Search for an item</label>
+            <section className='searchContainer'>
+            <label><h3>Search for an item</h3></label>
             <input
+            className='searchInputField'
                 type="text"
-                placeholder="Search..."
+                placeholder="ie. Apples"
                 value={filterString}
                 onChange={e => setFilterString(e.target.value)}
             />
-            <button onClick={() => setFilterString('')}>X</button>
+            <button className='searchFieldEraseButton' onClick={() => setFilterString('')}>Clear search</button>
+            </section>
             <tbody>
                 {filterString
                     ? filteredList.map(item => {
