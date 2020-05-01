@@ -148,6 +148,7 @@ input[type=submit] {
 }
 input[type=submit]:hover {
     opacity:0.5;
+
 }
 select {
     margin: 20px 0 40px 0 ;
@@ -159,8 +160,23 @@ select {
     color:red;
 }
 
-/* Footer Tabs */
 
+/*.item-result{
+    background:blue;
+    bottom: 42px;
+    opacity: 0;
+}*/
+
+.item-result-success{
+    color: #436b1c;
+
+}
+
+.item-result-error{
+    color: #ed3f32;
+    display: none;
+
+}
 
 /* Footer Tabs */
 
@@ -205,3 +221,13 @@ nav {
 .inactive {
     background-color: grey;
 }
+/*Modal*/
+
+.Modal {
+    width:50%;
+    height:50%;
+    opacity: 1;
+    z-index: 1;
+    margin-left: 25%;
+    margin-top: 15%;
+  }

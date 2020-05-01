@@ -84,6 +84,7 @@ const Form = ({ token }) => {
             {addStatus ? (
                 renderRedirect()
             ) : (
+                <div>
                 <form id="addItemForm" onSubmit={e => handleSubmit(e)}>
                     <div>
                         <h1>Name of the item</h1>
@@ -131,6 +132,21 @@ const Form = ({ token }) => {
                     ) : null}
                     <input type="submit" />
                 </form>
+                <div className="item-result">
+                  <div className="item-result-success">
+                    <p>Item Added!</p>
+                    <span role="img" aria-label="rasing hands">🙌</span>
+                 </div>
+                  <div className="item-result-error">
+                    <p>Problem adding item, try again!</p>
+                    <span role="img" aria-label="confused face">😕</span>
+                  </div>
+                </div>
+            
+            </div>
+
+                
+               
             )}
         </div>
     );
