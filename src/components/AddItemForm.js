@@ -4,6 +4,7 @@ import fb from '../lib/firebase';
 import '../App.css';
 import moment from 'moment';
 import normalizeString from '../lib/normalizeString';
+import { returnString } from '../lib/timeframeConstants';
 
 const Form = ({ token }) => {
     const [itemName, setItemName] = useState('');
@@ -13,7 +14,7 @@ const Form = ({ token }) => {
     const [shoppingListCollection, setShoppingListCollection] = useState([]);
     const [duplicateError, setDuplicateError] = useState(false);
     const [addStatus, setAddStatus] = useState(false);
-    const [setSuccessModal]= useState(false);
+
 
     const getCurrentShoppingListItems = currentToken => {
         const db = fb.firestore();
@@ -80,6 +81,7 @@ const Form = ({ token }) => {
         return <Redirect to="/AddItem" />;
     };
 
+
     return (
         <div>
             {addStatus ? (
@@ -131,16 +133,33 @@ const Form = ({ token }) => {
                             There is a duplicate item in your shopping list.
                         </div>
                     ) : null}
-                    <input onClick = {()=> {setSuccessModal(true)}} style={{cursor: "pointer"}} type="submit" />
-                </form>
-            
-            </div>
+                    <input style={{cursor: "pointer"}} type="submit" />
+                         <alert>
+                         Item Added! <span role="img" aria-label="rasing hands">🙌</span>
+                         </alert>
+                    
 
+                   {/* / {Successlevel ? (
+                        
+                        <div  className="item-result-success">
+                        Item Added!
+                        <span role="img" aria-label="rasing hands">🙌</span>
+                         <returnString Redirect to="/AddItem" />
+                        </div> ) : null} */}
+                    
+                       {/* <div className="item-result-error">
+                        Problem adding item, try again!
+                        <span role="img" aria-label="confused face">😕</span>
+                      </div> */}
                 
-               
+                </form>
+            </div>
+           
             )}
         </div>
-    );
-};
+        
+    )
+}
 
 export default Form;
+
