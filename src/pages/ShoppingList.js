@@ -184,15 +184,15 @@ const ShoppingList = ({ token }) => {
                         : shoppingListItems.length > 0
                             ? shoppingListItems.map(item => <ShoppingListItem item={item} handleCheck={handleCheck} setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />)
                             : (
-                                <button onClick={e => setEmptyListModal(!emptyListModal)}>
+                                <button className="emptyListButton" onClick={e => setEmptyListModal(!emptyListModal)}>
                                     {emptyListModal ? "Nevermind, I got it!" : "Your list looks empty. Need help?"}
                                 </button>
                             )}
-                    {emptyListModal ? < Modal type="emptyList" setEmptyListModal={setEmptyListModal} token={token} /> : null};
+                    {emptyListModal ? < Modal type="emptyList" setEmptyListModal={setEmptyListModal} token={token} /> : null}
             
             </table>
         </div>
-    );
-};
+    )
+}
 export default ShoppingList;
 

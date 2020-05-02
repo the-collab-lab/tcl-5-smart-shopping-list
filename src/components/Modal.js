@@ -6,7 +6,7 @@ const Modal = ({ type, token, item, deleteItem, cancelItem, setDetailModal, setE
 
     if (type === 'deleteItem') {
         output = (
-            <div className="Modal">
+            <div className="modal">
                 <p> Are you sure you want to delete {item.itemName}?</p>
                 <button onClick={() => deleteItem(item)}>YES</button>
                 <button onClick={() => cancelItem()}>No</button>
@@ -14,7 +14,7 @@ const Modal = ({ type, token, item, deleteItem, cancelItem, setDetailModal, setE
         );
     } else if (type === 'detail') {
         output = (
-            <div className="detailsModal">
+            <div className="modal detailsModal">
                 <h1>Purchase Details</h1>
                 <h2>{item.itemName}</h2>
                 <ul>
@@ -46,10 +46,8 @@ const Modal = ({ type, token, item, deleteItem, cancelItem, setDetailModal, setE
             </div>
         );
     } else if (type === 'emptyList'){
-        output = 
-        <div>
-            
-        <div className="emptyListModal">
+        output =      
+        <div className="modal emptyListModal">
             <ul>
                 <li>
                     Add items by clicking the "Add Item" button in the
@@ -65,7 +63,6 @@ const Modal = ({ type, token, item, deleteItem, cancelItem, setDetailModal, setE
                 </li>
             </ul>
         </div>
-    </div>;
     }
 
     return output;

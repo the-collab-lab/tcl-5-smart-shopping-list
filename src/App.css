@@ -222,3 +222,26 @@ nav {
     height: 100%;
     width: 100%;
     background-color: rgba(0,0,0,0.5);
+}
+
+.emptyListModal ul{
+    list-style-type: circle;
+    padding:0;
+}
+
+.emptyListModal li {
+    display: block;
+    margin-left:0;
+    
+}
+
+button.emptyListButton {
+    background-color: rgba(80, 148, 46);
+    color: #fff;
+    cursor: pointer;
+    font-size: 32px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid rgba(80, 148, 46);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
