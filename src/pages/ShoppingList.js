@@ -17,19 +17,14 @@ const ShoppingList = ({ token }) => {
     const userToken = token;
     let history = useHistory();
 
-  
+
     const welcomeInstructions = () => {
         return (
             <div>
-                <input
-                    type="checkbox"
-                    className="button-link"
-                    id="WelcomeClick"
-                />
-                <label htmlFor="WelcomeClick" id="Welcome">
+                <p onClick={e => console.log(e.target) }>
                     Your list looks empty. Need help?
-                </label>
-                <div id="hideWelcome">
+                </p>
+                <div className="hideWelcome">
                     <ul>
                         <li>
                             Add items by clicking the "Add Item" button in the
@@ -50,11 +45,11 @@ const ShoppingList = ({ token }) => {
     };
 
     const filterShoppingListByTimeframe = (shoppingListArray) => {
-        const alphabeticalSort = (a,b) => {
+        const alphabeticalSort = (a, b) => {
             const aName = normalizeString(a.itemName);
             const bName = normalizeString(b.itemName);
-            if (aName < bName) {return -1;}
-            if (aName > bName) {return 1;}
+            if (aName < bName) { return -1; }
+            if (aName > bName) { return 1; }
             return 0;
         }
         const seven = shoppingListArray.filter(item => item.timeFrame === 7).sort(alphabeticalSort);
@@ -68,7 +63,7 @@ const ShoppingList = ({ token }) => {
         const now = moment(Date.now());
         return shoppingListArray.map(item => {
             const initialDate = moment(item.lastPurchaseDate)
-            if (now.diff(initialDate, "d") > (2*item.timeFrame)) {
+            if (now.diff(initialDate, "d") > (2 * item.timeFrame)) {
                 item.timeFrame = 0
             }
             return item;
@@ -143,7 +138,7 @@ const ShoppingList = ({ token }) => {
                     nextPurchaseDate,
                     isChecked: e.target.checked,
                 })
-                .then(function() {
+                .then(function () {
                     getShoppingList();
                 });
         } else {
@@ -156,7 +151,7 @@ const ShoppingList = ({ token }) => {
                     lastPurchaseDate,
                     numOfPurchases: numberOfPurchases,
                 })
-                .then(function() {
+                .then(function () {
                     getShoppingList();
                 });
         }
@@ -176,26 +171,26 @@ const ShoppingList = ({ token }) => {
     return (
         <div>
 
-                {deleteModal ? (
-                    <Modal
-                        item={currentItem}
-                        deleteItem={deleteItem}
-                        cancelItem={() => {
-                            setDeleteModal(false);
-                        }}
-                        type="deleteItem"
-                    />
-                ) : null}
-                {detailModal ? (
-                    <Modal
-                        item={currentItem}
-                        setDetailModal={setDetailModal}
-                        cancelItem={() => {
-                            setDetailModal(false);
-                        }}
-                        type="detail"
-                    />
-                ) : null}
+            {deleteModal ? (
+                <Modal
+                    item={currentItem}
+                    deleteItem={deleteItem}
+                    cancelItem={() => {
+                        setDeleteModal(false);
+                    }}
+                    type="deleteItem"
+                />
+            ) : null}
+            {detailModal ? (
+                <Modal
+                    item={currentItem}
+                    setDetailModal={setDetailModal}
+                    cancelItem={() => {
+                        setDetailModal(false);
+                    }}
+                    type="detail"
+                />
+            ) : null}
 
             <label>Search for an item</label>
             <input
@@ -205,15 +200,17 @@ const ShoppingList = ({ token }) => {
                 onChange={e => setFilterString(e.target.value)}
             />
             <button onClick={() => setFilterString('')}>X</button>
+            <table>
             <tbody>
                 {filterString
                     ? filteredList.map(item => {
-                          return <ShoppingListItem item={item} handleCheck={handleCheck}  setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />;
-                      })
+                        return <ShoppingListItem item={item} handleCheck={handleCheck} setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />;
+                    })
                     : shoppingListItems.length > 0
                         ? shoppingListItems.map(item => <ShoppingListItem item={item} handleCheck={handleCheck} setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />)
-                    : welcomeInstructions()}
+                        : welcomeInstructions()}
             </tbody>
+            </table>
         </div>
     );
 };
