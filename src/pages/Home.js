@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/Home.css';
+// import '../css/Home.css';
 import NewListButton from '../components/NewListButton';
 import { Link, Redirect } from 'react-router-dom';
 

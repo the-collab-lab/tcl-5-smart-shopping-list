@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import fb from '../lib/firebase';
-import '../css/AddItemForm.css';
+// import '../css/AddItemForm.css';
 import moment from 'moment';
 import normalizeString from '../lib/normalizeString';
 
