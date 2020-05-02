@@ -23,3 +23,28 @@
 .Header h1 {
     margin: 20px;
 }
+
+
+.modal{
+    /* arbitrary styling */
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+
+    /* change position to fixed if you want to prevent the dialog from scrolling away, and center it */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal::backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
