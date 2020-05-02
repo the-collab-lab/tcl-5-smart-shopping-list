@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 
-const Modal = ({ type, item, deleteItem, cancelItem, setDetailModal }) => {
+const Modal = ({ type, token, item, deleteItem, cancelItem, setDetailModal, setEmptyListModal }) => {
     let output;
 
     if (type === 'deleteItem') {
@@ -45,6 +45,27 @@ const Modal = ({ type, item, deleteItem, cancelItem, setDetailModal }) => {
                 <button onClick={() => setDetailModal(false)}>Back</button>
             </div>
         );
+    } else if (type === 'emptyList'){
+        output = 
+        <div>
+            
+        <div className="emptyListModal">
+            <ul>
+                <li>
+                    Add items by clicking the "Add Item" button in the
+                    bottom of the screen.
+                </li>
+                <li>
+                    Your list will be sorted with most needed items
+                    first.
+                </li>
+                <li>
+                    To share this list with you friend, give them the
+                    code "{token}"
+                </li>
+            </ul>
+        </div>
+    </div>;
     }
 
     return output;

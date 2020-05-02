@@ -14,35 +14,9 @@ const ShoppingList = ({ token }) => {
     const [deleteModal, setDeleteModal] = useState(false);
     const [detailModal, setDetailModal] = useState(false);
     const [currentItem, setCurrentItem] = useState(null);
+    const [emptyListModal, setEmptyListModal] = useState(false);
     const userToken = token;
     let history = useHistory();
-
-
-    const welcomeInstructions = () => {
-        return (
-            <div>
-                <p onClick={e => console.log(e.target) }>
-                    Your list looks empty. Need help?
-                </p>
-                <div className="hideWelcome">
-                    <ul>
-                        <li>
-                            Add items by clicking the "Add Item" button in the
-                            bottom of the screen.
-                        </li>
-                        <li>
-                            Your list will be sorted with most needed items
-                            first.
-                        </li>
-                        <li>
-                            To share this list with you friend, give them the
-                            code "{token}"
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        );
-    };
 
     const filterShoppingListByTimeframe = (shoppingListArray) => {
         const alphabeticalSort = (a, b) => {
@@ -201,15 +175,21 @@ const ShoppingList = ({ token }) => {
             />
             <button onClick={() => setFilterString('')}>X</button>
             <table>
-            <tbody>
-                {filterString
-                    ? filteredList.map(item => {
-                        return <ShoppingListItem item={item} handleCheck={handleCheck} setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />;
-                    })
-                    : shoppingListItems.length > 0
-                        ? shoppingListItems.map(item => <ShoppingListItem item={item} handleCheck={handleCheck} setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />)
-                        : welcomeInstructions()}
-            </tbody>
+                
+                    {filterString
+                        ? (
+                                filteredList.map(item => 
+                                 <ShoppingListItem item={item} handleCheck={handleCheck} setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />)
+                            )
+                        : shoppingListItems.length > 0
+                            ? shoppingListItems.map(item => <ShoppingListItem item={item} handleCheck={handleCheck} setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />)
+                            : (
+                                <button onClick={e => setEmptyListModal(!emptyListModal)}>
+                                    {emptyListModal ? "Nevermind, I got it!" : "Your list looks empty. Need help?"}
+                                </button>
+                            )}
+                    {emptyListModal ? < Modal type="emptyList" setEmptyListModal={setEmptyListModal} token={token} /> : null};
+            
             </table>
         </div>
     );

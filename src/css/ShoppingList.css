@@ -10,3 +10,11 @@
 .inactive {
     background-color: grey;
 }
+
+
+.welcome {
+    display: none;
+}
+
+ul {
+}
