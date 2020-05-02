@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import getToken from '../lib/tokenGenerator';
 import * as ls from 'local-storage';
 import '../App.css';
+
 const NewListButton = props => {
     const onClick = event => {
         const newToken = getToken();

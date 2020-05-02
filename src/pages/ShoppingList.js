@@ -8,6 +8,7 @@ import ShoppingListItem from '../components/ShoppingListItem';
 import normalizeString from '../lib/normalizeString';
 import '../App.css';
 
+
 const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
     const [filterString, setFilterString] = useState('');
@@ -205,6 +206,14 @@ const ShoppingList = ({ token }) => {
                 onChange={e => setFilterString(e.target.value)}
             />
             <button onClick={() => setFilterString('')}>X</button>
+            <thead>
+                <tr>
+                <th>Bought?</th>
+                <th>Item Name</th>
+                <th>When to buy</th>
+                <th>Delete?</th>
+                </tr>
+            </thead>
             <tbody>
                 {filterString
                     ? filteredList.map(item => {
