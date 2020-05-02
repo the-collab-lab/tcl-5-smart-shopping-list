@@ -1,18 +1,19 @@
 import React from 'react';
 import '../App.css';
 
-const Modal = ({ type, item, deleteItem, cancelItem, setDetailModal, setCurrentItem , setDeleteModal }) => {
+
+const Modal = ({ type, item, deleteItem, cancelItem, setDetailModal, setCurrentItem , setDeleteModal , setSuccessModal }) => {
     let output;
 
-    if (type === 'deleteItem') {
-        output = (
-            <div className="Modal">
+    if (type ==='delete')
+    output = (
+            <div className="DeleteModal">
                 <p> Are you sure you want to delete {item.itemName}?</p>
                 <button onClick={() => deleteItem(item)}>YES</button>
                 <button onClick={() => cancelItem()}>No</button>
             </div>
         );
-    } else if (type === 'detail') {
+    if (type === 'detail') {
         output = (
             <div className="detailsModal">
                 <h1>Purchase Details</h1>
@@ -42,7 +43,7 @@ const Modal = ({ type, item, deleteItem, cancelItem, setDetailModal, setCurrentI
                         <p id="itemDetails">{item.numOfPurchases}</p>
                     </li>
                 </ul>
-                <button onClick={() => setDetailModal(false)}>Back</button>
+                <button onClick={() => setDetailModal(false)}> Go Back?</button>
                 <button
                     className="deleteItemButton"
                     onClick={() => {
@@ -53,7 +54,21 @@ const Modal = ({ type, item, deleteItem, cancelItem, setDetailModal, setCurrentI
                 &#128465;
                 </button>
             </div>
-        );
+        )
+        if (type === 'Success')
+         output = (
+            <div className="SuccessModal">
+                  <div className="item-result-success">
+                    <p>Item Added!</p>
+                    <span role="img" aria-label="rasing hands">🙌</span>
+                 </div>
+                  <div className="item-result-error">
+                    <p>Problem adding item, try again!</p>
+                    <span role="img" aria-label="confused face">😕</span>
+                  </div>
+            </div>
+            )
+        
     }
 
     return output;

@@ -137,17 +137,18 @@ input {
 }
 input[type=date] {
     font: 95% Arial, Helvetica, sans-serif;
-    color:#c4d8e2;
+    color: #aec6cf;
 }
 input[type=submit] {
     background:#aec6cf;
     margin-top: 40px;
     cursor:pointer;
-    color: #fff;
+    color: white;
     font-weight:400;
 }
 input[type=submit]:hover {
     opacity:0.5;
+    
 
 }
 select {
@@ -155,6 +156,7 @@ select {
     height: 50px;
     color: #c4d8e2;
     font-size:1rem;
+
 }
 .errorMessage {
     color:red;
@@ -168,7 +170,8 @@ select {
 }*/
 
 .item-result-success{
-    color: #436b1c;
+    color: #aec6cf;
+    font-size: 20px;
 
 }
 
@@ -223,7 +226,14 @@ nav {
 }
 /*Modal*/
 
-.Modal {
+.Modal{
+
+}
+.button{
+
+}
+
+.detail {
     width:50%;
     height:50%;
     opacity: 1;
@@ -231,3 +241,8 @@ nav {
     margin-left: 25%;
     margin-top: 15%;
   }
+
+.deleteItemButton{
+    width: 75px;
+    height: 75px;
+}
