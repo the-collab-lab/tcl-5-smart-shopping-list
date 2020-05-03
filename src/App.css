@@ -258,7 +258,7 @@ form {
     max-width: 400px;
     margin: 10px auto;
     padding: 16px;
-    background: rgb(151, 193, 206);
+    background: #F1F4F4;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -272,7 +272,8 @@ input {
     font-size: 140%;
     font-weight: 300;
     text-align: center;
-    color: #000;
+    color: #c4d8e2;
+    background: #dfded4;
     margin-bottom: 40px;
     width:50%;
     border-style: none;
@@ -282,7 +283,7 @@ input[type=date] {
     color: #555;
 }
 input[type=submit] {
-    background:teal;
+    background:#AEC6CF;
     margin-top: 40px;
     cursor:pointer;
     color: #fff;
@@ -290,6 +291,7 @@ input[type=submit] {
 }
 input[type=submit]:hover {
     opacity:0.5;
+
 }
 select {
     margin: 20px 0 40px 0 ;

@@ -67,6 +67,9 @@ const Form = ({ token }) => {
                     tokenRef.doc(docRef.id).update({ id: docRef.id });
                     getCurrentShoppingListItems(userToken);
                     setAddStatus(true);
+                    alert(' Item Added!🙌');
+                    if(!alert('Item Added!🙌')){window.location.reload();}
+                   
                 })
                 .catch(error =>
                     console.error('Error writing document: ', error)
@@ -80,6 +83,8 @@ const Form = ({ token }) => {
         setAddStatus(false);
         return <Redirect to="/AddItem" />;
     };
+
+  
 
 
     return (
@@ -133,24 +138,7 @@ const Form = ({ token }) => {
                             There is a duplicate item in your shopping list.
                         </div>
                     ) : null}
-                    <input style={{cursor: "pointer"}} type="submit" />
-                         <alert>
-                         Item Added! <span role="img" aria-label="rasing hands">🙌</span>
-                         </alert>
-                    
-
-                   {/* / {Successlevel ? (
-                        
-                        <div  className="item-result-success">
-                        Item Added!
-                        <span role="img" aria-label="rasing hands">🙌</span>
-                         <returnString Redirect to="/AddItem" />
-                        </div> ) : null} */}
-                    
-                       {/* <div className="item-result-error">
-                        Problem adding item, try again!
-                        <span role="img" aria-label="confused face">😕</span>
-                      </div> */}
+                    <input  style={{cursor: "pointer"}} type="submit" />
                 
                 </form>
             </div>
