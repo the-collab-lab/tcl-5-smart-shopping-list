@@ -82,7 +82,8 @@ main {
 }
 
 .JoinList-button {
-    flex: 1;
+    /* flex: 1; */
+    width: 50%;
 }
 
 .JoinList-input {
