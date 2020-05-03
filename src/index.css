@@ -2,6 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #c4d8e2;
+  font-family: 'Jost', sans-serif;
 }
 body {
   display: flex;

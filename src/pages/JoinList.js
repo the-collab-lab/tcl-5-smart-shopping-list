@@ -1,4 +1,5 @@
 import React from 'react';
+import {Button} from 'react-materialize'
 
 const JoinList = ({ handleChange, checkToken, inputToken }) => {
     return (
@@ -14,12 +15,23 @@ const JoinList = ({ handleChange, checkToken, inputToken }) => {
                 onChange={handleChange}
                 required
             />
-            <button
+             <Button
+                node="button"
+                className="JoinList-button"
+                onClick={() => checkToken(inputToken)}
+                // style={{
+                // marginRight: '15px'
+                // }}
+                waves="light"
+            >
+                Join List{' '}
+            </Button>
+            {/* <button
                 className="JoinList-button"
                 onClick={() => checkToken(inputToken)}
             >
                 Join List{' '}
-            </button>
+            </button> */}
         </div>
     );
 };

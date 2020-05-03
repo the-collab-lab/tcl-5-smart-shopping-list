@@ -4,9 +4,8 @@
     justify-content: space-between;
     align-items: center;
     height: 100vh;
-    /* background-color: #b9dfed; */
     position:relative;
-    font-family: 'Encode Sans Semi Expanded', sans-serif;
+    
 }
 
 .Header {
@@ -18,94 +17,11 @@
     top: 0;
     display: block;
     text-align: center;
-    /* color: blue; */
-    /* font-size: 25px; */
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
-/* .Header h1 {
-    margin: 20px;
-} */
+
 .Header img {
     max-width:350px;
 }
-
-/* Home */
-
-.Home,
-.JoinList-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: #DFDED4;
-    padding: 50px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.JoinList-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-}
-
-.JoinList-text {
-    display: inline-block;
-    text-align: center;
-    width: 100%;
-    font-weight: bold;
-    font-size: 32px;
-    margin-bottom:40px;
-}
-
-.JoinList-button {
-    flex: 1;
-}
-
-.JoinList-input {
-    display: inline-block;
-    min-width: 300px;
-    margin: 0 20px 0 0;
-    height: 40px;
-    flex: 1;
-    border: 1px solid green;
-}
-
-.Home a {
-    text-decoration: none;
-}
-
-h1.Home-h1 {
-    margin-top: 0;
-    font-weight: 600;
-}
-h2.Home-h2 {
-    color: darkgrey;
-}
-h2.Home-h2 a {
-    color: black;
-}
-h2.Home-h2 a:hover {
-    color: #24A5B0;
-}
-
-.NewList-button,
-.JoinList-button {
-    background-color: #AEC6CF;
-    color: #fff;
-    cursor: pointer;
-    font-size: 32px;
-    padding: 20px;
-    margin: 20px 0;
-    border: 1px solid #AEC6CF;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.NewList-button:hover,
-.JoinList-button:hover {
-    box-shadow: 0 0.5em 0.5em -0.4em #24A5B0;
-    transform: translateY(-0.25em);
-}
-
 
 /* Add Item Form */
 
@@ -139,16 +55,20 @@ main {
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    background-color: white;
-    padding: 50px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #c4d8e2;
+    padding: 20px;
 }
 
-.JoinList-container {
+/* .JoinList-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content:flex-start;
+    align-items:center;
+    flex-direction: column;
     flex-direction: row;
-}
+    width:50%;
+    max-width:70vw;
+} */
 
 .JoinList-text {
     display: inline-block;
@@ -169,41 +89,53 @@ main {
     margin: 0 20px 0 0;
     height: 40px;
     flex: 1;
+    background-color:white;
 }
 
-.Home a {
-    text-decoration: none;
+/* Home Container */
+
+ .Home img {
+     width:150px;
+     height:auto;
+     margin:30px;
 }
 
 h1.Home-h1 {
     margin-top: 0;
     font-weight: 600;
+    font-size:35px;
+}
+h2.Home-h2-1 {
+    margin-top: 0;
+    font-weight: 600;
+    font-size:30px;
 }
 h2.Home-h2 {
+    font-size:22px;
     color: darkgrey;
 }
 h2.Home-h2 a {
-    color: black;
+    color:  #26a69a;
+    text-decoration: none;
 }
 h2.Home-h2 a:hover {
-    color: green;
+    color: black;
 }
 
 .NewList-button,
 .JoinList-button {
-    background-color: rgba(80, 148, 46);
     color: #fff;
     cursor: pointer;
     font-size: 32px;
     padding: 20px;
     margin: 20px 0;
-    border: 1px solid rgba(80, 148, 46);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height:100%;
+    width:100%;
 }
 
 .NewList-button:hover,
 .JoinList-button:hover {
-    box-shadow: 0 0.5em 0.5em -0.4em rgba(80, 148, 46, 0.8);
+    box-shadow: 0 0.5em 0.5em -0.4em #24A5B0;
     transform: translateY(-0.25em);
 }
 
