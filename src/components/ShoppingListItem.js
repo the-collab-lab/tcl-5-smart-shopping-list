@@ -16,7 +16,7 @@ const ShoppingListItem = ({item, handleCheck, setCurrentItem, setDeleteModal, se
                 checked={item.isChecked}
                 onChange={e => handleCheck(e, item)}
                 />
-                <span class="checkmark"></span>
+                <span className="checkmark"></span>
             </td>
             <td onClick= {()=> {setCurrentItem(item); setDetailModal(true);setDeleteModal(false)}} style={{cursor: "pointer"}}>{item.itemName}</td>
             <td>{returnString("value",item.timeFrame)}</td>

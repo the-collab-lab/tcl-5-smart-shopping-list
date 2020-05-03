@@ -36,7 +36,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #DFDED4;
+    background-color: #F1F4F4;
     padding: 50px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -45,6 +45,7 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    max-width:50%;
 }
 
 .JoinList-text {
@@ -53,7 +54,7 @@
     width: 100%;
     font-weight: bold;
     font-size: 32px;
-    margin-bottom:40px;
+    margin:40px 0;
 }
 
 .JoinList-button {
@@ -66,7 +67,7 @@
     margin: 0 20px 0 0;
     height: 40px;
     flex: 1;
-    border: 1px solid green;
+    border: 1px solid #24A5B0;
 }
 
 .Home a {
@@ -81,16 +82,21 @@ h2.Home-h2 {
     color: darkgrey;
 }
 h2.Home-h2 a {
-    color: black;
-}
-h2.Home-h2 a:hover {
     color: #24A5B0;
 }
+h2.Home-h2 a:hover{
+    color: #000;
+}
+.Home img {
+    width:100px;
+    margin-bottom:40px;
+}
+
 
 .NewList-button,
 .JoinList-button {
     background-color: #AEC6CF;
-    color: #fff;
+    color: #f1f4f4;
     cursor: pointer;
     font-size: 32px;
     padding: 20px;
@@ -200,7 +206,7 @@ nav {
     background-color: #e2c4d8;
 }
 .inactive {
-    background-color: #c4d8e2;
+    background-color: #dfdfdf;
 }
 
 thead {
@@ -222,7 +228,7 @@ tbody tr {
     height:50px;
 }
 tbody tr:hover {
-    background-color: #e2c4d8; 
+    background-color: #9ae7ff; 
 }
 tbody td input {
     margin-bottom:0;
@@ -242,6 +248,14 @@ tbody td input {
     width: 10px;
     height:10px;
 }
+
+input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
 .checkmark {
     position: absolute;
     top: 0;
@@ -250,3 +264,161 @@ tbody td input {
     width: 25px;
     background-color: #eee;
   }
+
+  /* MODAL */
+/* Add animation (Chrome, Safari, Opera) */
+@-webkit-keyframes example {
+    from {top:-100px;opacity: 0;}
+    to {top:0px;opacity:1;}
+  }
+  
+  /* Add animation (Standard syntax) */
+  @keyframes example {
+    from {top:-100px;opacity: 0;}
+    to {top:0px;opacity:1;}
+  }
+  
+  /* The modal's background */
+  .modal {
+    display: table;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Display the modal when targeted */
+  /* .modal:active {
+    display: table;
+    position: absolute;
+  } */
+  
+  /* The modal box */
+  .modal-dialog {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  
+  /* The modal's content */
+  .modal-dialog .modal-content {
+    margin: auto;
+    background-color: #AEC6CF;
+    color: black;
+    position: relative;
+    padding: 0;
+    outline: 0;
+    border: 5px #AEC6CF solid;
+    text-align: center;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
+    /* Add animation */
+    -webkit-animation-name: example; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 0.5s; /* Chrome, Safari, Opera */
+    animation-name: example;
+    animation-duration: 0.5s;
+  }
+  
+  /* The button used to close the modal */
+  /* .closebtn {
+    text-decoration: none;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    color: #fff;
+  } */
+  
+  /* .closebtn:hover,
+  .closebtn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  } */
+  
+  .container {
+    padding: 2px 16px;
+  }
+  
+  header {
+    /* background-color: #AEC6CF; */
+    font-size: 25px;
+    /* color: black; */
+  }
+  
+  footer {
+    /* background-color: #AEC6CF; */
+    font-size: 20px;
+    /* color: black; */
+  }
+
+
+
+  /* .Modal {
+    position: fixed;
+    top: 10%;
+    padding: 24px;
+    left: 50%;
+    background-color: white;
+    border: 1px solid red;
+    border-radius: 3px;
+    text-align:center;
+  }*/
+  .modal button{
+    background-color: #DFDED4;
+    color: #000;
+    cursor: pointer;
+    font-size: 32px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #DFDED4;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  .modal button:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em #24A5B0;
+    transform: translateY(-0.25em);
+} 
+ /* .detailsModal {
+    position: fixed;
+    top: 64px;
+    padding: 24px;
+    left: 64px;
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 3px;
+  } */
+
+
+
+
+
+
+
+  /* .btn-close{
+    color: lightgray;
+    font-size: 30px;
+    text-decoration: none;
+    position: absolute; right: 5px; top: 0;
+  }
+  .btn-close:hover{
+    color: darken(lightgray, 10%);
+ }
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    transition: opacity 1s;
+    visibility: hidden;
+    opacity: 0;
+  }
+  .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 998;
+  } */

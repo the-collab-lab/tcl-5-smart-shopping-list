@@ -5,8 +5,9 @@ import { Link, Redirect } from 'react-router-dom';
 function Home({ token, setToken }) {
     return (
         <div className="Home">
-            <h1 className="Home-h1">Welcome to your smart shopping list!</h1>
-            <h2>Tap "Create shopping list" to get started</h2>
+            <img src="/img/006-food-basket.png"></img>
+            <h1 className="Home-h1">Welcome to My Shopping List</h1>
+            <h2>Tap "Create a New List" to get started</h2>
             <NewListButton
                 className="button"
                 setToken={setToken}
