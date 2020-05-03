@@ -174,12 +174,8 @@ const ShoppingList = ({ token }) => {
         return item.itemName.toLowerCase().includes(filterString.toLowerCase());
     });
 
-    const trigger = <Button>Open Modal</Button>
     return (
         <div>
-            <Modal header="Modal Header" trigger={trigger}>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  </Modal>
                 {deleteModal ? (
                     <Modal
                         item={currentItem}
