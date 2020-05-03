@@ -4,7 +4,7 @@ import '../App.css';
 const Header = () => {
     return (
         <div className='Header'>
-            <img src="/img/C4D8E2.png" alt="Shopping List Logo"></img>
+            <a href="/"><img src="/img/C4D8E2.png" alt="Shopping List Logo" /></a>
         </div>
     );
 };

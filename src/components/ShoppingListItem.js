@@ -1,37 +1,93 @@
 import React from 'react';
 import {returnString} from '../lib/timeframeConstants';
+import {Modal, Button, Checkbox} from 'react-materialize'
+import moment from 'moment';
 
-const ShoppingListItem = ({item, handleCheck, setCurrentItem, setDeleteModal, setDetailModal}) => {
+const ShoppingListItem = ({item, handleCheck, currentItem, setCurrentItem, setDeleteModal, setDetailModal, deleteItem, detailModal}) => {
     const ariaString = `${item.itemName} to be bought in ${returnString("value",item.timeFrame)}`;
     return (
-        
+        <React.Fragment>
         <tr className={returnString("class",item.timeFrame)}>
             <td>
-                <input
-                aria-label= {ariaString}
-                key={item.id}
-                id={item.id}
-                type="checkbox"
-                name={item.id}
-                value={item.isChecked}
-                checked={item.isChecked}
-                onChange={e => handleCheck(e, item)}
-                />
-                <span class="checkmark"></span>
+
+            <Checkbox
+            id="Checkbox_3"
+            // label="Red"
+            value="Red"
+            onClick={e => handleCheck(e, item)}
+            aria-label= {ariaString}
+            key={item.id}
+            id={item.id}
+            name={item.id}
+            value={item.isChecked}
+            checked={item.isChecked}
+            />
             </td>
-            <td onClick= {()=> {setCurrentItem(item); setDetailModal(true);setDeleteModal(false)}} style={{cursor: "pointer"}}>{item.itemName}</td>
+            <td onClick= {()=> {setCurrentItem(item); setDetailModal(true);setDeleteModal(false)}}  currentItem={currentItem} style={{cursor: "pointer"}} className="modal-trigger" href="#modal2">{item.itemName}</td>
             <td>{returnString("value",item.timeFrame)}</td>
-            <td><button
-                    className="deleteItemButton"
-                    onClick={() => {
-                        setCurrentItem(item);
-                        setDeleteModal(true);
-                        setDetailModal(false)
-                    }}
-                >
-                <img src="/img/005-trash.png" alt="delete icon" />
-                </button></td>
+            <td>
+            <button
+                className="deleteItemButton modal-trigger"
+                href="#modal1"
+                node="button"
+                onClick={() => {
+                    setCurrentItem(item);
+                    setDeleteModal(true);
+                    setDetailModal(false)
+                }}
+            >
+            <img src="/img/005-trash.png" alt="delete icon" />
+            </button></td>
         </tr>
+            
+            <Modal header="Here are the details of your item:" id="modal2"
+            actions={[
+                <div>
+                <Button flat modal="close" node="button" waves="green">Close</Button>
+                </div>
+                ]}>
+                <div className="detailsModal">
+                
+                <h2>{item.itemName}</h2>
+                {/* <h1>Purchase Details</h1> */}
+                <ul>
+                    <li>
+                        Last purchase:{' '}
+                        <p>
+                            {' '}
+                            {item.lastPurchaseDate
+                                ? moment(item.lastPurchaseDate).format('LL')
+                                : 'None'}
+                        </p>
+                    </li>
+                    <li>
+                        Next purchase:{' '}
+                        {
+                            <p>
+                                {item.nextPurchaseDate
+                                    ?  moment(item.nextPurchaseDate).format("LL")
+                                    : 'None'}
+                            </p>
+                        }
+                    </li>
+                    <li>
+                        Number of purchases:
+                        <p id="itemDetails">{item.numOfPurchases}</p>
+                    </li>
+                </ul>
+            </div>
+            
+            </Modal>
+            <Modal header="Want to delete your item?" id="modal1"
+                actions={[
+                <div>
+                <Button flat modal="close" node="button" waves="green" onClick={() => deleteItem(currentItem)}>Yes</Button>
+                <Button flat modal="close" node="button" waves="green">No</Button>
+                </div>
+                ]}>
+                    By removing the item from your list, you will no longer need to worry about buying it :)
+            </Modal>
+            </React.Fragment>
     );
     }
 

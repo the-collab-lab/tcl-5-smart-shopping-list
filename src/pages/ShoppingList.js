@@ -188,6 +188,7 @@ const ShoppingList = ({ token }) => {
                             setDeleteModal(false);
                         }}
                         type="deleteItem"
+
                     />
                 ) : null}
                 {detailModal ? (
@@ -217,10 +218,10 @@ const ShoppingList = ({ token }) => {
             <tbody className='shoppingListContainer'>
                 {filterString
                     ? filteredList.map(item => {
-                          return<ShoppingListItem item={item} handleCheck={handleCheck}  setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />;
+                          return<ShoppingListItem item={item} handleCheck={handleCheck}  currentItem={currentItem} setCurrentItem={setCurrentItem} detailModal={detailModal} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} deleteItem={deleteItem} />;
                     })
                     : shoppingListItems.length > 0
-                        ? shoppingListItems.map(item => <ShoppingListItem item={item} handleCheck={handleCheck} setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />)
+                        ? shoppingListItems.map(item => <ShoppingListItem item={item} handleCheck={handleCheck} currentItem={currentItem} setCurrentItem={setCurrentItem} detailModal={detailModal} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} deleteItem={deleteItem} />)
                     : welcomeInstructions()}
             </tbody>
             </section>
