@@ -24,7 +24,7 @@
 }
 
 /* Add Item Form */
-
+/* 
 h1 {
     margin-top:40px;
 }
@@ -45,7 +45,7 @@ form {
 
 main {
     flex: 1 0 auto;
-}
+} */
 
 /* Home */
 
@@ -234,9 +234,6 @@ nav {
 
 /* Shopping List */
 
-tr td {
-    width: 100%;
-}
 
 .searchContainer {
     display: flex;
@@ -306,22 +303,34 @@ thead {
     text-align:center;
     margin-bottom:5px;
 }
-tbody {
+.searchContainer .shoppingListContainer{
     font-size:20px;
     text-align:center;
     background-color: #e2cec4;
 }
 
 tbody td {
-    min-width: 100px;
+    min-width: 50px;
     /* min-height:100px; */
 }
 tbody tr {
     height:50px;
 }
+/* tr td {
+    width: 100%;
+} */
 tbody tr:hover {
     background-color: #9ae7ff; 
 }
 tbody td input {
     margin-bottom:0;
+}
+.Toast {
+    background-color:transparent;
+    box-shadow:none;
+    height:0;
+}
+.Toast:hover {
+    background-color:transparent;
+    box-shadow:none;
 }

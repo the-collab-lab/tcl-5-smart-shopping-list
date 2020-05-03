@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import fb from '../lib/firebase';
 import moment from 'moment';
 import normalizeString from '../lib/normalizeString';
+import {Button,Icon} from 'react-materialize'
 
 const Form = ({ token }) => {
     const [itemName, setItemName] = useState('');
@@ -130,7 +131,17 @@ const Form = ({ token }) => {
                             There is a duplicate item in your shopping list.
                         </div>
                     ) : null}
-                    <input style={{cursor:"pointer"}} type="submit" />
+                    <Button
+                    node="button"
+                    type="submit"
+                    waves="light"
+                    >
+                    Submit
+                    <Icon right>
+                        send
+                    </Icon>
+                    </Button>
+
                 </form>
             )}
         </div>

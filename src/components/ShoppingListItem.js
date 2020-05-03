@@ -9,7 +9,6 @@ const ShoppingListItem = ({item, handleCheck, currentItem, setCurrentItem, setDe
         <React.Fragment>
         <tr className={returnString("class",item.timeFrame)}>
             <td>
-
             <Checkbox
             id="Checkbox_3"
             // label="Red"
@@ -21,6 +20,7 @@ const ShoppingListItem = ({item, handleCheck, currentItem, setCurrentItem, setDe
             name={item.id}
             value={item.isChecked}
             checked={item.isChecked}
+
             />
             </td>
             <td onClick= {()=> {setCurrentItem(item); setDetailModal(true);setDeleteModal(false)}}  currentItem={currentItem} style={{cursor: "pointer"}} className="modal-trigger" href="#modal2">{item.itemName}</td>
@@ -39,7 +39,7 @@ const ShoppingListItem = ({item, handleCheck, currentItem, setCurrentItem, setDe
             <img src="/img/005-trash.png" alt="delete icon" />
             </button></td>
         </tr>
-            
+
             <Modal header="Here are the details of your item:" id="modal2"
             actions={[
                 <div>
@@ -47,7 +47,7 @@ const ShoppingListItem = ({item, handleCheck, currentItem, setCurrentItem, setDe
                 </div>
                 ]}>
                 <div className="detailsModal">
-                
+
                 <h2>{item.itemName}</h2>
                 {/* <h1>Purchase Details</h1> */}
                 <ul>
