@@ -11,6 +11,7 @@
 .Header {
     position: sticky;
     width: 100vw;
+    height: 100%;
     padding:0;
     background-color: white;
     top: 0;
@@ -24,12 +25,16 @@
     margin: 20px;
 }
 
+main {
+    flex: 1 0 auto;
+}
+
 /* Home */
 
 .Home,
 .JoinList-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     flex-direction: column;
     background-color: white;
@@ -62,7 +67,6 @@
     margin: 0 20px 0 0;
     height: 40px;
     flex: 1;
-    border: 1px solid green;
 }
 
 .Home a {
@@ -157,9 +161,6 @@ select {
 
 /* Footer Tabs */
 
-footer {
-    width: 100%;
-}
 
 nav ul {
     list-style: none;
@@ -185,6 +186,7 @@ nav {
     background-color: teal;
     color: #f3f3f3;
     font-size: 20px;
+    margin: 0 5px 5px 0;
 }
 
 .navbutton:focus {
@@ -193,11 +195,16 @@ nav {
 
 /* Shopping List */
 
+tr td {
+    width: 100%;
+}
+
 .searchContainer {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    margin-top: 20px;
 }
 
 label {
@@ -208,7 +215,6 @@ label {
     border-radius: 20px;
     min-width: 50%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
 }
 
 .searchFieldEraseButton {
