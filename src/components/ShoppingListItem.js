@@ -29,7 +29,7 @@ const ShoppingListItem = ({item, handleCheck, setCurrentItem, setDeleteModal, se
                         setDetailModal(false)
                     }}
                 >
-                <img src="/img/x.png" alt="delete icon" />
+                <img src="/img/005-trash.png" alt="delete icon" />
                 </button></td>
         </tr>
     );

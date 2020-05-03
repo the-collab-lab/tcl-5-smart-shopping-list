@@ -328,7 +328,7 @@ label {
     font-size: 1.2em;
 }
 .soon {
-    background-color: red;
+    background-color: #a2e665;
 }
 .kindasoon {
     background-color: orange;
@@ -338,4 +338,20 @@ label {
 }
 .inactive {
     background-color: grey;
+}
+
+.deleteImg {
+    max-width:10px;
+}
+.deleteItemButton {
+    padding: 15px;
+    background: transparent;
+    border: none;
+}
+.deleteItemButton:hover {
+    cursor:pointer;
+}
+.deleteItemButton img{
+    width: 50px;
+    height:50px;
 }
