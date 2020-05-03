@@ -3,10 +3,10 @@ import { useHistory } from 'react-router-dom';
 import fb from '../lib/firebase';
 import moment from 'moment';
 import calculateEstimate from '../lib/estimates';
-import Modal from '../components/Modal';
+// import Modal from '../components/Modal';
 import ShoppingListItem from '../components/ShoppingListItem';
 import normalizeString from '../lib/normalizeString';
-
+import {Modal, Button} from 'react-materialize'
 
 const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
@@ -173,9 +173,13 @@ const ShoppingList = ({ token }) => {
     const filteredList = shoppingListItems.filter(item => {
         return item.itemName.toLowerCase().includes(filterString.toLowerCase());
     });
+
+    const trigger = <Button>Open Modal</Button>
     return (
         <div>
-
+            <Modal header="Modal Header" trigger={trigger}>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </Modal>
                 {deleteModal ? (
                     <Modal
                         item={currentItem}
@@ -196,32 +200,30 @@ const ShoppingList = ({ token }) => {
                         type="detail"
                     />
                 ) : null}
-
-            <label>Search for an item</label>
-            <input
+            <section className='searchContainer'>
+            <div className='row'>
+                <div className='input-field col s12'>
+                <input
+            className='searchInputField'
                 type="text"
-                placeholder="Search..."
+                placeholder="Search for an item"
                 value={filterString}
                 onChange={e => setFilterString(e.target.value)}
             />
-            <button onClick={() => setFilterString('')}>X</button>
-            <thead>
-                <tr>
-                <th>Bought?</th>
-                <th>Item Name</th>
-                <th>When to buy</th>
-                <th>Delete?</th>
-                </tr>
-            </thead>
-            <tbody>
+                </div>
+            </div>
+            <button className='searchFieldEraseButton' onClick={() => setFilterString('')}>Clear search</button>
+            {/* </section> */}
+            <tbody className='shoppingListContainer'>
                 {filterString
                     ? filteredList.map(item => {
-                          return <ShoppingListItem item={item} handleCheck={handleCheck}  setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />;
-                      })
+                          return<ShoppingListItem item={item} handleCheck={handleCheck}  setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />;
+                    })
                     : shoppingListItems.length > 0
                         ? shoppingListItems.map(item => <ShoppingListItem item={item} handleCheck={handleCheck} setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />)
                     : welcomeInstructions()}
             </tbody>
+            </section>
         </div>
     );
 };

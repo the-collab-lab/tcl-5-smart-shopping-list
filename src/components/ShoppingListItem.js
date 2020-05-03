@@ -4,6 +4,7 @@ import {returnString} from '../lib/timeframeConstants';
 const ShoppingListItem = ({item, handleCheck, setCurrentItem, setDeleteModal, setDetailModal}) => {
     const ariaString = `${item.itemName} to be bought in ${returnString("value",item.timeFrame)}`;
     return (
+        
         <tr className={returnString("class",item.timeFrame)}>
             <td>
                 <input

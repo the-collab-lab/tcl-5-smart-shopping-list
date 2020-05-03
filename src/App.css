@@ -12,6 +12,7 @@
 .Header {
     position: sticky;
     width: 100vw;
+    height: 100%;
     padding:0;
     background-color: #c4d8e2;
     top: 0;
@@ -125,6 +126,107 @@ form {
     padding-bottom:80px;
     margin-bottom:100px;
 }
+
+main {
+    flex: 1 0 auto;
+}
+
+/* Home */
+
+.Home,
+.JoinList-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    padding: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.JoinList-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.JoinList-text {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    font-size: 32px;
+    margin-bottom:40px;
+}
+
+.JoinList-button {
+    flex: 1;
+}
+
+.JoinList-input {
+    display: inline-block;
+    min-width: 300px;
+    margin: 0 20px 0 0;
+    height: 40px;
+    flex: 1;
+}
+
+.Home a {
+    text-decoration: none;
+}
+
+h1.Home-h1 {
+    margin-top: 0;
+    font-weight: 600;
+}
+h2.Home-h2 {
+    color: darkgrey;
+}
+h2.Home-h2 a {
+    color: black;
+}
+h2.Home-h2 a:hover {
+    color: green;
+}
+
+.NewList-button,
+.JoinList-button {
+    background-color: rgba(80, 148, 46);
+    color: #fff;
+    cursor: pointer;
+    font-size: 32px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid rgba(80, 148, 46);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.NewList-button:hover,
+.JoinList-button:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em rgba(80, 148, 46, 0.8);
+    transform: translateY(-0.25em);
+}
+
+
+/* Add Item Form */
+
+h1 {
+    margin-top:40px;
+}
+form {
+    font: 95% Arial, Helvetica, sans-serif;
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 16px;
+    background: rgb(151, 193, 206);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-bottom:80px;
+    margin-bottom:100px;
+}
 input {
     padding: 20px 0;
     font-size: 140%;
@@ -161,8 +263,11 @@ select {
 
 /* Footer Tabs */
 
-ul {
+
+nav ul {
     list-style: none;
+    padding: 0;
+    margin: 10px auto;
 }
 
 li {
@@ -171,6 +276,7 @@ li {
 }
 
 nav {
+    display: flex;
     position: fixed;
     bottom: 0;
     width: 100vw;
@@ -182,6 +288,7 @@ nav {
     background-color: teal;
     color: #f3f3f3;
     font-size: 20px;
+    margin: 0 5px 5px 0;
 }
 
 .navbutton:focus {
@@ -190,63 +297,45 @@ nav {
 
 /* Shopping List */
 
+tr td {
+    width: 100%;
+}
+
+.searchContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+.searchInputField {
+    border-radius: 20px;
+    min-width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.searchFieldEraseButton {
+    height: 50px;
+    width: 150px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
 .soon {
-    background-color: #c4e2ce;
+    background-color: red;
 }
 .kindasoon {
-    background-color: #e2cec4;
+    background-color: orange;
 }
 .notsoon {
-    background-color: #e2c4d8;
+    background-color: green;
 }
 .inactive {
-    background-color: #c4d8e2;
+    background-color: grey;
 }
-
-thead {
-    font-size:20px;
-    text-align:center;
-    margin-bottom:5px;
-}
-tbody {
-    font-size:20px;
-    text-align:center;
-    background-color: #e2cec4;
-}
-
-tbody td {
-    min-width: 100px;
-    /* min-height:100px; */
-}
-tbody tr {
-    height:50px;
-}
-tbody tr:hover {
-    background-color: #e2c4d8; 
-}
-tbody td input {
-    margin-bottom:0;
-}
-.deleteImg {
-    max-width:10px;
-}
-.deleteItemButton {
-    padding: 15px;
-    background: transparent;
-    border: none;
-}
-.deleteItemButton:hover {
-    cursor:pointer;
-}
-.deleteItemButton img{
-    width: 10px;
-    height:10px;
-}
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-  }

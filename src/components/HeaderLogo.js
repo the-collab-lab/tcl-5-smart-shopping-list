@@ -3,9 +3,9 @@ import '../App.css';
 
 const Header = () => {
     return (
-        <header className="Header">
-            <img src="/img/C4D8E2.png" alt="Shopping Bag Logo" />
-        </header>
+        <div className='Header'>
+            <h1>Smart Shopping List</h1>
+        </div>
     );
 };
 
