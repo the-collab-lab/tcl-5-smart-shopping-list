@@ -1,26 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../css/FooterTabs.css';
 
 const FooterTabs= () => {
 	return (
-		<div>
-			<nav>
-				<ul>
-					<li>
+			<div class='page-footer white'>
+				<div className='container center'>
 						<Link to='/ShoppingList'>
-							<button className='navbutton'>Shopping List</button>
+						<button className='navbutton'>Shopping List</button>
 						</Link>
-					</li>
-					<li>
 						<Link to='/AddItem'>
-							<button className='navbutton'>Add Item</button>
+						<button className='navbutton'>Add Item</button>
 						</Link>
-					</li>
-				</ul>
-			</nav>
-		</div>
+				</div>
+			</div>
 	);
 }
-
+ 
 export default FooterTabs;
