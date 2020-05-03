@@ -80,34 +80,6 @@ function App() {
             </footer>
             </>
     ]
-        // <div className="App">
-            
-        // <Header />
-        //     <Switch>
-        //         <Route exact path="/">
-        //             <Home token={token} setToken={setToken} />
-        //         </Route>
-        //         <Route path="/ShoppingList">
-        //             <ShoppingList token={token} />
-        //         </Route>
-        //         <Route path="/AddItem">
-        //             <AddItem token={token} />
-        //         </Route>
-        //         <Route path="/FirebaseTesting">
-        //             <FirebaseTesting />
-        //         </Route>
-        //         <Route path="/JoinList">
-        //             <JoinList
-        //                 handleChange={handleChange}
-        //                 checkToken={checkToken}
-        //                 inputToken={inputToken}
-        //             />
-        //         </Route>
-        //     </Switch>
-        //     <footer>
-        //         {token ? <FooterTabs /> : ' '}
-        //     </footer>
-        // </div>
     );
 }
 
