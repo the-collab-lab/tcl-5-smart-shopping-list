@@ -3,16 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "firebase": "^7.11.0",
+    "firebase": "^7.14.2",
     "husky": "^3.1.0",
     "lint-staged": "^9.5.0",
     "local-storage": "^2.0.0",
+    "materialize-css": "^1.0.0-rc.2",
     "moment": "^2.24.0",
     "prettier": "^1.19.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0"
+    "react-scripts": "^3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
