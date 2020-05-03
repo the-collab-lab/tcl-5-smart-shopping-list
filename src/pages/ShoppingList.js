@@ -3,9 +3,10 @@ import { useHistory } from 'react-router-dom';
 import fb from '../lib/firebase';
 import moment from 'moment';
 import calculateEstimate from '../lib/estimates';
-import Modal from '../components/Modal';
+// import Modal from '../components/Modal';
 import ShoppingListItem from '../components/ShoppingListItem';
 import normalizeString from '../lib/normalizeString';
+import {Modal, Button} from 'react-materialize'
 
 const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
@@ -172,9 +173,13 @@ const ShoppingList = ({ token }) => {
     const filteredList = shoppingListItems.filter(item => {
         return item.itemName.toLowerCase().includes(filterString.toLowerCase());
     });
+
+    const trigger = <Button>Open Modal</Button>
     return (
         <div>
-
+            <Modal header="Modal Header" trigger={trigger}>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </Modal>
                 {deleteModal ? (
                     <Modal
                         item={currentItem}
