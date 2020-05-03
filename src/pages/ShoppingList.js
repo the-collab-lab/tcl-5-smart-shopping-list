@@ -6,7 +6,6 @@ import calculateEstimate from '../lib/estimates';
 import Modal from '../components/Modal';
 import ShoppingListItem from '../components/ShoppingListItem';
 import normalizeString from '../lib/normalizeString';
-import '../css/ShoppingList.css';
 
 const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
@@ -197,25 +196,29 @@ const ShoppingList = ({ token }) => {
                     />
                 ) : null}
             <section className='searchContainer'>
-            <label><h3>Search for an item</h3></label>
-            <input
+            <div className='row'>
+                <div className='input-field col s12'>
+                <input
             className='searchInputField'
                 type="text"
-                placeholder="ie. Apples"
+                placeholder="Search for an item"
                 value={filterString}
                 onChange={e => setFilterString(e.target.value)}
             />
+                </div>
+            </div>
             <button className='searchFieldEraseButton' onClick={() => setFilterString('')}>Clear search</button>
-            </section>
-            <tbody>
+            {/* </section> */}
+            <tbody className='shoppingListContainer'>
                 {filterString
                     ? filteredList.map(item => {
-                          return <ShoppingListItem item={item} handleCheck={handleCheck}  setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />;
-                      })
+                          return<ShoppingListItem item={item} handleCheck={handleCheck}  setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />;
+                    })
                     : shoppingListItems.length > 0
                         ? shoppingListItems.map(item => <ShoppingListItem item={item} handleCheck={handleCheck} setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />)
                     : welcomeInstructions()}
             </tbody>
+            </section>
         </div>
     );
 };
