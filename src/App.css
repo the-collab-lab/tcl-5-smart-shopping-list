@@ -169,28 +169,151 @@ select {
 }
 
 
-/*.item-result{
-    background:blue;
-    bottom: 42px;
-    opacity: 0;
-}*/
 
-.item-result-success{
-    color: #aec6cf;
-    font-size: 20px;
+/* Home */
 
+.Home,
+.JoinList-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    padding: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.item-result-error{
-    color: #ed3f32;
-    display: none;
+.JoinList-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
 
+.JoinList-text {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    font-size: 32px;
+    margin-bottom:40px;
+}
+
+.JoinList-button {
+    flex: 1;
+}
+
+.JoinList-input {
+    display: inline-block;
+    min-width: 300px;
+    margin: 0 20px 0 0;
+    height: 40px;
+    flex: 1;
+    border: 1px solid green;
+}
+
+.Home a {
+    text-decoration: none;
+}
+
+h1.Home-h1 {
+    margin-top: 0;
+    font-weight: 600;
+}
+h2.Home-h2 {
+    color: darkgrey;
+}
+h2.Home-h2 a {
+    color: black;
+}
+h2.Home-h2 a:hover {
+    color: green;
+}
+
+.NewList-button,
+.JoinList-button {
+    background-color: rgba(80, 148, 46);
+    color: #fff;
+    cursor: pointer;
+    font-size: 32px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid rgba(80, 148, 46);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.NewList-button:hover,
+.JoinList-button:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em rgba(80, 148, 46, 0.8);
+    transform: translateY(-0.25em);
+}
+
+
+/* Add Item Form */
+
+h1 {
+    margin-top:40px;
+}
+form {
+    font: 95% Arial, Helvetica, sans-serif;
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 16px;
+    background: rgb(151, 193, 206);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-bottom:80px;
+    margin-bottom:100px;
+}
+input {
+    padding: 20px 0;
+    font-size: 140%;
+    font-weight: 300;
+    text-align: center;
+    color: #000;
+    margin-bottom: 40px;
+    width:50%;
+    border-style: none;
+}
+input[type=date] {
+    font: 95% Arial, Helvetica, sans-serif;
+    color: #555;
+}
+input[type=submit] {
+    background:teal;
+    margin-top: 40px;
+    cursor:pointer;
+    color: #fff;
+    font-weight:400;
+}
+input[type=submit]:hover {
+    opacity:0.5;
+}
+select {
+    margin: 20px 0 40px 0 ;
+    height: 50px;
+    color: #555;
+    font-size:1rem;
+}
+.errorMessage {
+    color:red;
 }
 
 /* Footer Tabs */
 
 ul {
     list-style: none;
+footer {
+    width: 100%;
+}
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px auto;
 }
 
 li {
@@ -199,6 +322,7 @@ li {
 }
 
 nav {
+    display: flex;
     position: fixed;
     bottom: 0;
     width: 100vw;
@@ -295,3 +419,41 @@ tbody td input {
     width: 25px;
     background-color: #eee;
   }
+.searchContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+.searchInputField {
+    border-radius: 20px;
+    min-width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.searchFieldEraseButton {
+    height: 50px;
+    width: 150px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+.soon {
+    background-color: red;
+}
+.kindasoon {
+    background-color: orange;
+}
+.notsoon {
+    background-color: green;
+}
+.inactive {
+    background-color: grey;
+}
