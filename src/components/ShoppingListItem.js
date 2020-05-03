@@ -23,7 +23,7 @@ const ShoppingListItem = ({item, handleCheck, currentItem, setCurrentItem, setDe
 
             />
             </td>
-            <td onClick= {()=> {setCurrentItem(item); setDetailModal(true);setDeleteModal(false)}}  currentItem={currentItem} style={{cursor: "pointer"}} className="modal-trigger" href="#modal2">{item.itemName}</td>
+            <td onClick= {()=> {setCurrentItem(item); setDetailModal(true);setDeleteModal(false)}}  currentItem={item} style={{cursor: "pointer"}} className="modal-trigger" href="#modal2">{item.itemName}</td>
             <td>{returnString("value",item.timeFrame)}</td>
             <td>
             <button
@@ -48,15 +48,15 @@ const ShoppingListItem = ({item, handleCheck, currentItem, setCurrentItem, setDe
                 ]}>
                 <div className="detailsModal">
 
-                <h2>{item.itemName}</h2>
+                <h2>{currentItem.itemName}</h2>
                 {/* <h1>Purchase Details</h1> */}
                 <ul>
                     <li>
                         Last purchase:{' '}
                         <p>
                             {' '}
-                            {item.lastPurchaseDate
-                                ? moment(item.lastPurchaseDate).format('LL')
+                            {currentItem.lastPurchaseDate
+                                ? moment(currentItem.lastPurchaseDate).format('LL')
                                 : 'None'}
                         </p>
                     </li>
@@ -64,15 +64,15 @@ const ShoppingListItem = ({item, handleCheck, currentItem, setCurrentItem, setDe
                         Next purchase:{' '}
                         {
                             <p>
-                                {item.nextPurchaseDate
-                                    ?  moment(item.nextPurchaseDate).format("LL")
+                                {currentItem.nextPurchaseDate
+                                    ?  moment(currentItem.nextPurchaseDate).format("LL")
                                     : 'None'}
                             </p>
                         }
                     </li>
                     <li>
                         Number of purchases:
-                        <p id="itemDetails">{item.numOfPurchases}</p>
+                        <p id="itemDetails">{currentItem.numOfPurchases}</p>
                     </li>
                 </ul>
             </div>

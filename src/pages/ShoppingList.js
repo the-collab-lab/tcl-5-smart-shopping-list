@@ -13,7 +13,7 @@ const ShoppingList = ({ token }) => {
     const [filterString, setFilterString] = useState('');
     const [deleteModal, setDeleteModal] = useState(false);
     const [detailModal, setDetailModal] = useState(false);
-    const [currentItem, setCurrentItem] = useState(null);
+    const [currentItem, setCurrentItem] = useState({itemName:" ", nextPurchaseDate:moment(),lastPurchase:moment(), numOfPurchases:0 });
     const userToken = token;
     let history = useHistory();
 
