@@ -69,14 +69,16 @@ main {
     width:50%;
     max-width:70vw;
 } */
+.JoinList-container img {
+    width:250px;
+    height:auto;
+}
 
 .JoinList-text {
     display: inline-block;
     text-align: center;
-    width: 100%;
-    font-weight: bold;
     font-size: 32px;
-    margin-bottom:40px;
+    margin:40px 0;
 }
 
 .JoinList-button {
@@ -262,18 +264,6 @@ label {
     border-radius: 5px;
     font-size: 1.2em;
 }
-.soon {
-    background-color: #a2e665;
-}
-.kindasoon {
-    background-color: orange;
-}
-.notsoon {
-    background-color: green;
-}
-.inactive {
-    background-color: grey;
-}
 
 .deleteImg {
     max-width:10px;
@@ -294,4 +284,44 @@ label {
 .detailsModal {
     text-align:center;
     font-size:20px;
+}
+
+/* Shopping List */
+
+.soon {
+    background-color: #c4e2ce;
+}
+.kindasoon {
+    background-color: #e2cec4;
+}
+.notsoon {
+    background-color: #e2c4d8;
+}
+.inactive {
+    background-color: #dfdfdf;
+}
+
+thead {
+    font-size:20px;
+    text-align:center;
+    margin-bottom:5px;
+}
+tbody {
+    font-size:20px;
+    text-align:center;
+    background-color: #e2cec4;
+}
+
+tbody td {
+    min-width: 100px;
+    /* min-height:100px; */
+}
+tbody tr {
+    height:50px;
+}
+tbody tr:hover {
+    background-color: #9ae7ff; 
+}
+tbody td input {
+    margin-bottom:0;
 }
