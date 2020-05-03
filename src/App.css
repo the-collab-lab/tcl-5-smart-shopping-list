@@ -95,6 +95,10 @@ main {
     background-color:white;
 }
 
+::placeholder {
+    color: darkgray;
+}
+
 /* Home Container */
 
  .Home img {
