@@ -8,7 +8,9 @@ const JoinList = ({ handleChange, checkToken, inputToken }) => {
             <div className="JoinList-text">
                 Enter the token of an existing shopping list.
             </div>
-            <input
+            <div className='row'>
+                <div className='input-field col s12'>
+                <input
                 className="JoinList-input"
                 type="text"
                 name="inputToken"
@@ -16,23 +18,16 @@ const JoinList = ({ handleChange, checkToken, inputToken }) => {
                 onChange={handleChange}
                 required
             />
+                </div>
+            </div>
              <Button
                 node="button"
-                className="JoinList-button"
+                className='btn-large'
                 onClick={() => checkToken(inputToken)}
-                // style={{
-                // marginRight: '15px'
-                // }}
                 waves="light"
             >
                 Join List{' '}
             </Button>
-            {/* <button
-                className="JoinList-button"
-                onClick={() => checkToken(inputToken)}
-            >
-                Join List{' '}
-            </button> */}
         </div>
     );
 };
