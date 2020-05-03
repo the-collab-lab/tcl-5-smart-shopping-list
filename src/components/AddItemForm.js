@@ -65,6 +65,8 @@ const Form = ({ token }) => {
                     tokenRef.doc(docRef.id).update({ id: docRef.id });
                     getCurrentShoppingListItems(userToken);
                     setAddStatus(true);
+                    alert(' Item Added!🙌');
+                    if(!alert('Item Added!🙌')){window.location.reload();}
                 })
                 .catch(error =>
                     console.error('Error writing document: ', error)
@@ -98,7 +100,7 @@ const Form = ({ token }) => {
                     />
 
                     <div>
-                        <h1>How soon are you likely to buy it again?</h1>
+                        <h1>How soon will you need it again?</h1>
                     </div>
                     <select
                         name="time frame"
@@ -129,7 +131,7 @@ const Form = ({ token }) => {
                             There is a duplicate item in your shopping list.
                         </div>
                     ) : null}
-                    <input type="submit" />
+                    <input style={{cursor:"pointer"}} type="submit" />
                 </form>
             )}
         </div>

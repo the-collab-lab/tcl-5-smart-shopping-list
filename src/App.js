@@ -42,7 +42,7 @@ function App() {
         }
     };
 
-    /* Auto Init MaterializeCSS*/
+    /*Auto Init MaterializeCSS*/
     useEffect(() => {
         M.AutoInit()
     }, [])

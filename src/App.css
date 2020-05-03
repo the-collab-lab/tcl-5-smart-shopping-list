@@ -108,15 +108,18 @@ h2.Home-h2 a:hover {
 
 /* Add Item Form */
 
-h1 {
+form h1 {
     margin-top:40px;
+    font-size: 25px;
+    color: #496d7c;
+
 }
 form {
     font: 95% Arial, Helvetica, sans-serif;
     max-width: 400px;
     margin: 10px auto;
     padding: 16px;
-    background: rgb(151, 193, 206);
+    background: #dfded4;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -130,7 +133,7 @@ input {
     font-size: 140%;
     font-weight: 300;
     text-align: center;
-    color: #000;
+    color: #aec6cf;
     margin-bottom: 40px;
     width:50%;
     border-style: none;
@@ -140,7 +143,7 @@ input[type=date] {
     color: #555;
 }
 input[type=submit] {
-    background:teal;
+    background:#aec6cf;
     margin-top: 40px;
     cursor:pointer;
     color: #fff;
@@ -152,7 +155,7 @@ input[type=submit]:hover {
 select {
     margin: 20px 0 40px 0 ;
     height: 50px;
-    color: #555;
+    color: #c4d8e2;
     font-size:1rem;
 }
 .errorMessage {
