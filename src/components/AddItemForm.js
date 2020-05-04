@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import fb from '../lib/firebase';
 import moment from 'moment';
 import normalizeString from '../lib/normalizeString';
-import {Button,Icon} from 'react-materialize'
+import {Button,Icon, Select} from 'react-materialize'
 
 const Form = ({ token }) => {
     const [itemName, setItemName] = useState('');
@@ -86,9 +86,12 @@ const Form = ({ token }) => {
             {addStatus ? (
                 renderRedirect()
             ) : (
+                
                 <form id="addItemForm" onSubmit={e => handleSubmit(e)}>
+                <div><h1>Add a new item to your list.</h1></div>
+                <img src="/img/005-shopping-basket.png"/>
                     <div>
-                        <h1>Name of the item</h1>
+                        <h2>Name of the item</h2>
                     </div>
                     <input
                         name="item name"
@@ -100,8 +103,37 @@ const Form = ({ token }) => {
                     />
 
                     <div>
-                        <h1>How soon will you need it again?</h1>
+                        <h2>How soon will you need it again?</h2>
                     </div>
+                    {/* <input type="radio" id="7" name="gender" value={7} onChange={e => setTimeFrame(e.target.value)} />
+                    <label for="7">Soon (in the next 7 days)</label>
+                    <input type="radio" id="14" name="gender" value={14} onChange={e => setTimeFrame(e.target.value)} />
+                    <label for="14"> Kind of soon (in the next 14 days)</label>
+                    <input type="radio" id="30" name="gender" value={30} onChange={e => setTimeFrame(e.target.value)} />
+                    <label for="30">Not soon (in the next 30 days)</label> */}
+                    <Select
+                        id="Select-9"
+                        multiple={false}
+                        name="time frame"
+                        onChange={e => setTimeFrame(e.target.value)}
+                        >
+                        <option
+                            disabled
+                            value=""
+                        >
+                            Choose your option
+                        </option>
+                        <option value={7}>
+                        Soon (in the next 7 days)
+                        </option>
+                        <option value={14}>
+                        Kind of soon (in the next 14 days)
+                        </option>
+                        <option value={30}>
+                        Not soon (in the next 30 days)
+                        </option>
+                        </Select>
+                    {/* <div className="input-field col s12">
                     <select
                         name="time frame"
                         onChange={e => setTimeFrame(e.target.value)}
@@ -114,9 +146,10 @@ const Form = ({ token }) => {
                             Not soon (in the next 30 days)
                         </option>
                     </select>
+                    </div> */}
 
                     <div>
-                        <h1>Last purchase date?</h1>
+                        <h2>Last purchase date?</h2>
                     </div>
                     <input
                         type="date"
