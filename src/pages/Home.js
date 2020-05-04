@@ -7,7 +7,7 @@ function Home({ token, setToken }) {
         <section className="Home">
             <h1 className="Home-h1">Never forget your groceries again.</h1>
             <h2 className="Home-h2-1">Grab a token by creating a new list.</h2>
-            <img src="/img/004-groceries-1.png"/>
+            <img src="/img/004-groceries-1.png" alt="Shopping List Basket"/>
             <NewListButton
                 className="button"
                 setToken={setToken}

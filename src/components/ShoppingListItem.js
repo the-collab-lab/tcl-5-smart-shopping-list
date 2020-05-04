@@ -10,17 +10,13 @@ const ShoppingListItem = ({item, handleCheck, currentItem, setCurrentItem, setDe
         <tr className={returnString("class",item.timeFrame)}>
             <td>
             <Checkbox
-            id="Checkbox_3"
-            // label="Red"
-            value="Red"
-            onClick={e => handleCheck(e, item)}
-            aria-label= {ariaString}
-            key={item.id}
-            id={item.id}
-            name={item.id}
-            value={item.isChecked}
-            checked={item.isChecked}
-
+                onClick={e => handleCheck(e, item)}
+                aria-label= {ariaString}
+                key={item.id}
+                id={item.id}
+                name={item.id}
+                value={item.isChecked}
+                checked={item.isChecked}
             />
             </td>
             <td onClick= {()=> {setCurrentItem(item); setDetailModal(true);setDeleteModal(false)}}  currentItem={item} style={{cursor: "pointer"}} className="modal-trigger" href="#modal2">{item.itemName}</td>

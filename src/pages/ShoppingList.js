@@ -3,10 +3,9 @@ import { useHistory } from 'react-router-dom';
 import fb from '../lib/firebase';
 import moment from 'moment';
 import calculateEstimate from '../lib/estimates';
-// import Modal from '../components/Modal';
 import ShoppingListItem from '../components/ShoppingListItem';
 import normalizeString from '../lib/normalizeString';
-import {Modal, Button} from 'react-materialize'
+import {Modal} from 'react-materialize'
 
 const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
@@ -25,7 +24,7 @@ const ShoppingList = ({ token }) => {
                     className="button-link"
                     id="WelcomeClick"
                 />
-                <img src="/img/purchase.png"/>
+                <img src="/img/purchase.png" alt="Empty Shopping List Basket"/>
                 <br/>
                 <label htmlFor="WelcomeClick" id="Welcome" className="welcomeLabel">
                     Your list looks empty. Need help?

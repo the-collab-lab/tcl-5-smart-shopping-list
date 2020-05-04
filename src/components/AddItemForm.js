@@ -89,7 +89,7 @@ const Form = ({ token }) => {
                 
                 <form id="addItemForm" onSubmit={e => handleSubmit(e)}>
                 <div><h1>Add a new item to your list.</h1></div>
-                <img src="/img/005-shopping-basket.png"/>
+                <img src="/img/005-shopping-basket.png" alt="Shopping List Basket"/>
                     <div>
                         <h2>Name of the item</h2>
                     </div>
