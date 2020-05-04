@@ -261,3 +261,32 @@ tbody td input {
     margin:10px 0;
     border-bottom: 1px solid darkgrey;
 }
+.shareContainer {
+    text-align:center;
+    font-size: 20px;
+    margin:20px;
+    /* max-width: 500px; */
+}
+.shareContainer h1 {
+    background-color:#ddcecd;
+    font-size:25px;
+    margin:0 auto;
+    width:400px;
+    font-style:italic;
+}
+
+.welcomeContainer {
+    background-color:#f1f4f4;
+    padding:20px;
+}
+.welcomeLabel {
+    font-size:25px;
+}
+.welcomeContainer ul li {
+    margin:20px 0;
+}
+.welcomeContainer img {
+    width: 150px;
+    height:auto;
+    margin:20px 0;
+}
