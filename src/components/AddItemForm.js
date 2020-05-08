@@ -86,7 +86,6 @@ const Form = ({ token }) => {
             {addStatus ? (
                 renderRedirect()
             ) : (
-                
                 <form id="addItemForm" onSubmit={e => handleSubmit(e)}>
                 <div><h1>Add a new item to your list.</h1></div>
                 <img src="/img/005-shopping-basket.png" alt="Shopping List Basket"/>
@@ -105,12 +104,6 @@ const Form = ({ token }) => {
                     <div>
                         <h2>How soon will you need it again?</h2>
                     </div>
-                    {/* <input type="radio" id="7" name="gender" value={7} onChange={e => setTimeFrame(e.target.value)} />
-                    <label for="7">Soon (in the next 7 days)</label>
-                    <input type="radio" id="14" name="gender" value={14} onChange={e => setTimeFrame(e.target.value)} />
-                    <label for="14"> Kind of soon (in the next 14 days)</label>
-                    <input type="radio" id="30" name="gender" value={30} onChange={e => setTimeFrame(e.target.value)} />
-                    <label for="30">Not soon (in the next 30 days)</label> */}
                     <Select
                         id="Select-9"
                         multiple={false}
@@ -133,21 +126,6 @@ const Form = ({ token }) => {
                         Not soon (in the next 30 days)
                         </option>
                         </Select>
-                    {/* <div className="input-field col s12">
-                    <select
-                        name="time frame"
-                        onChange={e => setTimeFrame(e.target.value)}
-                    >
-                        <option value={7}>Soon (in the next 7 days)</option>
-                        <option value={14}>
-                            Kind of soon (in the next 14 days)
-                        </option>
-                        <option value={30}>
-                            Not soon (in the next 30 days)
-                        </option>
-                    </select>
-                    </div> */}
-
                     <div>
                         <h2>Last purchase date?</h2>
                     </div>

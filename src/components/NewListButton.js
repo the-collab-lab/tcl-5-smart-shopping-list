@@ -19,7 +19,6 @@ const NewListButton = props => {
             >
                 Create New List
             </Button>
-            {/* <button className="NewList-button">Create a New List</button> */}
         </Link>
     );
 };

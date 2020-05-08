@@ -19,7 +19,7 @@ const ShoppingListItem = ({item, handleCheck, currentItem, setCurrentItem, setDe
                 checked={item.isChecked}
             />
             </td>
-            <td onClick= {()=> {setCurrentItem(item); setDetailModal(true);setDeleteModal(false)}}  currentItem={item} style={{cursor: "pointer"}} className="modal-trigger" href="#modal2">{item.itemName}</td>
+            <td onClick= {()=> {setCurrentItem(item); setDetailModal(true);setDeleteModal(false)}}  currentItem={item} style={{cursor: "pointer"}} className="modal-trigger" href="#modal2">{item.itemName} &#x24D8;</td>
             <td>{returnString("value",item.timeFrame)}</td>
             <td>
             <button
@@ -45,7 +45,6 @@ const ShoppingListItem = ({item, handleCheck, currentItem, setCurrentItem, setDe
                 <div className="detailsModal">
 
                 <h2>{currentItem.itemName}</h2>
-                {/* <h1>Purchase Details</h1> */}
                 <ul>
                     <li>
                         Last purchase:{' '}
@@ -72,7 +71,6 @@ const ShoppingListItem = ({item, handleCheck, currentItem, setCurrentItem, setDe
                     </li>
                 </ul>
             </div>
-            
             </Modal>
             <Modal header="Want to delete your item?" id="modal1"
                 actions={[
