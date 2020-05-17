@@ -1,26 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../css/FooterTabs.css';
+import {Button} from 'react-materialize'
 
 const FooterTabs= () => {
 	return (
-		<div>
-			<nav>
-				<ul>
-					<li>
+			<div className='page-footer white'>
+				<div className='container center'>
 						<Link to='/ShoppingList'>
-							<button className='navbutton'>Shopping List</button>
+							<Button
+								node="button"
+								waves="light"
+								className='navbutton btn-large'
+								>
+								Shopping List
+							</Button>
 						</Link>
-					</li>
-					<li>
 						<Link to='/AddItem'>
-							<button className='navbutton'>Add Item</button>
+							<Button
+								node="button"
+								waves="light"
+								className='navbutton btn-large'
+								>
+								Add Item
+							</Button>
 						</Link>
-					</li>
-				</ul>
-			</nav>
-		</div>
+				</div>
+			</div>
 	);
 }
-
+ 
 export default FooterTabs;

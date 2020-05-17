@@ -3,45 +3,42 @@ import { useHistory } from 'react-router-dom';
 import fb from '../lib/firebase';
 import moment from 'moment';
 import calculateEstimate from '../lib/estimates';
-import Modal from '../components/Modal';
 import ShoppingListItem from '../components/ShoppingListItem';
 import normalizeString from '../lib/normalizeString';
-import '../css/ShoppingList.css';
+import {Modal} from 'react-materialize'
 
 const ShoppingList = ({ token }) => {
     const [shoppingListItems, setShoppingListItems] = useState([]);
     const [filterString, setFilterString] = useState('');
     const [deleteModal, setDeleteModal] = useState(false);
     const [detailModal, setDetailModal] = useState(false);
-    const [currentItem, setCurrentItem] = useState(null);
+    const [currentItem, setCurrentItem] = useState({itemName:" ", nextPurchaseDate:moment(),lastPurchase:moment(), numOfPurchases:0 });
     const userToken = token;
     let history = useHistory();
 
-  
     const welcomeInstructions = () => {
         return (
-            <div>
+            <div className="welcomeContainer">
                 <input
                     type="checkbox"
                     className="button-link"
                     id="WelcomeClick"
                 />
-                <label htmlFor="WelcomeClick" id="Welcome">
+                <img src="/img/purchase.png" alt="Empty Shopping List Basket"/>
+                <br/>
+                <label htmlFor="WelcomeClick" id="Welcome" className="welcomeLabel">
                     Your list looks empty. Need help?
                 </label>
                 <div id="hideWelcome">
                     <ul>
                         <li>
-                            Add items by clicking the "Add Item" button in the
-                            bottom of the screen.
+                            1) Add a new item to remember to buy it.
                         </li>
                         <li>
-                            Your list will be sorted with most needed items
-                            first.
+                            2) View all your items in the shopping list tab.
                         </li>
                         <li>
-                            To share this list with you friend, give them the
-                            code "{token}"
+                            Happy Shopping!
                         </li>
                     </ul>
                 </div>
@@ -173,8 +170,31 @@ const ShoppingList = ({ token }) => {
     const filteredList = shoppingListItems.filter(item => {
         return item.itemName.toLowerCase().includes(filterString.toLowerCase());
     });
+
+    const searchLength = () => {
+        if (shoppingListItems.length > 0 )
+        return (
+            <div>
+            <div className='row'>
+                <div className='input-field col s12'>
+                    <input
+                        className='searchInputField'
+                        type="text"
+                        placeholder="Search for an item"
+                        value={filterString}
+                        onChange={e => setFilterString(e.target.value)}
+                    />
+                </div>
+            </div>
+            <button className='searchFieldEraseButton' onClick={() => setFilterString('')}>Clear search</button>
+            </div>
+        );
+    };
+
     return (
         <div>
+            <section className="shareContainer">Here's your token to share with a friend:
+            <h1>{token}</h1> </section>
 
                 {deleteModal ? (
                     <Modal
@@ -184,6 +204,7 @@ const ShoppingList = ({ token }) => {
                             setDeleteModal(false);
                         }}
                         type="deleteItem"
+
                     />
                 ) : null}
                 {detailModal ? (
@@ -196,24 +217,19 @@ const ShoppingList = ({ token }) => {
                         type="detail"
                     />
                 ) : null}
+            <section className='searchContainer'>
+            {searchLength()}
 
-            <label>Search for an item</label>
-            <input
-                type="text"
-                placeholder="Search..."
-                value={filterString}
-                onChange={e => setFilterString(e.target.value)}
-            />
-            <button onClick={() => setFilterString('')}>X</button>
-            <tbody>
+            <tbody className='shoppingListContainer'>
                 {filterString
                     ? filteredList.map(item => {
-                          return <ShoppingListItem item={item} handleCheck={handleCheck}  setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />;
-                      })
+                          return<ShoppingListItem item={item} handleCheck={handleCheck}  currentItem={currentItem} setCurrentItem={setCurrentItem} detailModal={detailModal} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} deleteItem={deleteItem} />;
+                    })
                     : shoppingListItems.length > 0
-                        ? shoppingListItems.map(item => <ShoppingListItem item={item} handleCheck={handleCheck} setCurrentItem={setCurrentItem} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} />)
+                        ? shoppingListItems.map(item => <ShoppingListItem item={item} handleCheck={handleCheck} currentItem={currentItem} setCurrentItem={setCurrentItem} detailModal={detailModal} setDetailModal={setDetailModal} setDeleteModal={setDeleteModal} deleteItem={deleteItem} />)
                     : welcomeInstructions()}
             </tbody>
+            </section>
         </div>
     );
 };

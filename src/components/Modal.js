@@ -8,7 +8,7 @@ const Modal = ({ type, item, deleteItem, cancelItem, setDetailModal }) => {
         output = (
             <div className="Modal">
                 <p> Are you sure you want to delete {item.itemName}?</p>
-                <button onClick={() => deleteItem(item)}>YES</button>
+                <button onClick={() => deleteItem(item)}>Yes</button>
                 <button onClick={() => cancelItem()}>No</button>
             </div>
         );

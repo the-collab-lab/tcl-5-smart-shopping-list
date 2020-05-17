@@ -1,12 +1,16 @@
 import React from 'react';
+import {Button} from 'react-materialize'
 
 const JoinList = ({ handleChange, checkToken, inputToken }) => {
     return (
         <div className="JoinList-container">
+        <img src="/img/shopping-bag-1.png" alt="Shopping List Basket"/>
             <div className="JoinList-text">
                 Enter the token of an existing shopping list.
             </div>
-            <input
+            <div className='row'>
+                <div className='input-field col s12'>
+                <input
                 className="JoinList-input"
                 type="text"
                 name="inputToken"
@@ -14,12 +18,16 @@ const JoinList = ({ handleChange, checkToken, inputToken }) => {
                 onChange={handleChange}
                 required
             />
-            <button
-                className="JoinList-button"
+                </div>
+            </div>
+             <Button
+                node="button"
+                className='btn-large'
                 onClick={() => checkToken(inputToken)}
+                waves="light"
             >
                 Join List{' '}
-            </button>
+            </Button>
         </div>
     );
 };

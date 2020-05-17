@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import fb from '../lib/firebase';
-import '../css/AddItemForm.css';
 import moment from 'moment';
 import normalizeString from '../lib/normalizeString';
+import {Button,Icon, Select} from 'react-materialize'
 
 const Form = ({ token }) => {
     const [itemName, setItemName] = useState('');
@@ -65,6 +65,8 @@ const Form = ({ token }) => {
                     tokenRef.doc(docRef.id).update({ id: docRef.id });
                     getCurrentShoppingListItems(userToken);
                     setAddStatus(true);
+                    alert(' Item Added!🙌');
+                    if(!alert('Item Added!🙌')){window.location.reload();}
                 })
                 .catch(error =>
                     console.error('Error writing document: ', error)
@@ -85,8 +87,10 @@ const Form = ({ token }) => {
                 renderRedirect()
             ) : (
                 <form id="addItemForm" onSubmit={e => handleSubmit(e)}>
+                <div><h1>Add a new item to your list.</h1></div>
+                <img src="/img/005-shopping-basket.png" alt="Shopping List Basket"/>
                     <div>
-                        <h1>Name of the item</h1>
+                        <h2>Name of the item</h2>
                     </div>
                     <input
                         name="item name"
@@ -98,23 +102,32 @@ const Form = ({ token }) => {
                     />
 
                     <div>
-                        <h1>How soon are you likely to buy it again?</h1>
+                        <h2>How soon will you need it again?</h2>
                     </div>
-                    <select
+                    <Select
+                        id="Select-9"
+                        multiple={false}
                         name="time frame"
                         onChange={e => setTimeFrame(e.target.value)}
-                    >
-                        <option value={7}>Soon (in the next 7 days)</option>
+                        >
+                        <option
+                            disabled
+                            value=""
+                        >
+                            Choose your option
+                        </option>
+                        <option value={7}>
+                        Soon (in the next 7 days)
+                        </option>
                         <option value={14}>
-                            Kind of soon (in the next 14 days)
+                        Kind of soon (in the next 14 days)
                         </option>
                         <option value={30}>
-                            Not soon (in the next 30 days)
+                        Not soon (in the next 30 days)
                         </option>
-                    </select>
-
+                        </Select>
                     <div>
-                        <h1>Last purchase date?</h1>
+                        <h2>Last purchase date?</h2>
                     </div>
                     <input
                         type="date"
@@ -129,7 +142,17 @@ const Form = ({ token }) => {
                             There is a duplicate item in your shopping list.
                         </div>
                     ) : null}
-                    <input type="submit" />
+                    <Button
+                    node="button"
+                    type="submit"
+                    waves="light"
+                    >
+                    Submit
+                    <Icon right>
+                        send
+                    </Icon>
+                    </Button>
+
                 </form>
             )}
         </div>

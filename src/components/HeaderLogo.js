@@ -3,9 +3,9 @@ import '../App.css';
 
 const Header = () => {
     return (
-        <header className="Header">
-            <h1>Smart Shopping List</h1>
-        </header>
+        <div className='Header'>
+            <a href="/"><img src="/img/C4D8E2.png" alt="Shopping List Logo" /></a>
+        </div>
     );
 };
 
