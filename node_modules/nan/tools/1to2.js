@@ -183,7 +183,7 @@ for (i = 1, length = groups.length; i < length; i++) {
 	groups[i][0] += total;
 }
 
-/* create the master RegExp, whis is the union of all the groups' expressions */
+/* create the master RegExp, which is the union of all the groups' expressions */
 master = new RegExp(groups.map(function (a) { return a[1]; }).join('|'), 'gm');
 
 /* replacement function for String.replace, receives 21 arguments */
@@ -264,7 +264,7 @@ function replace() {
         default:
       }
 
-      /* Value converstion */
+      /* Value conversion */
       switch (arguments[groups[6][0]]) {
         case 'Boolean':
         case 'Int32':
