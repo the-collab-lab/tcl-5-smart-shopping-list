@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import fb from '../lib/firebase';
 import moment from 'moment';
 import normalizeString from '../lib/normalizeString';
-import {Button,Icon, Select} from 'react-materialize'
+import { Button, Icon, Select } from 'react-materialize';
 
 const Form = ({ token }) => {
     const [itemName, setItemName] = useState('');
@@ -28,7 +28,7 @@ const Form = ({ token }) => {
                         let documentData = doc.data();
                         let nameData = documentData.itemName;
                         if (nameData) {
-                            nameData = normalizeString(nameData)
+                            nameData = normalizeString(nameData);
                             fullCollection.push(nameData);
                         }
                     });
@@ -41,7 +41,7 @@ const Form = ({ token }) => {
     };
     useEffect(() => {
         getCurrentShoppingListItems(userToken);
-    }, [token, addStatus]);
+    }, [token, addStatus, userToken]);
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -66,7 +66,9 @@ const Form = ({ token }) => {
                     getCurrentShoppingListItems(userToken);
                     setAddStatus(true);
                     alert(' Item Added!🙌');
-                    if(!alert('Item Added!🙌')){window.location.reload();}
+                    if (!alert('Item Added!🙌')) {
+                        window.location.reload();
+                    }
                 })
                 .catch(error =>
                     console.error('Error writing document: ', error)
@@ -87,8 +89,13 @@ const Form = ({ token }) => {
                 renderRedirect()
             ) : (
                 <form id="addItemForm" onSubmit={e => handleSubmit(e)}>
-                <div><h1>Add a new item to your list.</h1></div>
-                <img src="/img/005-shopping-basket.png" alt="Shopping List Basket"/>
+                    <div>
+                        <h1>Add a new item to your list.</h1>
+                    </div>
+                    <img
+                        src="/img/005-shopping-basket.png"
+                        alt="Shopping List Basket"
+                    />
                     <div>
                         <h2>Name of the item</h2>
                     </div>
@@ -109,23 +116,18 @@ const Form = ({ token }) => {
                         multiple={false}
                         name="time frame"
                         onChange={e => setTimeFrame(e.target.value)}
-                        >
-                        <option
-                            disabled
-                            value=""
-                        >
+                    >
+                        <option disabled value="">
                             Choose your option
                         </option>
-                        <option value={7}>
-                        Soon (in the next 7 days)
-                        </option>
+                        <option value={7}>Soon (in the next 7 days)</option>
                         <option value={14}>
-                        Kind of soon (in the next 14 days)
+                            Kind of soon (in the next 14 days)
                         </option>
                         <option value={30}>
-                        Not soon (in the next 30 days)
+                            Not soon (in the next 30 days)
                         </option>
-                        </Select>
+                    </Select>
                     <div>
                         <h2>Last purchase date?</h2>
                     </div>
@@ -142,17 +144,10 @@ const Form = ({ token }) => {
                             There is a duplicate item in your shopping list.
                         </div>
                     ) : null}
-                    <Button
-                    node="button"
-                    type="submit"
-                    waves="light"
-                    >
-                    Submit
-                    <Icon right>
-                        send
-                    </Icon>
+                    <Button node="button" type="submit" waves="light">
+                        Submit
+                        <Icon right>send</Icon>
                     </Button>
-
                 </form>
             )}
         </div>
