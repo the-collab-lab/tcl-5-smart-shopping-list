@@ -10,11 +10,11 @@ This project is based on [iNeedToBuy.xyz](https://app.ineedtobuy.xyz/), a mobile
 
 ### Locations for things
 
-* Site: [tcl-5-smart-shopping-list.netlify.com](https://tcl-5-smart-shopping-list.netlify.com/)
-* Repo: [github.com/the-collab-lab/tcl-5-smart-shopping-list](https://github.com/the-collab-lab/tcl-5-smart-shopping-list)
-* Clone URL: `git@github.com:the-collab-lab/tcl-5-smart-shopping-list.git`
-* Issue list: [github.com/the-collab-lab/tcl-5-smart-shopping-list/projects/1](https://github.com/the-collab-lab/tcl-5-smart-shopping-list/projects/1)
-* Database: [console.firebase.google.com/u/1/project/tcl-5-smart-shopping-list](https://console.firebase.google.com/u/1/project/tcl-5-smart-shopping-list/database/firestore/data~2F)
+-   Site: [https://tcl-5-smart-shopping-list.web.app/](https://tcl-5-smart-shopping-list.web.app/)
+-   Repo: [github.com/the-collab-lab/tcl-5-smart-shopping-list](https://github.com/the-collab-lab/tcl-5-smart-shopping-list)
+-   Clone URL: `git@github.com:the-collab-lab/tcl-5-smart-shopping-list.git`
+-   Issue list: [github.com/the-collab-lab/tcl-5-smart-shopping-list/projects/1](https://github.com/the-collab-lab/tcl-5-smart-shopping-list/projects/1)
+-   Database: [console.firebase.google.com/u/1/project/tcl-5-smart-shopping-list](https://console.firebase.google.com/u/1/project/tcl-5-smart-shopping-list/database/firestore/data~2F)
 
 ### Project cadence & duration
 
@@ -74,7 +74,7 @@ There is no one “right” way to pair program, but in general, you will meet w
 
 ### Weekly Sync
 
-Each week, we’ll get on a 1-hour Zoom call. The call will always start with a *quick demo of the previous week’s work* from each pair. This is a common practice on most software teams and also lets you practice talking about your work, which can come in handy in a job interview setting!
+Each week, we’ll get on a 1-hour Zoom call. The call will always start with a _quick demo of the previous week’s work_ from each pair. This is a common practice on most software teams and also lets you practice talking about your work, which can come in handy in a job interview setting!
 
 The way we use the rest of the time will vary based on whether it’s an even- or odd-numbered week, as follows:
 
@@ -98,11 +98,11 @@ The project is organized in GitHub as a set of [user stories](https://www.mounta
 
 A task or story is “done” when the following are all true:
 
-* The AC have been met
-* Tests have been written to validate the “[happy path](https://en.wikipedia.org/wiki/Happy_path)” (optional)
-* In the case of a UI feature, it has been reviewed for [accessibility](https://accessibilityinsights.io/)
-* The code to complete the task or implement the feature has been reviewed and approved by the other pair of developers
-* The [Product Owner](https://www.agilealliance.org/glossary/product-owner/) (i.e. Andrew or 1 of the mentors) has accepted the work as satisfactorily meeting the requirements
+-   The AC have been met
+-   Tests have been written to validate the “[happy path](https://en.wikipedia.org/wiki/Happy_path)” (optional)
+-   In the case of a UI feature, it has been reviewed for [accessibility](https://accessibilityinsights.io/)
+-   The code to complete the task or implement the feature has been reviewed and approved by the other pair of developers
+-   The [Product Owner](https://www.agilealliance.org/glossary/product-owner/) (i.e. Andrew or 1 of the mentors) has accepted the work as satisfactorily meeting the requirements
 
 The “backlog” (the collection of stories) represents the work needed to complete the project. At the point when all of the stories are done, we should have a working app!
 
@@ -114,18 +114,18 @@ At the start of each week, each pair will review their Github issue that details
 
 Work will be done on feature branches in git. Branches should be named in the following way:
 
-	<initials of person 1>-<initials of person 2>-<short description>
+    <initials of person 1>-<initials of person 2>-<short description>
 
 For example:
 
-	stc-an-connect-to-firestore
+    stc-an-connect-to-firestore
 
 The hypothetical example above has Stacie Taylor-Cima and Alejandro Ñáñez working together on connecting the app to Firestore. Each of them will be able to work on the feature branch independently, but only one of them will submit the merge request when the work is ready (described in more detail below).
 
 When you’re ready to start work on a feature, one person in your pair should create a local branch following the naming convention above, then push the branch to GitHub so your pair buddy can pull it down to their local environment. The following steps should work to do just this:
 
-	git checkout -b an-example-feature-branch
-	git push -u origin an-example-feature-branch
+    git checkout -b an-example-feature-branch
+    git push -u origin an-example-feature-branch
 
 When you and your pair partner have working code that you believe is ready to be merged to `master` and deployed, you will follow the following steps:
 
